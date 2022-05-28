@@ -113,11 +113,13 @@ struct LoginView: View {
                 
                 Spacer()
             } //: VSTACK
+            .navigationBarBackButtonHidden(true)
+            .edgesIgnoringSafeArea(.all)
             .background(
                 Image("loginBackgroundImage")
                     .edgesIgnoringSafeArea(.all)
             )
-            .navigationBarHidden(true)
+            
         } //: NAVIGATION
     }
 }

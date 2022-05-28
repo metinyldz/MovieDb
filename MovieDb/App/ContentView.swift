@@ -14,8 +14,10 @@ struct ContentView: View {
     var body: some View {
         if isLogin {
             MainTabView()
+                .navigationBarHidden(true)
         } else {
             LoginView(emailText: .constant("asdasd@asd.com"), passwordText: .constant("asdasda"))
+                .navigationBarHidden(true)
         }
     }
 }
