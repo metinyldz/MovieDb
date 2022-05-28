@@ -19,9 +19,8 @@ struct MovieView: View {
                 
                 ScrollView(showsIndicators: false) {
                     //MARK: - HEADER -
-                    
                     MovieHeaderView()
-                    
+                     
                     //MARK: - CENTER -
                     
                     MovieDescriptionView()
@@ -53,7 +52,14 @@ struct MovieView: View {
                 .navigationBarTitle("Movies", displayMode: .large)
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
             } //: ZStack
+            .navigationViewStyle(.stack)
         } //: NAVIGATION
+    }
+}
+
+struct FlatLinkStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
     }
 }
 

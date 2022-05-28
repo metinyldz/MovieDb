@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MovieHeaderView: View {
+    
+    @State private var isActive = false
+    
     var body: some View {
         ZStack {
             VStack {
@@ -21,15 +24,24 @@ struct MovieHeaderView: View {
             
             PagingView(config: .init(margin: 20, spacing: -40)) {
                 Group {
-                    Image("moviePlaceholder")
-                        .resizable()
-                        .frame(width: 260, height: 373)
-                    Image("moviePlaceholder")
-                        .resizable()
-                        .frame(width: 260, height: 373)
-                    Image("moviePlaceholder")
-                        .resizable()
-                        .frame(width: 260, height: 373)
+                    
+                    NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .frame(width: 260, height: 373)
+                    }.isDetailLink(false).buttonStyle(.plain)
+                    
+                    NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .frame(width: 260, height: 373)
+                    }.isDetailLink(false).buttonStyle(.plain)
+
+                    NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .frame(width: 260, height: 373)
+                    }.isDetailLink(false).buttonStyle(.plain)
                 } //: GROUP
                 .mask(RoundedRectangle(cornerRadius: 10))
                 .aspectRatio(1.4, contentMode: .fit)
@@ -46,5 +58,6 @@ struct MovieHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         MovieHeaderView()
             .previewDisplayName("iPhone 12 Mini")
+            .preferredColorScheme(.light)
     }
 }
