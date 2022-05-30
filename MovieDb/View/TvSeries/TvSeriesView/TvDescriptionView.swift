@@ -1,15 +1,15 @@
 //
-//  MovieDescriptionView.swift
+//  TvDescriptionView.swift
 //  MovieDb
 //
-//  Created by Metin Yıldız on 5.05.2022.
+//  Created by Metin Yıldız on 30.05.2022.
 //
 
 import SwiftUI
 
-struct MovieDescriptionView: View {
+struct TvDescriptionView: View {
     
-    @Binding var item: MovieDescriptionModel
+//    @Binding var item: MovieDescriptionModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,9 +28,9 @@ struct MovieDescriptionView: View {
     }
 }
 
-struct MovieDescriptionView_Previews: PreviewProvider {
+struct TvDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDescriptionView(item: .constant(MovieDescriptionModel(rating: "8.8", movieTitle: "adasd", movieGenre: "Krime, asdas")))
-            .previewLayout(.fixed(width: 375, height: 111))
+        TvDescriptionView()
+            .previewLayout(.sizeThatFits)
     }
 }

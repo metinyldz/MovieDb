@@ -1,17 +1,17 @@
 //
-//  MovieHeaderView.swift
+//  TvHeaderView.swift
 //  MovieDb
 //
-//  Created by Metin Yıldız on 7.05.2022.
+//  Created by Metin Yıldız on 30.05.2022.
 //
 
 import SwiftUI
 
-struct MovieHeaderView: View {
+struct TvHeaderView: View {
     
-    @Binding var items: [MovieTopRatedResult]
+//    @Binding var items: [MovieTopRatedResult]
     @State private var isActive = false
-    @State static var index = 0
+//    @State static var index = 0
     
     var body: some View {
         ZStack {
@@ -55,10 +55,8 @@ struct MovieHeaderView: View {
     }
 }
 
-struct MovieHeaderView_Previews: PreviewProvider {
+struct TvHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieHeaderView(items: .constant(MovieTopRatedResult.all()))
-            .previewDisplayName("iPhone 12 Mini")
-            .preferredColorScheme(.light)
+        TvHeaderView()
     }
 }

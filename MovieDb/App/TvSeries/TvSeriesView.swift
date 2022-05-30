@@ -17,11 +17,11 @@ struct TvSeriesView: View {
                 ScrollView(showsIndicators: false) {
                     //MARK: - HEADER -
                     
-                    MovieHeaderView()
+                    TvHeaderView()
                     
                     //MARK: - CENTER -
                     
-                    MovieDescriptionView()
+                    TvDescriptionView()
                         .padding(.horizontal, 24)
                     
                     Divider()
