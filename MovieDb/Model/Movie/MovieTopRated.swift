@@ -14,7 +14,7 @@ struct MovieTopRated: Codable {
     var total_results: Int?
 }
 
-struct MovieTopRatedResult: Codable {
+struct MovieTopRatedResult: Codable, Hashable, Identifiable {
     var adult: Bool?
     var backdrop_path: String?
     var genre_ids: [Int]?

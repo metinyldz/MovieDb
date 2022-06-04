@@ -59,10 +59,10 @@ struct MovieView: View {
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
             } //: ZStack
             .navigationViewStyle(.stack)
+            .onAppear {
+                fetchTopRatedMovies()
+            }
         } //: NAVIGATION
-        .onAppear {
-            fetchTopRatedMovies()
-        }
     }
     
     private func fetchTopRatedMovies() {
@@ -119,7 +119,9 @@ struct FlatLinkStyle: ButtonStyle {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView()
+        MovieView(movieHeaderItems: MovieTopRatedResult.all(),
+                  movieDescriptionItem: MovieDescriptionModel(rating: "8.8", movieTitle: "adasd", movieGenre: "Krime, asdas"),
+                  movieDescriptionArray: [MovieDescriptionModel(rating: "8.8", movieTitle: "adasd", movieGenre: "Krime, asdas")])
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }

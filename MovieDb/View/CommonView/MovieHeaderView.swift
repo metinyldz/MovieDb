@@ -26,23 +26,21 @@ struct MovieHeaderView: View {
             
             PagingView(config: .init(margin: 20, spacing: -40)) {
                 Group {
-                    NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
-                        Image("moviePlaceholder")
-                            .resizable()
-                            .frame(width: 260, height: 373)
-                    }.isDetailLink(false).buttonStyle(.plain)
-                    
-                    NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
-                        Image("moviePlaceholder")
-                            .resizable()
-                            .frame(width: 260, height: 373)
-                    }.isDetailLink(false).buttonStyle(.plain)
-
-                    NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
-                        Image("moviePlaceholder")
-                            .resizable()
-                            .frame(width: 260, height: 373)
-                    }.isDetailLink(false).buttonStyle(.plain)
+                    ForEach($items, id: \.id) { item in
+                        NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
+                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path)")) { image in
+                                image
+                                    .resizable()
+                                    .frame(width: 260, height: 373)
+                            } placeholder: {
+                                Image("moviePlaceholder")
+                                    .resizable()
+                                    .frame(width: 260, height: 373)
+                            } //: ASYNC IMAGE
+                        } //: LINK
+                        .isDetailLink(false)
+                        .buttonStyle(.plain)
+                    } //: FOR
                 } //: GROUP
                 .mask(RoundedRectangle(cornerRadius: 10))
                 .aspectRatio(1.4, contentMode: .fit)
