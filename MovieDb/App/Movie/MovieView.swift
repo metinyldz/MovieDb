@@ -9,13 +9,7 @@ import SwiftUI
 
 struct MovieView: View {
     
-    @ObservedObject var movieViewModel = MovieViewModel()
-    
     @State private var isActive = false
-    @State var movieHeaderItems = [MovieTopRatedResult]()
-    @State var movieDescriptionItem = MovieDescriptionModel()
-    
-    @State var movieDescriptionArray = [MovieDescriptionModel]()
     
     var body: some View {
         NavigationView {
@@ -25,11 +19,11 @@ struct MovieView: View {
                 
                 ScrollView(showsIndicators: false) {
                     //MARK: - HEADER -
-                    MovieHeaderView(items: $movieHeaderItems)
+                    MovieHeaderView()
                      
                     //MARK: - CENTER -
                     
-                    MovieDescriptionView(item: $movieDescriptionItem)
+                    MovieDescriptionView()
                         .padding(.horizontal, 24)
                     
                     Divider()
@@ -59,55 +53,7 @@ struct MovieView: View {
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
             } //: ZStack
             .navigationViewStyle(.stack)
-            .onAppear {
-                fetchTopRatedMovies()
-            }
         } //: NAVIGATION
-    }
-    
-    private func fetchTopRatedMovies() {
-        movieViewModel.fetchMovieTopRated { result, success in
-            guard let response = result else { return }
-            (success) ? handleMovieHeaderResponse(with: response): print("Empty Response!!!")
-        }
-    }
-    
-    private func handleMovieHeaderResponse(with results: [MovieTopRatedResult]) {
-        for result in results {
-            let item = MovieDescriptionModel(rating: "\(result.vote_average ?? 0.0)",
-                                             movieTitle: result.original_title ?? "-",
-                                             movieGenre: getGenres(genreIds: result.genre_ids ?? [0], type: .movie))
-            movieDescriptionArray.append(item)
-        }
-    }
-    
-    func getGenres(genreIds: [Int], type: ContentType) -> String {
-        var genreIndexs = [GenreResult]()
-        
-        switch type {
-        case .movie:
-            for genreId in genreIds {
-                genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
-            }
-        case .tvSerie:
-            for genreId in genreIds {
-                genreIndexs.append(GenreModel.tvInstance.first(where: {$0.id == genreId})!)
-            }
-        }
-        
-        return convertGenresToString(genreIndexs)
-    }
-    
-    func convertGenresToString(_ genres: [GenreResult]) -> String {
-        var text = ""
-        for genre in genres {
-            if genres.last!.id == genre.id {
-                text += genre.name ?? "-"
-                break
-            }
-            text += "\(genre.name ?? "-"), "
-        }
-        return text
     }
 }
 
@@ -119,16 +65,8 @@ struct FlatLinkStyle: ButtonStyle {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView(movieHeaderItems: MovieTopRatedResult.all(),
-                  movieDescriptionItem: MovieDescriptionModel(rating: "8.8", movieTitle: "adasd", movieGenre: "Krime, asdas"),
-                  movieDescriptionArray: [MovieDescriptionModel(rating: "8.8", movieTitle: "adasd", movieGenre: "Krime, asdas")])
+        MovieView()
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }
-}
-
-struct MovieDescriptionModel {
-    var rating: String = ""
-    var movieTitle: String = ""
-    var movieGenre: String = ""
 }

@@ -30,8 +30,6 @@ struct MovieDbApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .preferredColorScheme(.light)
             SplashView()
                 .preferredColorScheme(.light)
                 

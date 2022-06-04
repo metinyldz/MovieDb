@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct MovieDescriptionView: View {
-    
-    @Binding var item: MovieDescriptionModel
-    
     var body: some View {
         VStack(alignment: .leading) {
             RatingView()
@@ -30,7 +27,7 @@ struct MovieDescriptionView: View {
 
 struct MovieDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDescriptionView(item: .constant(MovieDescriptionModel(rating: "8.8", movieTitle: "adasd", movieGenre: "Krime, asdas")))
+        MovieDescriptionView()
             .previewLayout(.fixed(width: 375, height: 111))
     }
 }

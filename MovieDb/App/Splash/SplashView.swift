@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @ObservedObject var splashViewModel = SplashViewModel()
     @State private var isActive = false
     
     var body: some View {
@@ -21,26 +20,10 @@ struct SplashView: View {
             }
         } //: VSTACK
         .onAppear {
-            withAnimation {
-                fetchMovieGenres()
-            }
-        }
-    }
-    
-    private func fetchMovieGenres() {
-        splashViewModel.fetchMovieGenres { result, success in
-            if success {
-                GenreModel.movieInstance = result!
-                fetchTvGenres()
-            }
-        }
-    }
-    
-    private func fetchTvGenres() {
-        splashViewModel.fetchTvGenres { result, success in
-            if success {
-                GenreModel.tvInstance = result!
-                isActive = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    isActive = true
+                }
             }
         }
     }
