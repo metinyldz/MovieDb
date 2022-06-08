@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RatingView: View {
+    
+    var rating: String = ""
+    
     var body: some View {
         RoundedRectangle(cornerRadius: 15.0)
             .fill(Color("VibrantBlue"))
@@ -21,7 +24,7 @@ struct RatingView: View {
                     
                     Spacer()
                     
-                    Text("8.9")
+                    Text(rating)
                         .bold()
                         .foregroundColor(Color.white)
                         .minimumScaleFactor(0.5)

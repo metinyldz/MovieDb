@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct MovieTopRated: Codable {
+struct MovieTopRated: Codable, Hashable {
     var page: Int
     var results: [MovieTopRatedResult]?
     var total_pages: Int?
     var total_results: Int?
 }
 
-struct MovieTopRatedResult: Codable, Hashable, Identifiable {
+struct MovieTopRatedResult: Codable, Hashable {
     var adult: Bool?
     var backdrop_path: String?
     var genre_ids: [Int]?

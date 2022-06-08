@@ -8,19 +8,46 @@
 import SwiftUI
 
 struct PopularCardView: View {
+    
+    @State var movieResult: MovieResult
+    
     var body: some View {
         ZStack {
             Color.white
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
-                Image("moviePlaceholder")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 100)
+                
+                /*
+                 AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path ?? "")")) { image in
+                     image
+                         .resizable()
+                         .frame(width: 260, height: 373)
+                 } placeholder: {
+                     Image("moviePlaceholder")
+                         .resizable()
+                         .frame(width: 260, height: 373)
+                 }
+                 */
+                
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movieResult.poster_path ?? "")")) { image in
+                    image
+                        .resizable()
+                        .frame(width: 70, height: 100)
+                } placeholder: {
+                    Image("moviePlaceholder")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 100)
+                }
+                
+//                Image("moviePlaceholder")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 70, height: 100)
                 
                 VStack(alignment: .leading) {
-                    Text("Joker")
+                    Text(movieResult.title ?? "-")
                         .font(Font.system(size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(.black)
@@ -40,7 +67,7 @@ struct PopularCardView: View {
                             .scaledToFit()
                             .frame(width: 15, height: 15)
                         
-                        Text("04.11.2019")
+                        Text(movieResult.release_date ?? "-")
                             .font(Font.system(size: 12))
                             .fontWeight(.regular)
                             .foregroundColor(.black)
@@ -51,7 +78,7 @@ struct PopularCardView: View {
                         Divider()
                             .frame(height: 12)
                         
-                        RatingView()
+                        RatingView(rating: "\(movieResult.vote_average ?? 0)")
                             .padding(.horizontal, 4)
                         
                         Spacer()
@@ -69,7 +96,7 @@ struct PopularCardView: View {
 
 struct PopularCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularCardView()
+        PopularCardView(movieResult: MovieResult.all().first!)
             .previewLayout(.fixed(width: 345, height: 130))
     }
 }
