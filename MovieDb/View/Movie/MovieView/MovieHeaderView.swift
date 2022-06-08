@@ -52,22 +52,6 @@ struct MovieHeaderView: View {
     }
 }
 
-/*
- AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path!)")) { image in
-     image
-         .resizable()
-         .scaledToFill()
-         .frame(width: 260.0, height: 373.0)
-         .cornerRadius(8.0)
-     
- } placeholder: {
-     Image("MoviePlaceholder")
-         .resizable()
-         .scaledToFill()
-         .frame(width: 260.0, height: 373.0)
- }
- */
-
 struct MovieHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         MovieHeaderView()

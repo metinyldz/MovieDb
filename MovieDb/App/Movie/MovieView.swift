@@ -24,7 +24,6 @@ struct MovieView: View {
                     .ignoresSafeArea(.all, edges: .all)
                 
                 ScrollView(showsIndicators: false) {
-                    
                     if isMovieTopRatedActive && isMovieResultActive {
                         //MARK: - HEADER -
                         MovieHeaderView(movieTopRatedResult: movieTopRatedResult)
