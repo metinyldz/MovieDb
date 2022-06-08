@@ -47,7 +47,6 @@ struct MovieHeaderView: View {
                 .frame(height: 373)
                 .padding(.vertical, 20)
             }
-
         } //: ZStack
     }
 }

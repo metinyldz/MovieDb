@@ -26,11 +26,11 @@ struct TvSeriesView: View {
                     if isTvTopRatedActive && isTvResultActive {
                         //MARK: - HEADER -
                         
-                        TvHeaderView()
+                        TvHeaderView(tvTopRatedResult: tvTopRatedResult)
                         
                         //MARK: - CENTER -
                         
-                        MovieDescriptionView()
+                        TvDescriptionView()
                             .padding(.horizontal, 24)
                         
                         Divider()
