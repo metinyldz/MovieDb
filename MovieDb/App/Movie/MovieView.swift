@@ -63,25 +63,32 @@ struct MovieView: View {
             .navigationViewStyle(.stack)
         } //: NAVIGATION
         .onAppear {
-            // TODO: - Fetch Data -
             fetchMovieTopRatedData()
-            fetchMoviesData()
         }
     }
-    
+
     private func fetchMovieTopRatedData() {
         movieViewModel.fetchMovieTopRated { result, success in
             guard let result = result else { return }
-            self.movieTopRatedResult = result
-            self.isMovieTopRatedActive = true
+            movieTopRatedResult = result
+            fetchMoviesData()
         }
     }
     
     private func fetchMoviesData() {
         movieViewModel.fetchMovies { result, success in
             guard let result = result else { return }
-            self.movieResult = result
-            self.isMovieResultActive = true
+            movieResult = result
+            fetchMoviesGenresData()
+        }
+    }
+    
+    private func fetchMoviesGenresData() {
+        movieViewModel.fetchMovieGenres { result, success in
+            guard let result = result else { return }
+            GenreModel.movieInstance = result
+            isMovieTopRatedActive = true
+            isMovieResultActive = true
         }
     }
 }

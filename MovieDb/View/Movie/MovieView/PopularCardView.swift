@@ -10,6 +10,8 @@ import SwiftUI
 struct PopularCardView: View {
     
     @State var movieResult: MovieResult
+    @State private var genreText: String = ""
+    @State private var date: String = ""
     
     var body: some View {
         ZStack {
@@ -17,19 +19,6 @@ struct PopularCardView: View {
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
-                
-                /*
-                 AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path ?? "")")) { image in
-                     image
-                         .resizable()
-                         .frame(width: 260, height: 373)
-                 } placeholder: {
-                     Image("moviePlaceholder")
-                         .resizable()
-                         .frame(width: 260, height: 373)
-                 }
-                 */
-                
                 AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movieResult.poster_path ?? "")")) { image in
                     image
                         .resizable()
@@ -41,11 +30,6 @@ struct PopularCardView: View {
                         .frame(width: 70, height: 100)
                 }
                 
-//                Image("moviePlaceholder")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 70, height: 100)
-                
                 VStack(alignment: .leading) {
                     Text(movieResult.title ?? "-")
                         .font(Font.system(size: 20))
@@ -53,7 +37,7 @@ struct PopularCardView: View {
                         .foregroundColor(.black)
                         .frame(height: 24)
                     
-                    Text("Crime, Drama, Thriller")
+                    Text(genreText)
                         .font(Font.system(size: 15))
                         .fontWeight(.regular)
                         .foregroundColor(.black)
@@ -67,7 +51,7 @@ struct PopularCardView: View {
                             .scaledToFit()
                             .frame(width: 15, height: 15)
                         
-                        Text(movieResult.release_date ?? "-")
+                        Text(date)
                             .font(Font.system(size: 12))
                             .fontWeight(.regular)
                             .foregroundColor(.black)
@@ -91,7 +75,36 @@ struct PopularCardView: View {
         .frame(width: 327, height: 100)
         .cornerRadius(8)
         .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)
+        .onAppear {
+            getGenres(genreIds: movieResult.genre_ids)
+            date = Converter.convertDate(input: movieResult.release_date ?? "", dateType: .date)
+        }
     }
+    
+    private func getGenres(genreIds: [Int]?) {
+        guard let genreIds = genreIds else { return }
+        
+        var genreIndexs = [GenreResult]()
+        
+        for genreId in genreIds {
+            genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
+        }
+        
+        genreText = convertGenresToString(genreIndexs)
+    }
+    
+    private func convertGenresToString(_ genres: [GenreResult]) -> String {
+        var text = ""
+        for genre in genres {
+            if genres.last!.id == genre.id {
+                text += genre.name ?? "-"
+                break
+            }
+            text += "\(genre.name ?? "-"), "
+        }
+        return text
+    }
+    
 }
 
 struct PopularCardView_Previews: PreviewProvider {
