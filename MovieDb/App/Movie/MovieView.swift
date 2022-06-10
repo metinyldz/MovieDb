@@ -28,12 +28,14 @@ struct MovieView: View {
                 ScrollView(showsIndicators: false) {
                     if isMovieTopRatedActive && isMovieResultActive {
                         //MARK: - HEADER -
-                        MovieHeaderView(movieTopRatedResult: movieTopRatedResult)
+                        MovieHeaderView(movieTopRatedResult: $movieTopRatedResult)
                             .environmentObject(contentBindigs)
                         
                         //MARK: - CENTER -
                         
-                        MovieDescriptionView(movie: movieTopRatedResult[contentBindigs.moviePageIndex])
+                        MovieDescriptionView(rating: $movieTopRatedResult[contentBindigs.moviePageIndex].vote_average,
+                                             movie: $movieTopRatedResult[contentBindigs.moviePageIndex],
+                                             movieGenres: $movieTopRatedResult[contentBindigs.moviePageIndex].genre_ids)
                             .padding(.horizontal, 24)
                             .environmentObject(contentBindigs)
                         

@@ -12,7 +12,7 @@ struct MovieHeaderView: View {
     @State private var isActive = false
     @State var pageIndex = 0
     
-    var movieTopRatedResult: [MovieTopRatedResult] = []
+    @Binding var movieTopRatedResult: [MovieTopRatedResult]// = []
     @State var movie: MovieTopRatedResult!// = MovieTopRatedResult.all().first!
     @ObservedObject var movieViewModel = MovieViewModel()
     @EnvironmentObject var contentBindigs: ContentBindigs
@@ -66,7 +66,7 @@ struct MovieHeaderView: View {
 
 struct MovieHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieHeaderView()
+        MovieHeaderView(movieTopRatedResult: .constant(MovieTopRatedResult.all()))
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }
