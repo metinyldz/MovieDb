@@ -10,7 +10,11 @@ import SwiftUI
 struct TvHeaderView: View {
     
     @State private var isActive = false
+    @State var pageIndex = 0
+    
     var tvTopRatedResult: [TvTopRatedResult] = []
+    
+    @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
         ZStack {
@@ -24,7 +28,7 @@ struct TvHeaderView: View {
             } //: VStack
             
             if !tvTopRatedResult.isEmpty {
-                PagingView(config: .init(margin: 20, spacing: -40)) {
+                PagingView(config: .init(margin: 20, spacing: -40), page: $pageIndex) {
                     Group {
                         ForEach(tvTopRatedResult, id: \.self) { tv in
                             NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
@@ -42,10 +46,15 @@ struct TvHeaderView: View {
                     } //: GROUP
                     .mask(RoundedRectangle(cornerRadius: 10))
                     .aspectRatio(1.4, contentMode: .fit)
-                    
                 } //: PAGING
                 .frame(height: 373)
                 .padding(.vertical, 20)
+                .onAppear(perform: {
+                    contentBindigs.tvPageIndex = pageIndex
+                })
+                .onChange(of: pageIndex) { newValue in
+                    contentBindigs.tvPageIndex = pageIndex
+                }
             }
         } //: ZStack
     }

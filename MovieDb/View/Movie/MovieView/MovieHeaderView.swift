@@ -52,11 +52,9 @@ struct MovieHeaderView: View {
                 .frame(height: 373)
                 .padding(.vertical, 20)
                 .onAppear(perform: {
-                    movie = movieTopRatedResult[pageIndex]
                     contentBindigs.moviePageIndex = pageIndex
                 })
                 .onChange(of: pageIndex) { newValue in
-                    movie = movieTopRatedResult[pageIndex]
                     contentBindigs.moviePageIndex = pageIndex
                 }
             }

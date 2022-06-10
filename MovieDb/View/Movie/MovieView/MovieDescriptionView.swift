@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MovieDescriptionView: View {
     
-    @State private var genreText: String = ""
     @Binding var rating: Double?
     @Binding var movie: MovieTopRatedResult
     @Binding var movieGenres: [Int]?

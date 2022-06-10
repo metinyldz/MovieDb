@@ -16,6 +16,8 @@ struct TvSeriesView: View {
     @State private var tvTopRatedResult: [TvTopRatedResult] = []
     @State private var tvSeriesResult: [TvSeriesResult] = []
     
+    @EnvironmentObject var contentBindigs: ContentBindigs
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,10 +29,13 @@ struct TvSeriesView: View {
                         //MARK: - HEADER -
                         
                         TvHeaderView(tvTopRatedResult: tvTopRatedResult)
+                            .environmentObject(contentBindigs)
                         
                         //MARK: - CENTER -
                         
-                        TvDescriptionView()
+                        TvDescriptionView(rating: $tvTopRatedResult[contentBindigs.tvPageIndex].vote_average,
+                                          tv: $tvTopRatedResult[contentBindigs.tvPageIndex],
+                                          tvGenres: $tvTopRatedResult[contentBindigs.tvPageIndex].genre_ids)
                             .padding(.horizontal, 24)
                         
                         Divider()

@@ -37,7 +37,6 @@ struct MovieView: View {
                                              movie: $movieTopRatedResult[contentBindigs.moviePageIndex],
                                              movieGenres: $movieTopRatedResult[contentBindigs.moviePageIndex].genre_ids)
                             .padding(.horizontal, 24)
-                            .environmentObject(contentBindigs)
                         
                         Divider()
                             .padding(.horizontal, 24)
