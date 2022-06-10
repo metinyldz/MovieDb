@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct TvSeriesModel: Codable {
+struct TvSeriesModel: Codable, Hashable {
     var page: Int
     var results: [TvSeriesResult]?
 }
 
-struct TvSeriesResult: Codable {
+struct TvSeriesResult: Codable, Hashable {
     var backdrop_path: String?
     var first_air_date: String?
     var genre_ids: [Int]?

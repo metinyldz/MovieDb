@@ -13,28 +13,31 @@ struct TvSeriesCardView: View {
         GridItem(.fixed(153)),
         GridItem(.fixed(153))
     ]
+    
+    @State var tvResults: [TvSeriesResult]
     @State private var isActive = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 30) {
-                ForEach(data, id: \.self) { item in
-                    
-                    /*
-                     NavigationLink(destination: MovieDetailView(), isActive: $isActive) {
-                         PopularCardView()
-                             .padding(.vertical, 10)
-                     } //: LINK
-                     */
+                ForEach(tvResults, id: \.self) { item in
                     NavigationLink(destination: TvSeriesDetailView(), isActive: $isActive) {
                         VStack(alignment: .leading) {
-                            Image("moviePlaceholder")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 153, height: 219)
-                                .clipShape(Rectangle())
+                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path ?? "")")) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 153, height: 219)
+                                    .clipShape(Rectangle())
+                            } placeholder: {
+                                Image("moviePlaceholder")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 153, height: 219)
+                                    .clipShape(Rectangle())
+                            }
                             
-                            Text("Game of Thrones")
+                            Text(item.original_name ?? "-")
                                 .font(Font.system(size: 18))
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
@@ -52,8 +55,6 @@ struct TvSeriesCardView: View {
                         .cornerRadius(8)
                     .frame(width: 153, height: 310, alignment: .top)
                     }
-                    
-                    
                 } //: FOREACH
             } //: LAZYVGRID
             .padding(.bottom, 10)
@@ -63,7 +64,7 @@ struct TvSeriesCardView: View {
 
 struct TvSeriesCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesCardView()
+        TvSeriesCardView(tvResults: TvSeriesResult.all())
             .previewLayout(.fixed(width: 375, height: 530))
             .padding()
             .background(Color.gray)
