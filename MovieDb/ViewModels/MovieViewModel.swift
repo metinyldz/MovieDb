@@ -9,13 +9,7 @@ import Foundation
 import SwiftUI
 
 class MovieViewModel: ObservableObject {
-    @State var movie: MovieTopRatedResult = MovieTopRatedResult.all().first!
-    
     let baseUrl = "https://api.themoviedb.org/3"
-    
-    func setMovie(_ movie: State<MovieTopRatedResult>) {
-        self._movie = movie
-    }
     
     func fetchMovieTopRated(completion: @escaping (_ result: [MovieTopRatedResult]?, _ success: Bool) -> ()) {
         let endpoint = "/movie/top_rated?api_key=bda292e517965b20e63898a81d051a45&language=en-US&page=1"

@@ -15,6 +15,7 @@ struct MovieHeaderView: View {
     var movieTopRatedResult: [MovieTopRatedResult] = []
     @State var movie: MovieTopRatedResult!// = MovieTopRatedResult.all().first!
     @ObservedObject var movieViewModel = MovieViewModel()
+    @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
         ZStack {
@@ -51,14 +52,12 @@ struct MovieHeaderView: View {
                 .frame(height: 373)
                 .padding(.vertical, 20)
                 .onAppear(perform: {
-//                    movieViewModel._movie = $movieTopRatedResult[pageIndex]
                     movie = movieTopRatedResult[pageIndex]
-                    movieViewModel.setMovie(State(initialValue: movie))
+                    contentBindigs.moviePageIndex = pageIndex
                 })
                 .onChange(of: pageIndex) { newValue in
-//                    movieViewModel._movie = $movieTopRatedResult[pageIndex]
                     movie = movieTopRatedResult[pageIndex]
-                    movieViewModel.setMovie(State(initialValue: movie))
+                    contentBindigs.moviePageIndex = pageIndex
                 }
             }
         } //: ZStack

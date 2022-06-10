@@ -17,6 +17,8 @@ struct MovieView: View {
     @State var movieTopRatedResult: [MovieTopRatedResult] = []
     @State var movieResult: [MovieResult] = []
     
+    @EnvironmentObject var contentBindigs: ContentBindigs
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,11 +29,13 @@ struct MovieView: View {
                     if isMovieTopRatedActive && isMovieResultActive {
                         //MARK: - HEADER -
                         MovieHeaderView(movieTopRatedResult: movieTopRatedResult)
+                            .environmentObject(contentBindigs)
                         
                         //MARK: - CENTER -
                         
-                        MovieDescriptionView(movie: movieViewModel.movie)
+                        MovieDescriptionView(movie: movieTopRatedResult[contentBindigs.moviePageIndex])
                             .padding(.horizontal, 24)
+                            .environmentObject(contentBindigs)
                         
                         Divider()
                             .padding(.horizontal, 24)
@@ -103,5 +107,6 @@ struct MovieView_Previews: PreviewProvider {
         MovieView()
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
+            .environmentObject(ContentBindigs())
     }
 }
