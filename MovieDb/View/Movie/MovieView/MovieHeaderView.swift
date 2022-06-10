@@ -10,7 +10,11 @@ import SwiftUI
 struct MovieHeaderView: View {
     
     @State private var isActive = false
+    @State var pageIndex = 0
+    
     var movieTopRatedResult: [MovieTopRatedResult] = []
+    @State var movie: MovieTopRatedResult!// = MovieTopRatedResult.all().first!
+    @ObservedObject var movieViewModel = MovieViewModel()
     
     var body: some View {
         ZStack {
@@ -24,7 +28,7 @@ struct MovieHeaderView: View {
             } //: VStack
             
             if !movieTopRatedResult.isEmpty {
-                PagingView(config: .init(margin: 20, spacing: -40)) {
+                PagingView(config: .init(margin: 20, spacing: -40), page: $pageIndex) {
                     Group {
                         ForEach(movieTopRatedResult, id: \.self) { movie in
                             NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
@@ -42,10 +46,20 @@ struct MovieHeaderView: View {
                     } //: GROUP
                     .mask(RoundedRectangle(cornerRadius: 10))
                     .aspectRatio(1.4, contentMode: .fit)
-                    
+
                 } //: PAGING
                 .frame(height: 373)
                 .padding(.vertical, 20)
+                .onAppear(perform: {
+//                    movieViewModel._movie = $movieTopRatedResult[pageIndex]
+                    movie = movieTopRatedResult[pageIndex]
+                    movieViewModel.setMovie(State(initialValue: movie))
+                })
+                .onChange(of: pageIndex) { newValue in
+//                    movieViewModel._movie = $movieTopRatedResult[pageIndex]
+                    movie = movieTopRatedResult[pageIndex]
+                    movieViewModel.setMovie(State(initialValue: movie))
+                }
             }
         } //: ZStack
     }

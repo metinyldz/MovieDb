@@ -3,4 +3,179 @@
    uuid = "B20D55BF-A048-45FA-9E58-AF576E55604A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5F17998-3BB2-4B63-A0A2-4F658F89DC3B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieDb/View/Movie/MovieView/MovieHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D796D715-A97E-4A45-BB19-956B963B5E98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieDb/View/Movie/MovieView/MovieHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C74D50F-1EC6-4BF9-89D6-6CF4FE928435"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieDb/ViewModels/MovieViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "setMovie(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13B52C52-8ED8-4191-BEBB-BCB71C6C274F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieDb/ViewModels/MovieViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "setMovie(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68C66438-654D-4362-A5A0-336771A63665"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7027C859-C7E3-480C-AB0D-9E99FFEDA2F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "MovieDescriptionView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "7027C859-C7E3-480C-AB0D-9E99FFEDA2F1 - 31fef5d191476c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of MovieDb.MovieDescriptionView.movie : MovieDb.MovieTopRatedResult"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "7027C859-C7E3-480C-AB0D-9E99FFEDA2F1 - c649d5dfb532c5b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieDb.MovieDescriptionView.movie.getter : MovieDb.MovieTopRatedResult"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "764">
+               </Location>
+               <Location
+                  uuid = "7027C859-C7E3-480C-AB0D-9E99FFEDA2F1 - 6d8f657050eab3b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieDb.MovieDescriptionView.movie.setter : MovieDb.MovieTopRatedResult"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "7027C859-C7E3-480C-AB0D-9E99FFEDA2F1 - 9011e55b53b6d4e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieDb.MovieDescriptionView.movie.modify : MovieDb.MovieTopRatedResult with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "7027C859-C7E3-480C-AB0D-9E99FFEDA2F1 - e52a7c84ff850d7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieDb.MovieDescriptionView.$movie.getter : SwiftUI.Binding&lt;MovieDb.MovieTopRatedResult&gt;"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/View/Movie/MovieView/MovieDescriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "788">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

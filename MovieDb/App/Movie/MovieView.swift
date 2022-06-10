@@ -30,7 +30,7 @@ struct MovieView: View {
                         
                         //MARK: - CENTER -
                         
-                        MovieDescriptionView()
+                        MovieDescriptionView(movie: movieViewModel.movie)
                             .padding(.horizontal, 24)
                         
                         Divider()

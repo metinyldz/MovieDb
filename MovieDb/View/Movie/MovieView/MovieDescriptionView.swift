@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct MovieDescriptionView: View {
+    
+    var movie: MovieTopRatedResult = MovieTopRatedResult.all().first!
+    
     var body: some View {
         VStack(alignment: .leading) {
             RatingView()
             
-            Text("Joker")
+            Text(movie.title ?? "")
                 .font(Font.system(size: 28))
                 .fontWeight(.bold)
             Text("Crime, Drama, Thriller ")
