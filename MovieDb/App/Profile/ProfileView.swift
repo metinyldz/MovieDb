@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @EnvironmentObject var contentBindigs: ContentBindigs
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -58,9 +60,9 @@ struct ProfileView: View {
                     .padding(.horizontal, 24)
                     .padding(.bottom, 10)
                     
-                    ForEach(1...7, id: \.self) { _ in
+                    ForEach(contentBindigs.favoriteContents, id: \.self) { item in
 //                        NavigationLink(destination: MovieDetailView(), isActive: $isActive) {
-                        ProfileFavoriteCardView()
+                        ProfileFavoriteCardView(favoriteItem: item)
                                 .padding(.vertical, 10)
 //                        } //: LINK
                     }

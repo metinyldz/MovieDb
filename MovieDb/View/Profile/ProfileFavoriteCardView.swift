@@ -8,20 +8,31 @@
 import SwiftUI
 
 struct ProfileFavoriteCardView: View {
+    
+    var favoriteItem = FavoriteModel()
+    
     var body: some View {
         ZStack {
             Color.white
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
-                Image("moviePlaceholder")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 100)
+                
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(favoriteItem.contentUrl ?? "")")) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 100)
+                } placeholder: {
+                    Image("moviePlaceholder")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 100)
+                }
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Game of Thrones")
+                        Text(favoriteItem.contentTitle ?? "-")
                             .font(Font.system(size: 20))
                             .fontWeight(.bold)
                             .foregroundColor(.black)
@@ -51,7 +62,7 @@ struct ProfileFavoriteCardView: View {
                             .scaledToFit()
                             .frame(width: 15, height: 15)
                         
-                        Text("2011 - 2019")
+                        Text(favoriteItem.contentDate ?? "-")
                             .font(Font.system(size: 12))
                             .fontWeight(.regular)
                             .foregroundColor(.black)
@@ -75,7 +86,7 @@ struct ProfileFavoriteCardView: View {
 
 struct ProfileFavoriteCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileFavoriteCardView()
+        ProfileFavoriteCardView(favoriteItem: FavoriteModel())
             .previewLayout(.sizeThatFits)
     }
 }

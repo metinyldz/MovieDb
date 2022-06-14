@@ -10,9 +10,12 @@ import SwiftUI
 struct PopularCardView: View {
     
     @State var movieResult: MovieResult
+    @State var isFavorite: Bool = false
     @State private var genreText: String = ""
     @State private var date: String = ""
     
+    @EnvironmentObject var contentBindigs: ContentBindigs
+
     var body: some View {
         ZStack {
             Color.white
@@ -31,11 +34,35 @@ struct PopularCardView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text(movieResult.title ?? "-")
-                        .font(Font.system(size: 20))
-                        .fontWeight(.bold)
-                        .foregroundColor(.black)
+                    HStack {
+                        Text(movieResult.title ?? "-")
+                            .font(Font.system(size: 20))
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
                         .frame(height: 24)
+                        
+                        Spacer()
+                        
+                        Image(isFavorite ? "heartSelected" : "heart")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .scaledToFit()
+                            .onTapGesture {
+                                if !isFavorite {
+                                    contentBindigs.favoriteContents.append(FavoriteModel(contentId: movieResult.id ?? -1,
+                                                                                             contentUrl: movieResult.poster_path ?? "-",
+                                                                                             contentTitle: movieResult.title ?? "-",
+                                                                                             contentDate: date))
+                                    print("User Defaults Added!")
+                                } else {
+                                    contentBindigs.favoriteContents.removeAll { item in
+                                        return item.contentId == movieResult.id
+                                    }
+                                    print("User Defaults Removed!")
+                                }
+                                isFavorite = !isFavorite
+                            }
+                    }
                     
                     Text(genreText)
                         .font(Font.system(size: 15))
@@ -80,17 +107,20 @@ struct PopularCardView: View {
             date = Converter.convertDate(input: movieResult.release_date ?? "", dateType: .date)
         }
     }
-    
     private func getGenres(genreIds: [Int]?) {
-        guard let genreIds = genreIds else { return }
-        
-        var genreIndexs = [GenreResult]()
-        
-        for genreId in genreIds {
-            genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
+        if !GenreModel.movieInstance.isEmpty {
+            guard let genreIds = genreIds else { return }
+            
+            var genreIndexs = [GenreResult]()
+            
+            
+            for genreId in genreIds {
+                genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
+            }
+            
+            
+            genreText = convertGenresToString(genreIndexs)
         }
-        
-        genreText = convertGenresToString(genreIndexs)
     }
     
     private func convertGenresToString(_ genres: [GenreResult]) -> String {
@@ -111,5 +141,16 @@ struct PopularCardView_Previews: PreviewProvider {
     static var previews: some View {
         PopularCardView(movieResult: MovieResult.all().first!)
             .previewLayout(.fixed(width: 345, height: 130))
+    }
+}
+
+extension UserDefaults {
+    var favorites: [FavoriteModel] {
+        get {
+            array(forKey: "favorites") as? [FavoriteModel] ?? []
+        }
+        set {
+            set(newValue, forKey: "favorites")
+        }
     }
 }

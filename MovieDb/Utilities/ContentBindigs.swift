@@ -18,4 +18,5 @@ import SwiftUI
     
     @Published var moviePageIndex = 0
     @Published var tvPageIndex = 0
+    @Published var favoriteContents = UserDefaults.standard.favoriteModel
 }

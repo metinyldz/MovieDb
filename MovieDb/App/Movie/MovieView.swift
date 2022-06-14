@@ -16,6 +16,7 @@ struct MovieView: View {
     @State private var isActive = false
     @State var movieTopRatedResult: [MovieTopRatedResult] = []
     @State var movieResult: [MovieResult] = []
+    @State var isFavorite: Bool = false
     
     @EnvironmentObject var contentBindigs: ContentBindigs
     
@@ -55,8 +56,9 @@ struct MovieView: View {
                         
                         ForEach(movieResult, id: \.self) { movie in
                             NavigationLink(destination: MovieDetailView(), isActive: $isActive) {
-                                PopularCardView(movieResult: movie)
+                                PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie))
                                     .padding(.vertical, 10)
+                                    .environmentObject(contentBindigs)
                             } //: LINK
                         } //: LOOP
                     }
@@ -68,6 +70,15 @@ struct MovieView: View {
         } //: NAVIGATION
         .onAppear {
             fetchMovieTopRatedData()
+        }
+    }
+
+    private func getFavoriteItem(_ movieResult: MovieResult) -> Bool {
+        var temp = false
+        
+        return UserDefaults.standard.favoriteModel.contains { item in
+            temp = (item.contentId == movieResult.id ?? -1)
+            return temp
         }
     }
 
