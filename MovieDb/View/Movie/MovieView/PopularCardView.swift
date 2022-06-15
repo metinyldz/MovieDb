@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PopularCardView: View {
     
-    @State var movieResult: MovieResult
+    var movieResult: MovieResult
     @State var isFavorite: Bool = false
     @State private var genreText: String = ""
     @State private var date: String = ""
@@ -48,18 +48,7 @@ struct PopularCardView: View {
                             .frame(width: 25, height: 25)
                             .scaledToFit()
                             .onTapGesture {
-                                if !isFavorite {
-                                    contentBindigs.favoriteContents.append(FavoriteModel(contentId: movieResult.id ?? -1,
-                                                                                             contentUrl: movieResult.poster_path ?? "-",
-                                                                                             contentTitle: movieResult.title ?? "-",
-                                                                                             contentDate: date))
-                                    print("User Defaults Added!")
-                                } else {
-                                    contentBindigs.favoriteContents.removeAll { item in
-                                        return item.contentId == movieResult.id
-                                    }
-                                    print("User Defaults Removed!")
-                                }
+                                !isFavorite ? addContentToUserDefaults() : removeContentToUserDefaults()
                                 isFavorite = !isFavorite
                             }
                     }
@@ -135,6 +124,26 @@ struct PopularCardView: View {
         return text
     }
     
+    private func addContentToUserDefaults() {
+        let model = FavoriteModel(contentId: movieResult.id ?? -1,
+                                  contentUrl: movieResult.poster_path ?? "-",
+                                  contentTitle: movieResult.title ?? "-",
+                                  contentDate: date)
+        UserDefaults.standard.favoriteModel.append(model)
+        contentBindigs.favoriteContents.append(model)
+        print("User Defaults Added!")
+    }
+    
+    private func removeContentToUserDefaults() {
+        UserDefaults.standard.favoriteModel.removeAll { item in
+            return item.contentId == movieResult.id
+        }
+        contentBindigs.favoriteContents.removeAll { item in
+            return item.contentId == movieResult.id
+        }
+
+        print("User Defaults Removed!")
+    }
 }
 
 struct PopularCardView_Previews: PreviewProvider {

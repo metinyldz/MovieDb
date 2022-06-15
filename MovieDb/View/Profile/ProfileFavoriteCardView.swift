@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileFavoriteCardView: View {
     
     var favoriteItem = FavoriteModel()
+    @State var date: String = ""
     
     var body: some View {
         ZStack {
@@ -48,13 +49,15 @@ struct ProfileFavoriteCardView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    Text("Daenerys Targaryen")
-                        .font(Font.system(size: 15))
-                        .fontWeight(.regular)
-                        .foregroundColor(.black)
-                        .padding(.vertical, 5)
-                        .opacity(0.8)
-                        .frame(height: 18)
+                    // TODO: - Düzelt burayı. -
+                    
+//                    Text("Daenerys Targaryen")
+//                        .font(Font.system(size: 15))
+//                        .fontWeight(.regular)
+//                        .foregroundColor(.black)
+//                        .padding(.vertical, 5)
+//                        .opacity(0.8)
+//                        .frame(height: 18)
                     
                     HStack {
                         Image("calendar")

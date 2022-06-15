@@ -16,7 +16,6 @@ struct MovieView: View {
     @State private var isActive = false
     @State var movieTopRatedResult: [MovieTopRatedResult] = []
     @State var movieResult: [MovieResult] = []
-    @State var isFavorite: Bool = false
     
     @EnvironmentObject var contentBindigs: ContentBindigs
     

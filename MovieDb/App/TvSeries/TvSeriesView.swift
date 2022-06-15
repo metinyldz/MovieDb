@@ -53,12 +53,11 @@ struct TvSeriesView: View {
                         .padding(.horizontal, 24)
                         .padding(.bottom, 10)
                         
-                        // TODO: TableView Yap. -
-                        
                         TvSeriesCardView(tvResults: tvSeriesResult)
                             .padding(.horizontal, 24)
                             .padding(.bottom, 10)
                             .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)
+                            .environmentObject(contentBindigs)
                     }
                 } //: SCROLL
                 .navigationBarTitle("TV Series", displayMode: .large)

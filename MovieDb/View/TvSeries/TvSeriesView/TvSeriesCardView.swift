@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TvSeriesCardView: View {
-    let data = (1...9).map { "Item \($0)" }
     var columns: [GridItem] = [
         GridItem(.fixed(153)),
         GridItem(.fixed(153))
@@ -17,48 +16,29 @@ struct TvSeriesCardView: View {
     @State var tvResults: [TvSeriesResult]
     @State private var isActive = false
     
+    @EnvironmentObject var contentBindigs: ContentBindigs
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 30) {
-                ForEach(tvResults, id: \.self) { item in
+                ForEach(tvResults, id: \.self) { tvResult in
                     NavigationLink(destination: TvSeriesDetailView(), isActive: $isActive) {
-                        VStack(alignment: .leading) {
-                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path ?? "")")) { image in
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 153, height: 219)
-                                    .clipShape(Rectangle())
-                            } placeholder: {
-                                Image("moviePlaceholder")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 153, height: 219)
-                                    .clipShape(Rectangle())
-                            }
-                            
-                            Text(item.original_name ?? "-")
-                                .font(Font.system(size: 18))
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                                .multilineTextAlignment(.leading)
-                                .minimumScaleFactor(0.7)
-                                .lineLimit(nil)
-                                .frame(height: 42)
-                                .padding([.horizontal, .bottom],10)
-                            
-                            RatingView()
-                                .padding([.horizontal, .bottom],10)
-                            
-                        } //: VStack
-                        .background(Color.white)
-                        .cornerRadius(8)
-                    .frame(width: 153, height: 310, alignment: .top)
+                        TvSeriesSingleCardView(tvResult: tvResult, isFavorite: getFavoriteItem(tvResult))
+                            .environmentObject(contentBindigs)
                     }
                 } //: FOREACH
             } //: LAZYVGRID
             .padding(.bottom, 10)
         } //: SCROLL
+    }
+    
+    private func getFavoriteItem(_ tvResult: TvSeriesResult) -> Bool {
+        var temp = false
+        
+        return UserDefaults.standard.favoriteModel.contains { item in
+            temp = (item.contentId == tvResult.id ?? -1)
+            return temp
+        }
     }
 }
 
@@ -68,6 +48,6 @@ struct TvSeriesCardView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 375, height: 530))
             .padding()
             .background(Color.gray)
-            
+        
     }
 }

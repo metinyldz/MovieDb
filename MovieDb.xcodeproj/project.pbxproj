@@ -31,6 +31,7 @@
 		18C55F8328512E4700BE6ABF /* TvViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C55F8228512E4700BE6ABF /* TvViewModel.swift */; };
 		18C55F852851301C00BE6ABF /* TvHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C55F842851301C00BE6ABF /* TvHeaderView.swift */; };
 		18C55F87285130F600BE6ABF /* TvDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C55F86285130F600BE6ABF /* TvDescriptionView.swift */; };
+		18CEADAC285A5D6800D01D70 /* TvSeriesSingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADAB285A5D6800D01D70 /* TvSeriesSingleCardView.swift */; };
 		18D13030282448410064C61C /* MovieDbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1302F282448410064C61C /* MovieDbApp.swift */; };
 		18D13032282448410064C61C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D13031282448410064C61C /* ContentView.swift */; };
 		18D13034282448420064C61C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D13033282448420064C61C /* Assets.xcassets */; };
@@ -84,6 +85,7 @@
 		18C55F8228512E4700BE6ABF /* TvViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvViewModel.swift; sourceTree = "<group>"; };
 		18C55F842851301C00BE6ABF /* TvHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvHeaderView.swift; sourceTree = "<group>"; };
 		18C55F86285130F600BE6ABF /* TvDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvDescriptionView.swift; sourceTree = "<group>"; };
+		18CEADAB285A5D6800D01D70 /* TvSeriesSingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSeriesSingleCardView.swift; sourceTree = "<group>"; };
 		18D1302C282448410064C61C /* MovieDb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D1302F282448410064C61C /* MovieDbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDbApp.swift; sourceTree = "<group>"; };
 		18D13031282448410064C61C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,9 +137,10 @@
 		182D4E10282818030050DC69 /* TvSeriesView */ = {
 			isa = PBXGroup;
 			children = (
+				18C55F86285130F600BE6ABF /* TvDescriptionView.swift */,
 				18C55F842851301C00BE6ABF /* TvHeaderView.swift */,
 				182D4E0E282818000050DC69 /* TvSeriesCardView.swift */,
-				18C55F86285130F600BE6ABF /* TvDescriptionView.swift */,
+				18CEADAB285A5D6800D01D70 /* TvSeriesSingleCardView.swift */,
 			);
 			path = TvSeriesView;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				1878765E28342A0300ACFEAB /* SearchView.swift in Sources */,
 				18F2871A2850CEEE00C2D5AE /* ProductionCountry.swift in Sources */,
 				18F287142850CEE700C2D5AE /* MovieDetailModel.swift in Sources */,
+				18CEADAC285A5D6800D01D70 /* TvSeriesSingleCardView.swift in Sources */,
 				1878765428341AF300ACFEAB /* TvSeriesDetailCenterView.swift in Sources */,
 				18328642282B00650039B396 /* MovieDetailFooterView.swift in Sources */,
 				18D13032282448410064C61C /* ContentView.swift in Sources */,
