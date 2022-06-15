@@ -15,6 +15,7 @@ struct TvSeriesView: View {
     
     @State private var tvTopRatedResult: [TvTopRatedResult] = []
     @State private var tvSeriesResult: [TvSeriesResult] = []
+    @State var tvSerieDetailModel = TvSerieDetailModel()
     
     @EnvironmentObject var contentBindigs: ContentBindigs
     
@@ -97,7 +98,7 @@ struct TvSeriesView: View {
 
 struct TvSeriesView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesView()
+        TvSeriesView(tvSerieDetailModel: TvSerieDetailModel.all())
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }

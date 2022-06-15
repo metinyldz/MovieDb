@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct TvSeriesDetailCenterView: View {
+    
+    var content: TvSerieDetailModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             RatingView()
             
-            Text("Joker")
+            Text(content.original_name ?? "-")
                 .font(Font.system(size: 28))
                 .fontWeight(.bold)
                 .foregroundColor(.black)
             
-            Text("Crime, Drama, Thriller")
+            Text(Converter.genreText(genres: content.genres!))
                 .font(Font.system(size: 15))
                 .fontWeight(.medium)
                 .foregroundColor(.black)
@@ -28,7 +31,7 @@ struct TvSeriesDetailCenterView: View {
                     .scaledToFit()
                     .frame(width: 15, height: 15)
                 
-                Text("122 min")
+                Text("\(content.episode_run_time?.first ?? 0) min")
                     .font(Font.system(size: 15))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
@@ -43,7 +46,7 @@ struct TvSeriesDetailCenterView: View {
                     .scaledToFit()
                     .frame(width: 15, height: 15)
                 
-                Text("TV Series (2011 – 2019)")
+                Text("TV Series (\(Converter.convertDate(input: content.first_air_date ?? "-", dateType: .year)) - \(Converter.convertDate(input: content.last_air_date ?? "-", dateType: .year)))")
                     .font(Font.system(size: 15))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
@@ -64,7 +67,7 @@ struct TvSeriesDetailCenterView: View {
 
 struct TvSeriesDetailCenterView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesDetailCenterView()
+        TvSeriesDetailCenterView(content: TvSerieDetailModel.all())
             .previewLayout(.sizeThatFits)
     }
 }

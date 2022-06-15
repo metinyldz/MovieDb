@@ -12,6 +12,7 @@ struct TvSeriesDetailView: View {
     //MARK: - PROPERTIES -
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Binding var tvSerieDetailModel: TvSerieDetailModel
     
     var body: some View {
         ScrollView {
@@ -47,23 +48,22 @@ struct TvSeriesDetailView: View {
                 
                 //MARK: - CENTER -
                 
-                TvSeriesDetailCenterView()
+                TvSeriesDetailCenterView(content: tvSerieDetailModel)
                     .padding(.top, -24)
                 
                 //MARK: - FOOTER -
                 
-                TvSeriesDetailFooterView()
+                TvSeriesDetailFooterView(content: tvSerieDetailModel)
                 
             } //: VStack
         } //: SCROLL
         .background(Color("BackgroundColor"))
-//        .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
     }
 }
 
 struct TvSeriesDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesDetailView()
+        TvSeriesDetailView(tvSerieDetailModel: .constant(TvSerieDetailModel.all()))
     }
 }

@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct TvSeriesDetailFooterView: View {
+    
+    var content: TvSerieDetailModel
+    var seasonNumber: Int = 0
+    @State var isCreatorsEmpty: Bool = false
+    
     var body: some View {
         VStack {
-            Text("Nine noble families fight for control over the mythical lands of Westeros, while an ancient enemy returns after being dormant for thousands of years.")
+            Text(content.overview ?? "-")
                 .font(Font.system(size: 17))
                 .fontWeight(.regular)
                 .foregroundColor(Color.black)
@@ -22,7 +27,7 @@ struct TvSeriesDetailFooterView: View {
                     Capsule()
                         .fill(Color(.sRGB, red: 57/255, green: 58/255, blue: 59/255))
 
-                    Text("8 Seasons")
+                    Text("\(content.number_of_seasons ?? 0) Seasons")
                         .foregroundColor(.white)
                         .font(Font.system(size: 12))
                         .fontWeight(.black)
@@ -33,24 +38,35 @@ struct TvSeriesDetailFooterView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 24)
             
-            HStack {
-                Text("Creators: ")
-                    .font(Font.system(size: 17))
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.black)
-                
-                Text("David Benioff, D.B. Weiss")
-                    .font(Font.system(size: 17))
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color("VibrantBlue"))
-                
-                Spacer()
-            } //: HSTACK
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, 20)
-            .padding(.horizontal, 24)
+            if isCreatorsEmpty {
+                HStack {
+                    Text("Creators: ")
+                        .font(Font.system(size: 17))
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.black)
+                    
+                    ForEach(content.created_by!, id: \.id) { item in
+                        let comma = (content.created_by?.last?.id == item.id) ? "" : ", "
+                        HStack {
+                            Text("\(item.name ?? "")\(comma)")
+                                .font(Font.system(size: 17))
+                                .fontWeight(.semibold)
+                                .lineLimit(nil)
+                                .foregroundColor(Color("VibrantBlue"))
+                        }
+                    }
+
+                    Spacer()
+                } //: HSTACK
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 20)
+                .padding(.horizontal, 24)
+            }
             
             VStack {
+                
+                // TODO: - Cast kısmını yap. -
+                
                 Text("Cast")
                     .font(Font.system(size: 28))
                     .fontWeight(.bold)
@@ -71,13 +87,48 @@ struct TvSeriesDetailFooterView: View {
             } //: VSTACK
             .frame(maxWidth: .infinity, alignment: .leading)
         } //: VSTACK
+        .onAppear {
+            checkCreators()
+        }
         
+    }
+    
+    private func checkCreators() {
+        if let created_by = content.created_by {
+            if !created_by.isEmpty {
+                isCreatorsEmpty = true
+            } else {
+                isCreatorsEmpty = false
+            }
+        } else {
+            isCreatorsEmpty = false
+        }
+//        if let created_by = content.created_by {
+//            if !created_by.isEmpty {
+//                HStack {
+//                    Text("Creators:")
+//                        .font(.body)
+//                        .lineLimit(1)
+//
+//                    ForEach(created_by, id: \.id) { item in
+//                        HStack {
+//                            Text("\(item.name ?? "") ")
+//                                .font(.headline)
+//                                .foregroundColor(Color("VibrantBlue"))
+//                                .lineLimit(nil)
+//                        }
+//                    }
+//                }
+//                .padding(.leading, 24)
+//                .padding(.top, 15)
+//            }
+//        }
     }
 }
 
 struct TvSeriesDetailFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesDetailFooterView()
+        TvSeriesDetailFooterView(content: TvSerieDetailModel.all())
             .previewLayout(.sizeThatFits)
     }
 }
