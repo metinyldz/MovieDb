@@ -21,12 +21,21 @@ struct TvSeriesDetailView: View {
             
             VStack {
                 ZStack {
-                    Image("moviePlaceholder")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 400)
-                        .clipped()
-                        .padding(.top, -50)
+                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tvSerieDetailModel.poster_path ?? "")")) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                            .clipped()
+                            .padding(.top, -50)
+                    } placeholder: {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                            .clipped()
+                            .padding(.top, -50)
+                    }
                     
                     VStack {
                         HStack {
