@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct MovieDetailFooterView: View {
+    
+    var content: MovieDetailModel
+    
     var body: some View {
         VStack {
-            Text("In Gotham City, mentally-troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: 'The Joker'.")
+            Text(content.overview ?? "-")
                 .font(Font.system(size: 17))
                 .fontWeight(.regular)
                 .foregroundColor(Color.black)
@@ -36,7 +39,7 @@ struct MovieDetailFooterView: View {
 
 struct MovieDetailFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailFooterView()
+        MovieDetailFooterView(content: MovieDetailModel.all())
             .previewLayout(.sizeThatFits)
     }
 }

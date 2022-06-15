@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MovieDetailView: View {
     
+    @Binding var content: MovieDetailModel
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -17,12 +19,21 @@ struct MovieDetailView: View {
             //MARK: - HEADER -
             VStack {
                 ZStack {
-                    Image("moviePlaceholder")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 400)
-                        .clipped()
-                        .padding(.top, -50)
+                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                            .clipped()
+                            .padding(.top, -50)
+                    } placeholder: {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                            .clipped()
+                            .padding(.top, -50)
+                    }
                     
                     VStack {
                         HStack {
@@ -45,11 +56,11 @@ struct MovieDetailView: View {
                 Spacer()
                 
                 //MARK: - CENTER -
-                MovieDetailCenterView()
+                MovieDetailCenterView(content: content)
                     .padding(.top, -24)
                 
                 //MARK: - FOOTER -
-                MovieDetailFooterView()
+                MovieDetailFooterView(content: content)
                     .padding(.horizontal, 24)
             } //: VStack
             
@@ -62,7 +73,7 @@ struct MovieDetailView: View {
 
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView()
+        MovieDetailView(content: .constant(MovieDetailModel.all()))
             .previewDevice("iPhone 12 Mini")
     }
 }

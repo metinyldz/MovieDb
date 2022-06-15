@@ -54,7 +54,7 @@ struct TvSeriesSingleCardView: View {
             } //: HSTack
             .padding([.horizontal, .bottom],10)
             
-            RatingView()
+            RatingView(rating: "\(tvResult.vote_average ?? 0)")
                 .padding([.horizontal, .bottom],10)
             
         } //: VStack

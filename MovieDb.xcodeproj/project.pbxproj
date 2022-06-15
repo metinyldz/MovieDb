@@ -384,8 +384,6 @@
 		18F286F92850CE3500C2D5AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				18F2871E2850D1E700C2D5AE /* MovieViewModel.swift */,
-				18C55F8228512E4700BE6ABF /* TvViewModel.swift */,
 				18F286FA2850CE4700C2D5AE /* Movie */,
 				18F286FB2850CE4E00C2D5AE /* Splash */,
 				18F286FC2850CE5300C2D5AE /* Tv */,
@@ -397,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				18F286FD2850CE6300C2D5AE /* MovieDetailViewModel.swift */,
+				18F2871E2850D1E700C2D5AE /* MovieViewModel.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -413,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				18F287012850CE6E00C2D5AE /* TvSeriesDetailViewModel.swift */,
+				18C55F8228512E4700BE6ABF /* TvViewModel.swift */,
 			);
 			path = Tv;
 			sourceTree = "<group>";

@@ -18,6 +18,42 @@ struct Converter {
         }
         return "-"
     }
+    
+    static func getGenres(genreIds: [Int]?) -> String {
+        guard let genreIds = genreIds else { return "" }
+        
+        var genreIndexs = [GenreResult]()
+        
+        for genreId in genreIds {
+            genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
+        }
+        
+        return convertGenresToString(genreIndexs)
+    }
+    
+    static func convertGenresToString(_ genres: [GenreResult]) -> String {
+        var text = ""
+        for genre in genres {
+            if genres.last!.id == genre.id {
+                text += genre.name ?? "-"
+                break
+            }
+            text += "\(genre.name ?? "-"), "
+        }
+        return text
+    }
+    
+    static func genreText(genres: [GenreResult]) -> String {
+        var genresText = ""
+        for genre in genres {
+            if genres.last!.id == genre.id {
+                genresText.append("\(genre.name ?? "")")
+                break
+            }
+            genresText.append("\(genre.name ?? ""), ")
+        }
+        return genresText
+    }
 }
 
 enum DateType:String {

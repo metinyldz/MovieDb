@@ -14,8 +14,10 @@ struct MovieView: View {
     @State private var isMovieResultActive = false
     
     @State private var isActive = false
+    @State private var isMovieDetailActive = false
     @State var movieTopRatedResult: [MovieTopRatedResult] = []
     @State var movieResult: [MovieResult] = []
+    @State var movieDetailContent = MovieDetailModel()
     
     @EnvironmentObject var contentBindigs: ContentBindigs
     
@@ -54,10 +56,13 @@ struct MovieView: View {
                         .padding(.bottom, 10)
                         
                         ForEach(movieResult, id: \.self) { movie in
-                            NavigationLink(destination: MovieDetailView(), isActive: $isActive) {
+                            NavigationLink(destination: MovieDetailView(content: $movieDetailContent), isActive: $isMovieDetailActive) {
                                 PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie))
                                     .padding(.vertical, 10)
                                     .environmentObject(contentBindigs)
+                                    .onTapGesture {
+                                        self.fetchMovieDetail(id: movie.id ?? -1)
+                                    }
                             } //: LINK
                         } //: LOOP
                     }
@@ -105,6 +110,15 @@ struct MovieView: View {
             isMovieResultActive = true
         }
     }
+    
+    private func fetchMovieDetail(id: Int) {
+        movieViewModel.fetchMovieDetail(id: id) { result, success in
+            if success {
+                self.movieDetailContent = result!
+            }
+            isMovieDetailActive = success
+        }
+    }
 }
 
 struct FlatLinkStyle: ButtonStyle {
@@ -115,7 +129,7 @@ struct FlatLinkStyle: ButtonStyle {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView()
+        MovieView(movieDetailContent: MovieDetailModel.all())
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
             .environmentObject(ContentBindigs())
