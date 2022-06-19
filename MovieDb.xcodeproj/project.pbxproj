@@ -31,6 +31,8 @@
 		18B30900285FA27B00B89724 /* TvSerieCastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B308FF285FA27B00B89724 /* TvSerieCastModel.swift */; };
 		18B30902285FADA000B89724 /* CastPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B30901285FADA000B89724 /* CastPersonView.swift */; };
 		18B30907285FB15E00B89724 /* CastPeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B30906285FB15E00B89724 /* CastPeopleModel.swift */; };
+		18B30909285FBA3900B89724 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B30908285FBA3900B89724 /* SearchViewModel.swift */; };
+		18B3090C285FBB5200B89724 /* SearchContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3090B285FBB5200B89724 /* SearchContentModel.swift */; };
 		18C55F8328512E4700BE6ABF /* TvViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C55F8228512E4700BE6ABF /* TvViewModel.swift */; };
 		18C55F852851301C00BE6ABF /* TvHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C55F842851301C00BE6ABF /* TvHeaderView.swift */; };
 		18C55F87285130F600BE6ABF /* TvDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C55F86285130F600BE6ABF /* TvDescriptionView.swift */; };
@@ -88,6 +90,8 @@
 		18B308FF285FA27B00B89724 /* TvSerieCastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSerieCastModel.swift; sourceTree = "<group>"; };
 		18B30901285FADA000B89724 /* CastPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPersonView.swift; sourceTree = "<group>"; };
 		18B30906285FB15E00B89724 /* CastPeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPeopleModel.swift; sourceTree = "<group>"; };
+		18B30908285FBA3900B89724 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		18B3090B285FBB5200B89724 /* SearchContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentModel.swift; sourceTree = "<group>"; };
 		18C55F8228512E4700BE6ABF /* TvViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvViewModel.swift; sourceTree = "<group>"; };
 		18C55F842851301C00BE6ABF /* TvHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvHeaderView.swift; sourceTree = "<group>"; };
 		18C55F86285130F600BE6ABF /* TvDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvDescriptionView.swift; sourceTree = "<group>"; };
@@ -265,6 +269,22 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		18B3090A285FBA4900B89724 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				18B30908285FBA3900B89724 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		18B3090D285FBB7800B89724 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				18B3090B285FBB5200B89724 /* SearchContentModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		18D13023282448410064C61C = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +362,7 @@
 				18F287062850CEC900C2D5AE /* Movie */,
 				18677A67285907570015FF0E /* Profile */,
 				18F287052850CEC300C2D5AE /* Tv */,
+				18B3090D285FBB7800B89724 /* Search */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,6 +423,7 @@
 				18F286FA2850CE4700C2D5AE /* Movie */,
 				18F286FB2850CE4E00C2D5AE /* Splash */,
 				18F286FC2850CE5300C2D5AE /* Tv */,
+				18B3090A285FBA4900B89724 /* Search */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -552,11 +574,13 @@
 				18D13041282449560064C61C /* TvSeriesView.swift in Sources */,
 				18754E41283011A900D563D9 /* TvSeriesDetailView.swift in Sources */,
 				18C55F87285130F600BE6ABF /* TvDescriptionView.swift in Sources */,
+				18B30909285FBA3900B89724 /* SearchViewModel.swift in Sources */,
 				188CD6F528427ED8007D85D0 /* SplashFinalView.swift in Sources */,
 				18EC9407283A7BDB00AB47AC /* ProfileFavoriteCardView.swift in Sources */,
 				187876582834218400ACFEAB /* CirclePhotoView.swift in Sources */,
 				18EC9402283A64E500AB47AC /* SearchBar.swift in Sources */,
 				18B0CFF62826C44E007C73A3 /* MovieHeaderView.swift in Sources */,
+				18B3090C285FBB5200B89724 /* SearchContentModel.swift in Sources */,
 				18F287002850CE6900C2D5AE /* SplashViewModel.swift in Sources */,
 				18D1304928245CE70064C61C /* PagingView.swift in Sources */,
 				18F287092850CEDA00C2D5AE /* Genre.swift in Sources */,
