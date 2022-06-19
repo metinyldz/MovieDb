@@ -17,7 +17,7 @@ struct MovieDetailFooterView: View {
                 .font(Font.system(size: 17))
                 .fontWeight(.regular)
                 .foregroundColor(Color.black)
-            
+            /*
             HStack {
                 Text("Director: ")
                     .font(Font.system(size: 17))
@@ -33,7 +33,9 @@ struct MovieDetailFooterView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 20)
+             */
         }
+        .padding(.bottom, 10)
     }
 }
 

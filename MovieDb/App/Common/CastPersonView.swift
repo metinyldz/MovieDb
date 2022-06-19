@@ -1,19 +1,17 @@
 //
-//  TvSeriesDetailView.swift
+//  CastPersonView.swift
 //  MovieDb
 //
-//  Created by Metin Yıldız on 14.05.2022.
+//  Created by Metin Yıldız on 19.06.2022.
 //
 
 import SwiftUI
 
-struct TvSeriesDetailView: View {
-    
-    //MARK: - PROPERTIES -
+struct CastPersonView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Binding var tvSerieDetailModel: TvSerieDetailModel
-    @Binding var tvSerieCastModel: TvSerieCastModel
+    
+    @Binding var castPeople: CastPeopleModel
     
     var body: some View {
         ScrollView {
@@ -22,7 +20,7 @@ struct TvSeriesDetailView: View {
             
             VStack {
                 ZStack {
-                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tvSerieDetailModel.poster_path ?? "")")) { image in
+                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(castPeople.profile_path ?? "")")) { image in
                         image
                             .resizable()
                             .scaledToFill()
@@ -58,22 +56,48 @@ struct TvSeriesDetailView: View {
                 
                 //MARK: - CENTER -
                 
-                TvSeriesDetailCenterView(content: tvSerieDetailModel)
-                    .padding(.top, -24)
+                Text(castPeople.name ?? "")
+                    .fontWeight(.bold)
+                    .font(.system(size: 28))
+                    .frame(height: 34)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 20)
+                
+                Text(castPeople.biography ?? "-")
+                    .fontWeight(.regular)
+                    .font(.system(size: 17))
+                    .opacity(0.8)
+                    .foregroundColor(.black)
+                    .padding(.horizontal, 24)
                 
                 //MARK: - FOOTER -
                 
-                TvSeriesDetailFooterView(content: tvSerieDetailModel, cast: tvSerieCastModel)
-                
+                HStack {
+                    Text("Born: ")
+                        .fontWeight(.bold)
+                        .font(.system(size: 17))
+                        .opacity(0.8)
+                        .foregroundColor(.black)
+                    
+                    Text(castPeople.place_of_birth ?? "-")
+                        .fontWeight(.regular)
+                        .font(.system(size: 17))
+                        .opacity(0.8)
+                        .foregroundColor(.black)
+                }
+                .frame(maxWidth: .infinity, maxHeight: 24, alignment: .leading)
+                .padding(.horizontal, 24)
             } //: VStack
+            .padding(.bottom, 10)
         } //: SCROLL
         .background(Color("BackgroundColor"))
         .navigationBarHidden(true)
     }
 }
 
-struct TvSeriesDetailView_Previews: PreviewProvider {
+struct CastPersonView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesDetailView(tvSerieDetailModel: .constant(TvSerieDetailModel.all()), tvSerieCastModel: .constant(TvSerieCastModel.all().first!))
+        CastPersonView(castPeople: .constant(CastPeopleModel.all()))
     }
 }

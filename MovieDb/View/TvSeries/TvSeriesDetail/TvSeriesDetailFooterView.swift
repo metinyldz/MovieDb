@@ -9,10 +9,16 @@ import SwiftUI
 
 struct TvSeriesDetailFooterView: View {
     
-    var content: TvSerieDetailModel
-    var seasonNumber: Int = 0
-    @State var isCreatorsEmpty: Bool = false
+    @ObservedObject var viewModel = TvSeriesDetailViewModel()
     
+    var content: TvSerieDetailModel
+    var cast: TvSerieCastModel
+    var seasonNumber: Int = 0
+    
+    @State var isCreatorsEmpty: Bool = false
+    @State private var isActive = false
+    @State var castPeopleModel = CastPeopleModel()
+               
     var body: some View {
         VStack {
             Text(content.overview ?? "-")
@@ -64,21 +70,28 @@ struct TvSeriesDetailFooterView: View {
             }
             
             VStack {
-                
-                // TODO: - Cast kısmını yap. -
-                
                 Text("Cast")
                     .font(Font.system(size: 28))
                     .fontWeight(.bold)
                     .foregroundColor(Color.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 24)
-
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        ForEach(1...7, id: \.self) { _ in
-                            CirclePhotoView()
-                        } //: FOREACH
+                        if let castData = cast.cast {
+                            ForEach(castData, id: \.self) { item in
+                                NavigationLink(destination: CastPersonView(castPeople: $castPeopleModel), isActive: $isActive) {
+                                    CirclePhotoView(castDetail: item)
+                                        .onTapGesture {
+                                            fetchPeopleCast(personId: item.id ?? -1)
+                                        }
+                                        .padding(.leading, 24)
+                                } //: LINK
+                                .isDetailLink(false)
+                                .buttonStyle(.plain)
+                            } //: FOREACH
+                        }
                     } //: HSTACK
                 } //: SCROLL
                 .edgesIgnoringSafeArea(.horizontal)
@@ -103,32 +116,22 @@ struct TvSeriesDetailFooterView: View {
         } else {
             isCreatorsEmpty = false
         }
-//        if let created_by = content.created_by {
-//            if !created_by.isEmpty {
-//                HStack {
-//                    Text("Creators:")
-//                        .font(.body)
-//                        .lineLimit(1)
-//
-//                    ForEach(created_by, id: \.id) { item in
-//                        HStack {
-//                            Text("\(item.name ?? "") ")
-//                                .font(.headline)
-//                                .foregroundColor(Color("VibrantBlue"))
-//                                .lineLimit(nil)
-//                        }
-//                    }
-//                }
-//                .padding(.leading, 24)
-//                .padding(.top, 15)
-//            }
-//        }
+    }
+    
+    private func fetchPeopleCast(personId: Int) {
+        viewModel.fetchPerson(personId: personId) { result, success in
+            guard let result = result else { return }
+            if success {
+                castPeopleModel = result
+            }
+            isActive = success
+        }
     }
 }
 
 struct TvSeriesDetailFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesDetailFooterView(content: TvSerieDetailModel.all())
+        TvSeriesDetailFooterView(content: TvSerieDetailModel.all(), cast: TvSerieCastModel.all().first!)
             .previewLayout(.sizeThatFits)
     }
 }

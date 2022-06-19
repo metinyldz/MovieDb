@@ -20,12 +20,13 @@ struct TvSeriesCardView: View {
     
     @EnvironmentObject var contentBindigs: ContentBindigs
     @State var tvSerieDetailModel = TvSerieDetailModel()
+    @State var tvSerieCastModel = TvSerieCastModel()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 30) {
                 ForEach(tvResults, id: \.self) { tvResult in
-                    NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: $tvSerieDetailModel), isActive: $isActive) {
+                    NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: $tvSerieDetailModel, tvSerieCastModel: $tvSerieCastModel), isActive: $isActive) {
                         TvSeriesSingleCardView(tvResult: tvResult, isFavorite: getFavoriteItem(tvResult))
                             .environmentObject(contentBindigs)
                             .onTapGesture {
@@ -52,6 +53,16 @@ struct TvSeriesCardView: View {
             guard let result = result else { return }
             if success {
                 tvSerieDetailModel = result
+                fetchTvSerieCredit(id: id)
+            }
+        }
+    }
+    
+    private func fetchTvSerieCredit(id: Int) {
+        tvViewModel.fetchTvSerieCredit(id: id) { result, success in
+            guard let result = result else { return }
+            if success {
+                tvSerieCastModel = result
             }
             isActive = success
         }

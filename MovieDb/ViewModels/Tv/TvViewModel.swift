@@ -72,4 +72,19 @@ class TvViewModel: ObservableObject {
             }.resume()
         }
     }
+    
+    func fetchTvSerieCredit(id: Int, completion: @escaping (_ result: TvSerieCastModel?, _ success: Bool) -> ()) {
+        let endpoint = "/tv/\(id)/credits?api_key=bda292e517965b20e63898a81d051a45&language=en-US"
+        DispatchQueue.main.async {
+            guard let url = URL(string: "\(self.baseUrl)\(endpoint)") else {
+                completion(nil, false)
+                return
+            }
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                let tvSerieCast = try! JSONDecoder().decode(TvSerieCastModel.self, from: data!)
+                print("Result:\n\(tvSerieCast)")
+                completion(tvSerieCast, true)
+            }.resume()
+        }
+    }
 }
