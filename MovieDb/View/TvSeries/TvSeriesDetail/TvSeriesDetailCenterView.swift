@@ -13,7 +13,7 @@ struct TvSeriesDetailCenterView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RatingView()
+            RatingView(rating: "\(content.vote_average ?? -1)")
             
             Text(content.original_name ?? "-")
                 .font(Font.system(size: 28))

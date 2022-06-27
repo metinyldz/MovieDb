@@ -19,9 +19,14 @@ class SearchViewModel: ObservableObject {
                 return
             }
             URLSession.shared.dataTask(with: url) { data, response, error in
-                let searchMultiContent = try! JSONDecoder().decode(SearchMultiContentModel.self, from: data!)
-                print("Result:\n\(searchMultiContent)")
-                completion(searchMultiContent, true)
+                do {
+                    let searchMultiContent = try JSONDecoder().decode(SearchMultiContentModel.self, from: data!)
+                    print("Result:\n\(searchMultiContent)")
+                    completion(searchMultiContent, true)
+                } catch{
+                    print("Error!")
+                }
+
             }.resume()
         }
     }
