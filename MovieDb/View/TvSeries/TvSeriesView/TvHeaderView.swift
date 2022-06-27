@@ -31,17 +31,15 @@ struct TvHeaderView: View {
                 PagingView(config: .init(margin: 20, spacing: -40), page: $pageIndex) {
                     Group {
                         ForEach(tvTopRatedResult, id: \.self) { tv in
-                            NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
-                                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tv.poster_path ?? "")")) { image in
-                                    image
-                                        .resizable()
-                                        .frame(width: 260, height: 373)
-                                } placeholder: {
-                                    Image("moviePlaceholder")
-                                        .resizable()
-                                        .frame(width: 260, height: 373)
-                                }
-                            }.isDetailLink(false).buttonStyle(.plain)
+                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tv.poster_path ?? "")")) { image in
+                                image
+                                    .resizable()
+                                    .frame(width: 260, height: 373)
+                            } placeholder: {
+                                Image("moviePlaceholder")
+                                    .resizable()
+                                    .frame(width: 260, height: 373)
+                            }
                         } //: LOOP
                     } //: GROUP
                     .mask(RoundedRectangle(cornerRadius: 10))
