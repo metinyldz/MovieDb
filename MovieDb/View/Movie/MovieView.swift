@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MovieView: View {
     
-    @ObservedObject var movieViewModel = MovieViewModel()
+    @StateObject var movieViewModel = MovieViewModel()
+    
     @State private var isMovieTopRatedActive = false
     @State private var isMovieResultActive = false
     

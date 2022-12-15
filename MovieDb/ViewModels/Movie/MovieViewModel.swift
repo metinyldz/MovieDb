@@ -8,24 +8,6 @@
 import Foundation
 import SwiftUI
 
-/*
- H2
- 1- MVVM ile bu projeyi yap.
- 2- Generic bir web servis olacak.
-        2.1 - Main thread'e göz at.
- 3- Combine Kullanarak yap. Araştır!
- 4- Paging yapısını kullan. (Infinite Scroll ile yapılacak.)
- 5- Register sayfasını yap.
-        Validator ekle. (Güvenlik önlemleri)
-        Sadece kayıtlı olan kullanıcı adı ve şifre ile giirş yapabilsin. (Firebase'de tut.)
- 6- Content Detay ksımı büyük fotoda düzenleme yap. (Efektler ile)
- 7- Profil'deki favori içerikleri kaldırabilme işini yap.
- 8- Bir Medium yazısı yaz.
- 
- Cemal Yılmaz!!!
- GitHub'tan movieDb repo'ya bak.
- */
-
 class MovieViewModel: ObservableObject {
     let baseUrl = "https://api.themoviedb.org/3"
     

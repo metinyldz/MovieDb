@@ -251,19 +251,12 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		1894F79F285129D90045E516 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				1894F7A0285129E40045E516 /* Converter.swift */,
-				18666BDF28538EBE008654E6 /* ContentBindigs.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		18B0CFF32826C3B6007C73A3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
+				1894F7A0285129E40045E516 /* Converter.swift */,
+				18666BDF28538EBE008654E6 /* ContentBindigs.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -324,13 +317,12 @@
 		18D1302E282448410064C61C /* MovieDb */ = {
 			isa = PBXGroup;
 			children = (
-				18D1303D282448AA0064C61C /* App */,
+				18D13044282456910064C61C /* Components */,
 				18B0CFF32826C3B6007C73A3 /* Helper */,
 				18D13045282458920064C61C /* Models */,
 				18D13035282448420064C61C /* Preview Content */,
 				18754E422830146600D563D9 /* SupportingFiles */,
-				1894F79F285129D90045E516 /* Utilities */,
-				18D13044282456910064C61C /* View */,
+				18D1303D282448AA0064C61C /* View */,
 				18F286F92850CE3500C2D5AE /* ViewModels */,
 			);
 			path = MovieDb;
@@ -344,7 +336,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		18D1303D282448AA0064C61C /* App */ = {
+		18D1303D282448AA0064C61C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				18D13031282448410064C61C /* ContentView.swift */,
@@ -357,10 +349,10 @@
 				1878765B283429E900ACFEAB /* TvSeries */,
 				18B30903285FADA500B89724 /* Common */,
 			);
-			path = App;
+			path = View;
 			sourceTree = "<group>";
 		};
-		18D13044282456910064C61C /* View */ = {
+		18D13044282456910064C61C /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				1868CC22283EA5A500D8D94B /* MainTabView.swift */,
@@ -371,7 +363,7 @@
 				188CD6F62842801D007D85D0 /* Splash */,
 				18EC93FF283A64C700AB47AC /* TvSeries */,
 			);
-			path = View;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		18D13045282458920064C61C /* Models */ = {
@@ -513,7 +505,6 @@
 				DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */,
 				4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
