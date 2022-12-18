@@ -8,7 +8,7 @@
 import Foundation
 
 struct MovieTopRated: Codable, Hashable {
-    var page: Int
+    var page: Int?
     var results: [MovieTopRatedResult]?
     var total_pages: Int?
     var total_results: Int?

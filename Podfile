@@ -6,5 +6,6 @@ target 'MovieDb' do
   use_frameworks!
 
   # Pods for MovieDb
+  pod 'Alamofire'
 
 end

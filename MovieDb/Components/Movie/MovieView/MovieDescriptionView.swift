@@ -9,18 +9,18 @@ import SwiftUI
 
 struct MovieDescriptionView: View {
     
-    @Binding var rating: Double?
-    @Binding var movie: MovieTopRatedResult
-    @Binding var movieGenres: [Int]?
+    var rating: Double?
+    var movie: MovieTopRatedResult?
+    var movieGenres: [Int]?
     
     var body: some View {
         VStack(alignment: .leading) {
             RatingView(rating: "\(rating ?? 0)")
             
-            Text(movie.title ?? "")
+            Text(movie?.title ?? "")
                 .font(Font.system(size: 28))
                 .fontWeight(.bold)
-            Text(getGenres(genreIds: movie.genre_ids))
+            Text(getGenres(genreIds: movie?.genre_ids ?? [0]))
                 .font(Font.system(size: 14))
                 .fontWeight(.medium)
         } //: VStack
@@ -56,9 +56,7 @@ struct MovieDescriptionView: View {
 
 struct MovieDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDescriptionView(rating: .constant(0),
-                             movie: .constant(MovieTopRatedResult.all().first!),
-                             movieGenres: .constant([0]))
+        MovieDescriptionView()
             .previewLayout(.fixed(width: 375, height: 111))
     }
 }

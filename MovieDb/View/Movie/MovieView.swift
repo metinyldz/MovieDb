@@ -10,13 +10,14 @@ import SwiftUI
 struct MovieView: View {
     
     @StateObject var movieViewModel = MovieViewModel()
+    @StateObject var newMovieViewModel = NewMovieViewModel()
     
-    @State private var isMovieTopRatedActive = false
+    //@State private var isMovieTopRatedActive = false
     @State private var isMovieResultActive = false
     
     @State private var isActive = false
     @State private var isMovieDetailActive = false
-    @State var movieTopRatedResult: [MovieTopRatedResult] = []
+    //@State var movieTopRatedResult: [MovieTopRatedResult] = []
     @State var movieResult: [MovieResult] = []
     @State var movieDetailContent = MovieDetailModel()
     
@@ -29,18 +30,20 @@ struct MovieView: View {
                     .ignoresSafeArea(.all, edges: .all)
                 
                 ScrollView(showsIndicators: false) {
-                    if isMovieTopRatedActive && isMovieResultActive {
+                    if isMovieResultActive {
                         //MARK: - HEADER -
-                        MovieHeaderView(movieTopRatedResult: $movieTopRatedResult)
-                            .environmentObject(contentBindigs)
-                        
-                        //MARK: - CENTER -
-                        
-                        MovieDescriptionView(rating: $movieTopRatedResult[contentBindigs.moviePageIndex].vote_average,
-                                             movie: $movieTopRatedResult[contentBindigs.moviePageIndex],
-                                             movieGenres: $movieTopRatedResult[contentBindigs.moviePageIndex].genre_ids)
+                        if let results = newMovieViewModel.topRatedMovies.results {
+                            MovieHeaderView(movieTopRatedResult: results)
+                                .environmentObject(contentBindigs)
+                            
+                            
+                            //MARK: - CENTER -
+                            
+                            MovieDescriptionView(rating: results[contentBindigs.moviePageIndex].vote_average,
+                                                 movie: results[contentBindigs.moviePageIndex],
+                                                 movieGenres: results[contentBindigs.moviePageIndex].genre_ids)
                             .padding(.horizontal, 24)
-                        
+                        }
                         Divider()
                             .padding(.horizontal, 24)
                             .padding(.vertical, 20)
@@ -62,7 +65,7 @@ struct MovieView: View {
                                     .padding(.vertical, 10)
                                     .environmentObject(contentBindigs)
                                     .onTapGesture {
-                                        self.fetchMovieDetail(id: movie.id ?? -1)
+                                        //self.fetchMovieDetail(id: movie.id ?? -1)
                                     }
                             } //: LINK
                         } //: LOOP
@@ -74,7 +77,8 @@ struct MovieView: View {
             .navigationViewStyle(.stack)
         } //: NAVIGATION
         .onAppear {
-            fetchMovieTopRatedData()
+            newMovieViewModel.getTopRatedMovies()
+            fetchMoviesData()
         }
     }
 
@@ -84,14 +88,6 @@ struct MovieView: View {
         return UserDefaults.standard.favoriteModel.contains { item in
             temp = (item.contentId == movieResult.id ?? -1)
             return temp
-        }
-    }
-
-    private func fetchMovieTopRatedData() {
-        movieViewModel.fetchMovieTopRated { result, success in
-            guard let result = result else { return }
-            movieTopRatedResult = result
-            fetchMoviesData()
         }
     }
     
@@ -107,7 +103,7 @@ struct MovieView: View {
         movieViewModel.fetchMovieGenres { result, success in
             guard let result = result else { return }
             GenreModel.movieInstance = result
-            isMovieTopRatedActive = true
+            //isMovieTopRatedActive = true
             isMovieResultActive = true
         }
     }
