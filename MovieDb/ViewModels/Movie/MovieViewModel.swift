@@ -1,76 +1,50 @@
 //
-//  MovieViewModel.swift
+//  NewMovieViewModel.swift
 //  MovieDb
 //
-//  Created by Metin Yıldız on 8.06.2022.
+//  Created by Metin Yıldız on 18.12.2022.
 //
 
 import Foundation
-import SwiftUI
 
-class MovieViewModel: ObservableObject {
-    let baseUrl = "https://api.themoviedb.org/3"
+class MovieViewModel: BaseViewModel {
+    @Published var hasError = false
+    @Published var error: UserError?
     
-    func fetchMovieTopRated(completion: @escaping (_ result: [MovieTopRatedResult]?, _ success: Bool) -> ()) {
-        let endpoint = "/movie/top_rated?api_key=bda292e517965b20e63898a81d051a45&language=en-US&page=1"
-        DispatchQueue.main.async {
-            guard let url = URL(string: "\(self.baseUrl)\(endpoint)") else {
-                completion(nil, false)
-                return
-            }
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                let movieTopRated = try! JSONDecoder().decode(MovieTopRated.self, from: data!)
-                print("Result:\n\(movieTopRated.results!)")
-                completion(movieTopRated.results, true)
-            }.resume()
-        }
+    @Published var topRatedMovies: MovieTopRated = MovieTopRated()
+    @Published var movies: Movie = Movie()
+    @Published var movieDetail: MovieDetailModel = MovieDetailModel()
+    @Published var genres: GenreModel = GenreModel()
+    @Published var isMovieDetailActive = false
+    var networkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    
+    func getTopRatedMovies() {
+        networkClient
+            .getTopRatedMovies()
+            .replaceError(with: MovieTopRated())
+            .assign(to: &$topRatedMovies)
     }
     
-    func fetchMovies(completion: @escaping (_ result: [MovieResult]?, _ success: Bool) -> ()) {
-        let endpoint = "/movie/popular?api_key=bda292e517965b20e63898a81d051a45&language=en-US&page=1"
-        DispatchQueue.main.async {
-            guard let url = URL(string: "\(self.baseUrl)\(endpoint)") else {
-                completion(nil, false)
-                return
-            }
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                let movies = try! JSONDecoder().decode(Movie.self, from: data!)
-                print("Result:\n\(movies.results!)")
-                completion(movies.results, true)
-            }.resume()
-        }
+    func getMovies() {
+        networkClient
+            .getMovies()
+            .replaceError(with: Movie())
+            .assign(to: &$movies)
     }
     
-    func fetchMovieGenres(completion: @escaping (_ result: [GenreResult]?, _ success: Bool) -> ()) {
-        let endpoint = "/genre/movie/list?api_key=bda292e517965b20e63898a81d051a45&language=en-US"
-        DispatchQueue.main.async {
-            guard let url = URL(string: "\(self.baseUrl)\(endpoint)") else {
-                completion(nil, false)
-                return
-            }
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                let genreResult = try! JSONDecoder().decode(GenreModel.self, from: data!)
-                print("Result:\n\(genreResult)")
-                GenreModel.movieInstance = genreResult.genres
-                completion(genreResult.genres, true)
-            }.resume()
-        }
+    func getMovieDetail(id: Int) {
+        networkClient
+            .getMovieDetail(id: id)
+            .replaceError(with: MovieDetailModel())
+            .assign(to: &$movieDetail)
+        
+        isMovieDetailActive = true
     }
     
-    func fetchMovieDetail(id: Int, completion: @escaping (_ result: MovieDetailModel?, _ success: Bool) -> ()) {
-        //https://api.themoviedb.org/3/movie/634649?api_key=bda292e517965b20e63898a81d051a45&language=en-US
-        let endpoint = "/movie/\(id)?api_key=bda292e517965b20e63898a81d051a45&language=en-US"
-        DispatchQueue.main.async {
-            guard let url = URL(string: "\(self.baseUrl)\(endpoint)") else {
-                completion(nil, false)
-                return
-            }
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                let movieDetail = try! JSONDecoder().decode(MovieDetailModel.self, from: data!)
-                print("Result:\n\(movieDetail)")
-                completion(movieDetail, true)
-            }.resume()
-        }
+    func getMoviesGenres() {
+        networkClient
+            .getMoviesGenres()
+            .replaceError(with: GenreModel())
+            .assign(to: &$genres)
     }
 }
-

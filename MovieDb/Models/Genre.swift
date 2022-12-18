@@ -11,7 +11,7 @@ struct GenreModel: Codable {
     static var movieInstance: [GenreResult] = []
     static var tvInstance: [GenreResult] = []
     
-    var genres: [GenreResult]
+    var genres: [GenreResult]?
 }
 
 struct GenreResult: Codable {

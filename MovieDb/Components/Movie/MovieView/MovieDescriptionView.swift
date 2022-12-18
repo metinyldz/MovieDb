@@ -12,6 +12,7 @@ struct MovieDescriptionView: View {
     var rating: Double?
     var movie: MovieTopRatedResult?
     var movieGenres: [Int]?
+    var genres: [GenreResult]?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,12 +31,11 @@ struct MovieDescriptionView: View {
     }
     
     private func getGenres(genreIds: [Int]?) -> String {
-        guard let genreIds = genreIds else { return "" }
-        
+        guard let genreIds = genreIds, let genreResult = genres else { return "" }
         var genreIndexs = [GenreResult]()
         
         for genreId in genreIds {
-            genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
+            genreIndexs.append(genreResult.first(where: {$0.id == genreId})!)
         }
         
         return convertGenresToString(genreIndexs)

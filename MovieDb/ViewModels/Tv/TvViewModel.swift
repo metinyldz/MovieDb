@@ -51,8 +51,9 @@ class TvViewModel: ObservableObject {
             }
             URLSession.shared.dataTask(with: url) { data, response, error in
                 let genreResult = try! JSONDecoder().decode(GenreModel.self, from: data!)
+                guard let genres = genreResult.genres else { completion(nil, false); return }
                 print("Result:\n\(genreResult)")
-                GenreModel.tvInstance = genreResult.genres
+                GenreModel.tvInstance = genres
                 completion(genreResult.genres, true)
             }.resume()
         }

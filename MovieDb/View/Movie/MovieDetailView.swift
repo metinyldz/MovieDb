@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieDetailView: View {
     
-    @Binding var content: MovieDetailModel
+    var content: MovieDetailModel
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -73,7 +73,7 @@ struct MovieDetailView: View {
 
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView(content: .constant(MovieDetailModel.all()))
+        MovieDetailView(content: MovieDetailModel.all())
             .previewDevice("iPhone 12 Mini")
     }
 }

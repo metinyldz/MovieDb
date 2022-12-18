@@ -10,17 +10,7 @@ import SwiftUI
 struct MovieView: View {
     
     @StateObject var movieViewModel = MovieViewModel()
-    @StateObject var newMovieViewModel = NewMovieViewModel()
-    
-    //@State private var isMovieTopRatedActive = false
-    @State private var isMovieResultActive = false
-    
-    @State private var isActive = false
     @State private var isMovieDetailActive = false
-    //@State var movieTopRatedResult: [MovieTopRatedResult] = []
-    @State var movieResult: [MovieResult] = []
-    @State var movieDetailContent = MovieDetailModel()
-    
     @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
@@ -30,20 +20,22 @@ struct MovieView: View {
                     .ignoresSafeArea(.all, edges: .all)
                 
                 ScrollView(showsIndicators: false) {
-                    if isMovieResultActive {
+                    if let results = movieViewModel.topRatedMovies.results,
+                       let moviesResults = movieViewModel.movies.results,
+                       let genres = movieViewModel.genres.genres {
+                        
                         //MARK: - HEADER -
-                        if let results = newMovieViewModel.topRatedMovies.results {
-                            MovieHeaderView(movieTopRatedResult: results)
-                                .environmentObject(contentBindigs)
-                            
-                            
-                            //MARK: - CENTER -
-                            
-                            MovieDescriptionView(rating: results[contentBindigs.moviePageIndex].vote_average,
-                                                 movie: results[contentBindigs.moviePageIndex],
-                                                 movieGenres: results[contentBindigs.moviePageIndex].genre_ids)
-                            .padding(.horizontal, 24)
-                        }
+                        MovieHeaderView(movieTopRatedResult: results)
+                            .environmentObject(contentBindigs)
+                        
+                        //MARK: - CENTER -
+                        
+                        MovieDescriptionView(rating: results[contentBindigs.moviePageIndex].vote_average,
+                                             movie: results[contentBindigs.moviePageIndex],
+                                             movieGenres: results[contentBindigs.moviePageIndex].genre_ids,
+                                             genres: genres)
+                        .padding(.horizontal, 24)
+                        
                         Divider()
                             .padding(.horizontal, 24)
                             .padding(.vertical, 20)
@@ -59,13 +51,13 @@ struct MovieView: View {
                         .padding(.horizontal, 24)
                         .padding(.bottom, 10)
                         
-                        ForEach(movieResult, id: \.self) { movie in
-                            NavigationLink(destination: MovieDetailView(content: $movieDetailContent), isActive: $isMovieDetailActive) {
-                                PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie))
+                        ForEach(moviesResults, id: \.self) { movie in
+                            NavigationLink(destination: MovieDetailView(content: movieViewModel.movieDetail), isActive: $movieViewModel.isMovieDetailActive) {
+                                PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie), genres: genres)
                                     .padding(.vertical, 10)
                                     .environmentObject(contentBindigs)
                                     .onTapGesture {
-                                        //self.fetchMovieDetail(id: movie.id ?? -1)
+                                        movieViewModel.getMovieDetail(id: movie.id ?? -1)
                                     }
                             } //: LINK
                         } //: LOOP
@@ -77,11 +69,12 @@ struct MovieView: View {
             .navigationViewStyle(.stack)
         } //: NAVIGATION
         .onAppear {
-            newMovieViewModel.getTopRatedMovies()
-            fetchMoviesData()
+            movieViewModel.getTopRatedMovies()
+            movieViewModel.getMovies()
+            movieViewModel.getMoviesGenres()
         }
     }
-
+    
     private func getFavoriteItem(_ movieResult: MovieResult) -> Bool {
         var temp = false
         
@@ -90,43 +83,11 @@ struct MovieView: View {
             return temp
         }
     }
-    
-    private func fetchMoviesData() {
-        movieViewModel.fetchMovies { result, success in
-            guard let result = result else { return }
-            movieResult = result
-            fetchMoviesGenresData()
-        }
-    }
-    
-    private func fetchMoviesGenresData() {
-        movieViewModel.fetchMovieGenres { result, success in
-            guard let result = result else { return }
-            GenreModel.movieInstance = result
-            //isMovieTopRatedActive = true
-            isMovieResultActive = true
-        }
-    }
-    
-    private func fetchMovieDetail(id: Int) {
-        movieViewModel.fetchMovieDetail(id: id) { result, success in
-            if success {
-                self.movieDetailContent = result!
-            }
-            isMovieDetailActive = success
-        }
-    }
-}
-
-struct FlatLinkStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-    }
 }
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView(movieDetailContent: MovieDetailModel.all())
+        MovieView()
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
             .environmentObject(ContentBindigs())

@@ -12,9 +12,8 @@ struct MovieHeaderView: View {
     @State private var isActive = false
     @State var pageIndex = 0
     
-    var movieTopRatedResult: [MovieTopRatedResult]// = []
-    @State var movie: MovieTopRatedResult!// = MovieTopRatedResult.all().first!
-    @ObservedObject var movieViewModel = MovieViewModel()
+    var movieTopRatedResult: [MovieTopRatedResult]
+    @State var movie: MovieTopRatedResult!
     @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {

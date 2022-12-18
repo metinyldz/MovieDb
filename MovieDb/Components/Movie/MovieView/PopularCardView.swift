@@ -13,6 +13,7 @@ struct PopularCardView: View {
     @State var isFavorite: Bool = false
     @State private var genreText: String = ""
     @State private var date: String = ""
+    var genres: [GenreResult]?
     
     @EnvironmentObject var contentBindigs: ContentBindigs
 
@@ -97,19 +98,15 @@ struct PopularCardView: View {
         }
     }
     private func getGenres(genreIds: [Int]?) {
-        if !GenreModel.movieInstance.isEmpty {
-            guard let genreIds = genreIds else { return }
-            
-            var genreIndexs = [GenreResult]()
-            
-            
-            for genreId in genreIds {
-                genreIndexs.append(GenreModel.movieInstance.first(where: {$0.id == genreId})!)
-            }
-            
-            
-            genreText = convertGenresToString(genreIndexs)
+        guard let genreIds = genreIds, let genreResult = genres else { return }
+        
+        var genreIndexs = [GenreResult]()
+        
+        for genreId in genreIds {
+            genreIndexs.append(genreResult.first(where: {$0.id == genreId})!)
         }
+        
+        genreText = convertGenresToString(genreIndexs)
     }
     
     private func convertGenresToString(_ genres: [GenreResult]) -> String {

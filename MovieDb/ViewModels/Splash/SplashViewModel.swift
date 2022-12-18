@@ -82,7 +82,7 @@ class SplashViewModel: ObservableObject {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 let genreResult = try! JSONDecoder().decode(GenreModel.self, from: data!)
                 print("Result:\n\(genreResult)")
-                GenreModel.movieInstance = genreResult.genres
+                GenreModel.movieInstance = genreResult.genres!
                 completion(genreResult.genres, true)
             }.resume()
         }
@@ -98,7 +98,7 @@ class SplashViewModel: ObservableObject {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 let genreResult = try! JSONDecoder().decode(GenreModel.self, from: data!)
                 print("Result:\n\(genreResult)")
-                GenreModel.tvInstance = genreResult.genres
+                GenreModel.tvInstance = genreResult.genres!
                 completion(genreResult.genres, true)
             }.resume()
         }
