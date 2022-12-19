@@ -15,58 +15,58 @@ struct MovieDetailView: View {
     
     var body: some View {
         ScrollView {
-
-            //MARK: - HEADER -
-            VStack {
-                ZStack {
-                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity, maxHeight: 400)
-                            .clipped()
-                            .padding(.top, -50)
-                    } placeholder: {
-                        Image("moviePlaceholder")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity, maxHeight: 400)
-                            .clipped()
-                            .padding(.top, -50)
-                    }
-                    
-                    VStack {
-                        HStack {
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(Color.white)
-                                .frame(width: 25, height: 25)
-                                .onTapGesture {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }
-                                .padding([.leading, .trailing], 24)
+            if content.genres != nil {
+                //MARK: - HEADER -
+                VStack {
+                    ZStack {
+                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxWidth: .infinity, maxHeight: 400)
+                                .clipped()
+                                .padding(.top, -50)
+                        } placeholder: {
+                            Image("moviePlaceholder")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxWidth: .infinity, maxHeight: 400)
+                                .clipped()
+                                .padding(.top, -50)
+                        }
+                        
+                        VStack {
+                            HStack {
+                                Image(systemName: "arrow.left")
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 25, height: 25)
+                                    .onTapGesture {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
+                                    .padding([.leading, .trailing], 24)
+                                
+                                Spacer()
+                            } //: HStack
+                            .frame(maxWidth: .infinity, maxHeight: 50)
                             
                             Spacer()
-                        } //: HStack
-                        .frame(maxWidth: .infinity, maxHeight: 50)
-                        
-                        Spacer()
-                    } //: VStack
-                } //: ZStack
-                
-                Spacer()
-                
-                //MARK: - CENTER -
-                MovieDetailCenterView(content: content)
-                    .padding(.top, -24)
-                
-                //MARK: - FOOTER -
-                MovieDetailFooterView(content: content)
-                    .padding(.horizontal, 24)
-            } //: VStack
-            
+                        } //: VStack
+                    } //: ZStack
+                    
+                    Spacer()
+                    
+                    //MARK: - CENTER -
+                    MovieDetailCenterView(content: content)
+                        .padding(.top, -24)
+                    
+                    //MARK: - FOOTER -
+                    MovieDetailFooterView(content: content)
+                        .padding(.horizontal, 24)
+                } //: VStack
+            }
         } //: Scroll
         .background(Color("BackgroundColor"))
-//        .edgesIgnoringSafeArea(.all)
+        //.edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
     }
 }
