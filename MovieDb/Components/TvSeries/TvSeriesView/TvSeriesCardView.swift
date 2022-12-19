@@ -47,26 +47,6 @@ struct TvSeriesCardView: View {
             return temp
         }
     }
-    
-    /*private func fetchTvSerieDetail(id: Int) {
-        tvSeriesViewModel.fetchTvSerieDetail(id: id) { result, success in
-            guard let result = result else { return }
-            if success {
-                tvSerieDetailModel = result
-                fetchTvSerieCredit(id: id)
-            }
-        }
-    }
-    
-    private func fetchTvSerieCredit(id: Int) {
-        tvSeriesViewModel.fetchTvSerieCredit(id: id) { result, success in
-            guard let result = result else { return }
-            if success {
-                tvSerieCastModel = result
-            }
-            isActive = success
-        }
-    }*/
 }
 
 struct TvSeriesCardView_Previews: PreviewProvider {
