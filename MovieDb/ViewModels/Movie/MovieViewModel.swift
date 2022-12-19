@@ -8,14 +8,12 @@
 import Foundation
 
 class MovieViewModel: BaseViewModel {
-    @Published var hasError = false
-    @Published var error: UserError?
-    
     @Published var topRatedMovies: MovieTopRated = MovieTopRated()
     @Published var movies: Movie = Movie()
     @Published var movieDetail: MovieDetailModel = MovieDetailModel()
     @Published var genres: GenreModel = GenreModel()
     @Published var isMovieDetailActive = false
+    
     var networkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
     func getTopRatedMovies() {

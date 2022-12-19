@@ -11,7 +11,6 @@ struct MovieDescriptionView: View {
     
     var rating: Double?
     var movie: MovieTopRatedResult?
-    var movieGenres: [Int]?
     var genres: [GenreResult]?
     
     var body: some View {

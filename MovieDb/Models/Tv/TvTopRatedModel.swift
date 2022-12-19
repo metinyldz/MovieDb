@@ -8,7 +8,7 @@
 import Foundation
 
 struct TvTopRatedModel: Codable, Hashable {
-    var page: Int
+    var page: Int?
     var results: [TvTopRatedResult]?
 }
 

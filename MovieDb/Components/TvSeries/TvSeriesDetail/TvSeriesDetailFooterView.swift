@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TvSeriesDetailFooterView: View {
     
-    @ObservedObject var viewModel = TvSeriesDetailViewModel()
+    @StateObject var viewModel = TvSeriesDetailViewModel()
     
     var content: TvSerieDetailModel
     var cast: TvSerieCastModel

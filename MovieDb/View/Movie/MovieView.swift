@@ -10,7 +10,6 @@ import SwiftUI
 struct MovieView: View {
     
     @StateObject var movieViewModel = MovieViewModel()
-    @State private var isMovieDetailActive = false
     @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
@@ -32,7 +31,6 @@ struct MovieView: View {
                         
                         MovieDescriptionView(rating: results[contentBindigs.moviePageIndex].vote_average,
                                              movie: results[contentBindigs.moviePageIndex],
-                                             movieGenres: results[contentBindigs.moviePageIndex].genre_ids,
                                              genres: genres)
                         .padding(.horizontal, 24)
                         

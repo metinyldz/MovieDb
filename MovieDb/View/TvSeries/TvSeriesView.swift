@@ -9,15 +9,14 @@ import SwiftUI
 
 struct TvSeriesView: View {
     
-    @ObservedObject var tvViewModel = TvViewModel()
-    @State private var isTvTopRatedActive = false
-    @State private var isTvResultActive = false
-    
-    @State private var tvTopRatedResult: [TvTopRatedResult] = []
-    @State private var tvSeriesResult: [TvSeriesResult] = []
-    @State var tvSerieDetailModel = TvSerieDetailModel()
-    
+    @StateObject var viewModel = TvSeriesViewModel()
     @EnvironmentObject var contentBindigs: ContentBindigs
+    /*@State private var isTvTopRatedActive = false
+     @State private var isTvResultActive = false
+     
+     @State private var tvTopRatedResult: [TvTopRatedResult] = []
+     @State private var tvSeriesResult: [TvSeriesResult] = []
+     @State var tvSerieDetailModel = TvSerieDetailModel()*/
     
     var body: some View {
         NavigationView {
@@ -26,18 +25,22 @@ struct TvSeriesView: View {
                     .ignoresSafeArea(.all, edges: .all)
                 
                 ScrollView(showsIndicators: false) {
-                    if isTvTopRatedActive && isTvResultActive {
+                    
+                    if let results = viewModel.tvTopRated.results,
+                       let tvSeriesResults = viewModel.tvSeries.results,
+                       let genres = viewModel.tvGenres.genres {
+                        
                         //MARK: - HEADER -
                         
-                        TvHeaderView(tvTopRatedResult: tvTopRatedResult)
+                        TvHeaderView(tvTopRatedResult: results)
                             .environmentObject(contentBindigs)
                         
                         //MARK: - CENTER -
                         
-                        TvDescriptionView(rating: $tvTopRatedResult[contentBindigs.tvPageIndex].vote_average,
-                                          tv: $tvTopRatedResult[contentBindigs.tvPageIndex],
-                                          tvGenres: $tvTopRatedResult[contentBindigs.tvPageIndex].genre_ids)
-                            .padding(.horizontal, 24)
+                        TvDescriptionView(rating: results[contentBindigs.tvPageIndex].vote_average,
+                                          tv: results[contentBindigs.tvPageIndex],
+                                          genres: genres)
+                        .padding(.horizontal, 24)
                         
                         Divider()
                             .padding(.horizontal, 24)
@@ -54,7 +57,7 @@ struct TvSeriesView: View {
                         .padding(.horizontal, 24)
                         .padding(.bottom, 10)
                         
-                        TvSeriesCardView(tvResults: tvSeriesResult)
+                        TvSeriesCardView(tvResults: tvSeriesResults)
                             .padding(.horizontal, 24)
                             .padding(.bottom, 10)
                             .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)
@@ -66,39 +69,16 @@ struct TvSeriesView: View {
             } //: ZSTACK
         } //: NAVIGATION
         .onAppear {
-            fetchTvTopRatedData()
-        }
-    }
-    
-    private func fetchTvTopRatedData() {
-        tvViewModel.fetchTvTopRated { result, success in
-            guard let result = result else { return }
-            tvTopRatedResult = result
-            fetchTvSeriesData()
-        }
-    }
-    
-    private func fetchTvSeriesData() {
-        tvViewModel.fetchTvSeries { result, success in
-            guard let result = result else { return }
-            tvSeriesResult = result
-            fetchTvGenreData()
-        }
-    }
-    
-    private func fetchTvGenreData() {
-        tvViewModel.fetchTvGenres { result, success in
-            guard let result = result else { return }
-            GenreModel.tvInstance = result
-            isTvTopRatedActive = true
-            isTvResultActive = true
+            viewModel.getTvTopRated()
+            viewModel.getTvSeries()
+            viewModel.getTvGenres()
         }
     }
 }
 
 struct TvSeriesView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesView(tvSerieDetailModel: TvSerieDetailModel.all())
+        TvSeriesView()
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }

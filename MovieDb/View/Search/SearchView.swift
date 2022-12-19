@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @ObservedObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel = SearchViewModel()
     @State var searchText = ""
     @State var searchResults = [SearchMultiContentResult]()
     @State var isActive: Bool = false

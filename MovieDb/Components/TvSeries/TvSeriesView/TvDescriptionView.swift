@@ -9,20 +9,22 @@ import SwiftUI
 
 struct TvDescriptionView: View {
     
-    @Binding var rating: Double?
-    @Binding var tv: TvTopRatedResult
-    @Binding var tvGenres: [Int]?
+    var rating: Double?
+    var tv: TvTopRatedResult?
+    var genres: [GenreResult]?
     
     var body: some View {
         VStack(alignment: .leading) {
-            RatingView(rating: "\(rating ?? 0)")
-            
-            Text(tv.original_name ?? "")
-                .font(Font.system(size: 28))
-                .fontWeight(.bold)
-            Text(getGenres(genreIds: tv.genre_ids))
-                .font(Font.system(size: 14))
-                .fontWeight(.medium)
+            if let originalName = tv?.original_name, let genreIds = tv?.genre_ids  {
+                RatingView(rating: "\(rating ?? 0)")
+                
+                Text(originalName)
+                    .font(Font.system(size: 28))
+                    .fontWeight(.bold)
+                Text(getGenres(genreIds: genreIds))
+                    .font(Font.system(size: 14))
+                    .fontWeight(.medium)
+            }
         } //: VStack
         .frame(maxWidth: .infinity,
                maxHeight: 111,
@@ -30,12 +32,12 @@ struct TvDescriptionView: View {
     }
     
     private func getGenres(genreIds: [Int]?) -> String {
-        guard let genreIds = genreIds else { return "" }
+        guard let genreIds = genreIds, let genreResult = genres else { return "" }
         
         var genreIndexs = [GenreResult]()
         
         for genreId in genreIds {
-            genreIndexs.append(GenreModel.tvInstance.first(where: {$0.id == genreId})!)
+            genreIndexs.append(genreResult.first(where: {$0.id == genreId})!)
         }
         
         return convertGenresToString(genreIndexs)
@@ -56,9 +58,7 @@ struct TvDescriptionView: View {
 
 struct TvDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        TvDescriptionView(rating: .constant(0),
-                          tv: .constant(TvTopRatedResult.all().first!),
-                          tvGenres: .constant([0]))
+        TvDescriptionView()
             .previewLayout(.fixed(width: 375, height: 111))
     }
 }

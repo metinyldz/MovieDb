@@ -13,29 +13,29 @@ struct TvSeriesCardView: View {
         GridItem(.fixed(153))
     ]
     
-    @ObservedObject var tvViewModel = TvViewModel()
+    var tvResults: [TvSeriesResult]?
     
-    @State var tvResults: [TvSeriesResult]
+    @StateObject var viewModel = TvSeriesViewModel()
     @State private var isActive = false
-    
     @EnvironmentObject var contentBindigs: ContentBindigs
-    @State var tvSerieDetailModel = TvSerieDetailModel()
-    @State var tvSerieCastModel = TvSerieCastModel()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVGrid(columns: columns, spacing: 30) {
-                ForEach(tvResults, id: \.self) { tvResult in
-                    NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: $tvSerieDetailModel, tvSerieCastModel: $tvSerieCastModel), isActive: $isActive) {
-                        TvSeriesSingleCardView(tvResult: tvResult, isFavorite: getFavoriteItem(tvResult))
-                            .environmentObject(contentBindigs)
-                            .onTapGesture {
-                                fetchTvSerieDetail(id: tvResult.id ?? -1)
-                            }
-                    }
-                } //: FOREACH
-            } //: LAZYVGRID
-            .padding(.bottom, 10)
+            if let results = tvResults {
+                LazyVGrid(columns: columns, spacing: 30) {
+                    ForEach(results, id: \.self) { result in
+                        NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: viewModel.tvSerieDetail, tvSerieCastModel: viewModel.tvSerieCast), isActive: $viewModel.isActive) {
+                            TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
+                                .environmentObject(contentBindigs)
+                                .onTapGesture {
+                                    viewModel.getTvSerieCredit(id: result.id ?? -1)
+                                    viewModel.getTvSerieDetail(id: result.id ?? -1)
+                                }
+                        }
+                    } //: FOREACH
+                } //: LAZYVGRID
+                .padding(.bottom, 10)
+            }
         } //: SCROLL
     }
     
@@ -48,8 +48,8 @@ struct TvSeriesCardView: View {
         }
     }
     
-    private func fetchTvSerieDetail(id: Int) {
-        tvViewModel.fetchTvSerieDetail(id: id) { result, success in
+    /*private func fetchTvSerieDetail(id: Int) {
+        tvSeriesViewModel.fetchTvSerieDetail(id: id) { result, success in
             guard let result = result else { return }
             if success {
                 tvSerieDetailModel = result
@@ -59,19 +59,19 @@ struct TvSeriesCardView: View {
     }
     
     private func fetchTvSerieCredit(id: Int) {
-        tvViewModel.fetchTvSerieCredit(id: id) { result, success in
+        tvSeriesViewModel.fetchTvSerieCredit(id: id) { result, success in
             guard let result = result else { return }
             if success {
                 tvSerieCastModel = result
             }
             isActive = success
         }
-    }
+    }*/
 }
 
 struct TvSeriesCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TvSeriesCardView(tvResults: TvSeriesResult.all(), tvSerieDetailModel: TvSerieDetailModel.all())
+        TvSeriesCardView()
             .previewLayout(.fixed(width: 375, height: 530))
             .padding()
             .background(Color.gray)

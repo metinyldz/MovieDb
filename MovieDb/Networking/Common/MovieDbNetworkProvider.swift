@@ -13,6 +13,12 @@ protocol MovieDbNetworkProvider {
     func getMovies() -> AnyPublisher<Movie , Error>
     func getMovieDetail(id: Int) -> AnyPublisher<MovieDetailModel , Error>
     func getMoviesGenres()  -> AnyPublisher<GenreModel , Error>
+    
+    func getTvSeries() -> AnyPublisher<TvSeriesModel , Error>
+    func getTvTopRated() -> AnyPublisher<TvTopRatedModel , Error>
+    func getTvGenres() -> AnyPublisher<GenreModel , Error>
+    func getTvSerieDetail(id: Int) -> AnyPublisher<TvSerieDetailModel , Error>
+    func getTvSerieCredit(id: Int) -> AnyPublisher<TvSerieCastModel , Error>
 }
 
 class MovieDbNetworkClient: MovieDbNetworkProvider {
@@ -32,5 +38,25 @@ class MovieDbNetworkClient: MovieDbNetworkProvider {
     
     func getMoviesGenres()  -> AnyPublisher<GenreModel , Error> {
         networkClient.request(MovieDbRouter.getMoviesGenres).decode()
+    }
+    
+    func getTvSeries() -> AnyPublisher<TvSeriesModel , Error> {
+        networkClient.request(MovieDbRouter.getTvSeries).decode()
+    }
+    
+    func getTvTopRated() -> AnyPublisher<TvTopRatedModel , Error> {
+        networkClient.request(MovieDbRouter.getTvTopRated).decode()
+    }
+    
+    func getTvGenres() -> AnyPublisher<GenreModel , Error> {
+        networkClient.request(MovieDbRouter.getTvGenres).decode()
+    }
+    
+    func getTvSerieDetail(id: Int) -> AnyPublisher<TvSerieDetailModel , Error> {
+        networkClient.request(MovieDbRouter.getTvSerieDetail(id: id)).decode()
+    }
+    
+    func getTvSerieCredit(id: Int) -> AnyPublisher<TvSerieCastModel , Error> {
+        networkClient.request(MovieDbRouter.getTvSerieCredit(id: id)).decode()
     }
 }
