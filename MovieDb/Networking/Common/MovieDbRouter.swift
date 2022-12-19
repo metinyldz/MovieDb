@@ -21,6 +21,7 @@ enum MovieDbRouter: RequestInfoConvertible {
     case getTvGenres
     case getTvSerieDetail(id: Int)
     case getTvSerieCredit(id: Int)
+    case getPerson(id: Int)
     
     var endpoint: String {
         "https://api.themoviedb.org/3"
@@ -55,6 +56,8 @@ enum MovieDbRouter: RequestInfoConvertible {
             return "/tv/\(id)?api_key=\(apiKey)&language=en-US"
         case .getTvSerieCredit(let id):
             return "/tv/\(id)/credits?api_key=\(apiKey)&language=en-US"
+        case .getPerson(let id):
+            return "/person/\(id)?api_key=\(apiKey)&language=en-US"
         }
     }
     

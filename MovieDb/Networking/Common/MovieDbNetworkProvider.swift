@@ -19,6 +19,7 @@ protocol MovieDbNetworkProvider {
     func getTvGenres() -> AnyPublisher<GenreModel , Error>
     func getTvSerieDetail(id: Int) -> AnyPublisher<TvSerieDetailModel , Error>
     func getTvSerieCredit(id: Int) -> AnyPublisher<TvSerieCastModel , Error>
+    func getPerson(id: Int) -> AnyPublisher<CastPeopleModel , Error>
 }
 
 class MovieDbNetworkClient: MovieDbNetworkProvider {
@@ -58,5 +59,9 @@ class MovieDbNetworkClient: MovieDbNetworkProvider {
     
     func getTvSerieCredit(id: Int) -> AnyPublisher<TvSerieCastModel , Error> {
         networkClient.request(MovieDbRouter.getTvSerieCredit(id: id)).decode()
+    }
+    
+    func getPerson(id: Int) -> AnyPublisher<CastPeopleModel , Error> {
+        networkClient.request(MovieDbRouter.getPerson(id: id)).decode()
     }
 }

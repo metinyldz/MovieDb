@@ -81,10 +81,10 @@ struct TvSeriesDetailFooterView: View {
                     HStack(spacing: 20) {
                         if let castData = cast.cast {
                             ForEach(castData, id: \.self) { item in
-                                NavigationLink(destination: CastPersonView(castPeople: $castPeopleModel), isActive: $isActive) {
+                                NavigationLink(destination: CastPersonView(castPeople: viewModel.castPeople), isActive: $viewModel.isActive) {
                                     CirclePhotoView(castDetail: item)
                                         .onTapGesture {
-                                            fetchPeopleCast(personId: item.id ?? -1)
+                                            viewModel.getPerson(id: item.id ?? -1)
                                         }
                                         .padding(.leading, 24)
                                 } //: LINK
@@ -118,7 +118,7 @@ struct TvSeriesDetailFooterView: View {
         }
     }
     
-    private func fetchPeopleCast(personId: Int) {
+    /*private func fetchPeopleCast(personId: Int) {
         viewModel.fetchPerson(personId: personId) { result, success in
             guard let result = result else { return }
             if success {
@@ -126,7 +126,7 @@ struct TvSeriesDetailFooterView: View {
             }
             isActive = success
         }
-    }
+    }*/
 }
 
 struct TvSeriesDetailFooterView_Previews: PreviewProvider {
