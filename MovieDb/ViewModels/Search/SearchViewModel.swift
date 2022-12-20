@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class SearchViewModel: ObservableObject {
+class SearchViewModel: BaseViewModel {
     let baseUrl = "https://api.themoviedb.org/3"
     
     func fetchSearchContent(queryString: String, completion: @escaping (_ result: SearchMultiContentModel?, _ success: Bool) -> ()) {

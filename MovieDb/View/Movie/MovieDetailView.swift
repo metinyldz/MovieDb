@@ -19,20 +19,24 @@ struct MovieDetailView: View {
                 //MARK: - HEADER -
                 VStack {
                     ZStack {
-                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(maxWidth: .infinity, maxHeight: 400)
-                                .clipped()
-                                .padding(.top, -50)
-                        } placeholder: {
-                            Image("moviePlaceholder")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(maxWidth: .infinity, maxHeight: 400)
-                                .clipped()
-                                .padding(.top, -50)
+                        VStack {
+                            GeometryReader { proxy in
+                                let global = proxy.frame(in: .global)
+                                // Header
+                                AsyncImage(url: URL(string: "https://image.tmjujdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
+                                    image
+                                        .resizable()
+                                        .offset(y: global.minY > 0 ? -global.minY : 0)
+                                        .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                                } placeholder: {
+                                    Image("moviePlaceholder")
+                                        .resizable()
+                                        .offset(y: global.minY > 0 ? -global.minY : 0)
+                                        .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                                }
+                                    
+                            }
+                            .frame(height: UIScreen.main.bounds.height/2.2)
                         }
                         
                         VStack {
