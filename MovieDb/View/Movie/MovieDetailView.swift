@@ -23,7 +23,7 @@ struct MovieDetailView: View {
                             GeometryReader { proxy in
                                 let global = proxy.frame(in: .global)
                                 // Header
-                                AsyncImage(url: URL(string: "https://image.tmjujdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
+                                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
                                     image
                                         .resizable()
                                         .offset(y: global.minY > 0 ? -global.minY : 0)

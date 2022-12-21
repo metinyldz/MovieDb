@@ -474,8 +474,8 @@
 			children = (
 				1829CD4A294FB35700B9F08B /* BaseViewModel.swift */,
 				18F286FA2850CE4700C2D5AE /* Movie */,
-				18B3090A285FBA4900B89724 /* Search */,
 				18F286FC2850CE5300C2D5AE /* Tv */,
+				18B3090A285FBA4900B89724 /* Search */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
