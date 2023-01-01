@@ -14,24 +14,24 @@ class MovieViewModel: BaseViewModel {
     @Published var genres: GenreModel = GenreModel()
     @Published var isMovieDetailActive = false
     
-    var networkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
     func getTopRatedMovies() {
-        networkClient
+        movieDbNetworkClient
             .getTopRatedMovies()
             .replaceError(with: MovieTopRated())
             .assign(to: &$topRatedMovies)
     }
     
     func getMovies() {
-        networkClient
+        movieDbNetworkClient
             .getMovies()
             .replaceError(with: Movie())
             .assign(to: &$movies)
     }
     
     func getMovieDetail(id: Int) {
-        networkClient
+        movieDbNetworkClient
             .getMovieDetail(id: id)
             .replaceError(with: MovieDetailModel())
             .assign(to: &$movieDetail)
@@ -40,7 +40,7 @@ class MovieViewModel: BaseViewModel {
     }
     
     func getMoviesGenres() {
-        networkClient
+        movieDbNetworkClient
             .getMoviesGenres()
             .replaceError(with: GenreModel())
             .assign(to: &$genres)

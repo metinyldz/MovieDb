@@ -16,31 +16,31 @@ class TvSeriesViewModel: BaseViewModel {
     @Published var tvSerieCast: TvSerieCastModel = TvSerieCastModel()
     @Published var isActive = false
     
-    var networkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
     func getTvSeries() {
-        networkClient
+        movieDbNetworkClient
             .getTvSeries()
             .replaceError(with: TvSeriesModel())
             .assign(to: &$tvSeries)
     }
     
     func getTvTopRated() {
-        networkClient
+        movieDbNetworkClient
             .getTvTopRated()
             .replaceError(with: TvTopRatedModel())
             .assign(to: &$tvTopRated)
     }
     
     func getTvGenres() {
-        networkClient
+        movieDbNetworkClient
             .getTvGenres()
             .replaceError(with: GenreModel())
             .assign(to: &$tvGenres)
     }
     
     func getTvSerieDetail(id: Int) {
-        networkClient
+        movieDbNetworkClient
             .getTvSerieDetail(id: id)
             .replaceError(with: TvSerieDetailModel())
             .assign(to: &$tvSerieDetail)
@@ -49,7 +49,7 @@ class TvSeriesViewModel: BaseViewModel {
     }
     
     func getTvSerieCredit(id: Int) {
-        networkClient
+        movieDbNetworkClient
             .getTvSerieCredit(id: id)
             .replaceError(with: TvSerieCastModel())
             .assign(to: &$tvSerieCast)

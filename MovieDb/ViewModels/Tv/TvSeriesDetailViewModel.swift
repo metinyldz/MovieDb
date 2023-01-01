@@ -12,10 +12,10 @@ class TvSeriesDetailViewModel: BaseViewModel {
     @Published var castPeople: CastPeopleModel = CastPeopleModel()
     @Published var isActive = false
     
-    var networkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
     func getPerson(id: Int) {
-        networkClient
+        movieDbNetworkClient
             .getPerson(id: id)
             .replaceError(with: CastPeopleModel())
             .assign(to: &$castPeople)

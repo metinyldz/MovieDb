@@ -26,14 +26,14 @@ struct CastPersonView: View {
                                 .scaledToFill()
                                 .frame(maxWidth: .infinity, maxHeight: 400)
                                 .clipped()
-                                .padding(.top, -50)
+                                //.padding(.top, -50)
                         } placeholder: {
                             Image("moviePlaceholder")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(maxWidth: .infinity, maxHeight: 400)
                                 .clipped()
-                                .padding(.top, -50)
+                                //.padding(.top, -50)
                         }
                         
                         VStack {
@@ -95,11 +95,13 @@ struct CastPersonView: View {
         } //: SCROLL
         .background(Color("BackgroundColor"))
         .navigationBarHidden(true)
+        //.ignoresSafeArea(.all)
+        // TODO: - Fix the top of the header issue
     }
 }
 
 struct CastPersonView_Previews: PreviewProvider {
     static var previews: some View {
-        CastPersonView()
+        CastPersonView(castPeople: CastPeopleModel.all())
     }
 }
