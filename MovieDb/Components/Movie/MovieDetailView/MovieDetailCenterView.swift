@@ -13,7 +13,7 @@ struct MovieDetailCenterView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RatingView(rating: "\(content.vote_average ?? 0)")
+            RatingView(rating: String(format: "%.1f", content.vote_average ?? 0.0))
             
             Text(content.title ?? "-")
                 .font(Font.system(size: 28))
