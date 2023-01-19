@@ -14,7 +14,7 @@ struct TvSeriesDetailCenterView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if let genres = content.genres {
-                RatingView(rating: "\(content.vote_average ?? -1)")
+                RatingView(rating: String(format: "%.1f", content.vote_average ?? 0.0))
                 
                 Text(content.original_name ?? "-")
                     .font(Font.system(size: 28))
