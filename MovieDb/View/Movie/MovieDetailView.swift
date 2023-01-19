@@ -11,51 +11,12 @@ struct MovieDetailView: View {
     
     var content: MovieDetailModel
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     var body: some View {
         ScrollView {
             if content.genres != nil {
-                //MARK: - HEADER -
                 VStack {
-                    ZStack {
-                        VStack {
-                            GeometryReader { proxy in
-                                let global = proxy.frame(in: .global)
-                                // Header
-                                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
-                                    image
-                                        .resizable()
-                                        .offset(y: global.minY > 0 ? -global.minY : 0)
-                                        .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
-                                } placeholder: {
-                                    Image("moviePlaceholder")
-                                        .resizable()
-                                        .offset(y: global.minY > 0 ? -global.minY : 0)
-                                        .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
-                                }
-                                    
-                            }
-                            .frame(height: UIScreen.main.bounds.height/2.2)
-                        }
-                        
-                        VStack {
-                            HStack {
-                                Image(systemName: "arrow.left")
-                                    .foregroundColor(Color.white)
-                                    .frame(width: 25, height: 25)
-                                    .onTapGesture {
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }
-                                    .padding([.leading, .trailing], 24)
-                                
-                                Spacer()
-                            } //: HStack
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                            
-                            Spacer()
-                        } //: VStack
-                    } //: ZStack
+                    //MARK: - HEADER -
+                    MovieDetailHeaderView(posterPath: content.poster_path ?? "")
                     
                     Spacer()
                     
@@ -70,8 +31,57 @@ struct MovieDetailView: View {
             }
         } //: Scroll
         .background(Color("BackgroundColor"))
-        //.edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
+    }
+}
+
+struct MovieDetailHeaderView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    private var posterPath: String = ""
+    
+    init(posterPath: String) {
+        self.posterPath = posterPath
+    }
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                GeometryReader { proxy in
+                    let global = proxy.frame(in: .global)
+                    // Header
+                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")) { image in
+                        image
+                            .resizable()
+                            .offset(y: global.minY > 0 ? -global.minY : 0)
+                            .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                    } placeholder: {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .offset(y: global.minY > 0 ? -global.minY : 0)
+                            .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                    }
+                }
+                .frame(height: UIScreen.main.bounds.height/2.2)
+            } //: VStack
+            
+            VStack {
+                HStack {
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.white)
+                        .frame(width: 25, height: 25)
+                        .onTapGesture {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                        .padding([.leading, .trailing], 24)
+                    
+                    Spacer()
+                } //: HStack
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                
+                Spacer()
+            } //: VStack
+        } //: ZStack
     }
 }
 
