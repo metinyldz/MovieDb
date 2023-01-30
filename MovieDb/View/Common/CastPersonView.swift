@@ -23,7 +23,6 @@ struct CastPersonView: View {
                     CastPersonCenterView(castPeople: castPeople)
                     
                     //MARK: - FOOTER -
-                    
                     CastPersonFooterView(castPeople: castPeople)
                 } //: VStack
             }
