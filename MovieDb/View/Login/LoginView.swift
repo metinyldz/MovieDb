@@ -27,6 +27,11 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all)
                 
                 VStack {
+                    Image("loginAppImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 106, height: 149)
+                    
                     LoginTextFieldView(emailText: $emailText, passwordText: $passwordText)
                     
                     HStack {
