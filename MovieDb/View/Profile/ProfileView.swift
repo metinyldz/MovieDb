@@ -17,7 +17,7 @@ struct ProfileView: View {
                 
                 ScrollView(showsIndicators: false) {
                     //MARK: - HEADER -
-                    ProfielViewHeader()
+                    ProfileViewHeader()
                     
                     ProfileViewList()
                 } //: SCROLL
