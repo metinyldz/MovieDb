@@ -69,6 +69,8 @@
 		18F287192850CEEE00C2D5AE /* ProdutionCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F287162850CEEE00C2D5AE /* ProdutionCompany.swift */; };
 		18F2871A2850CEEE00C2D5AE /* ProductionCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F287172850CEEE00C2D5AE /* ProductionCountry.swift */; };
 		18F2871B2850CEEE00C2D5AE /* SpokenLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F287182850CEEE00C2D5AE /* SpokenLanguage.swift */; };
+		18F565A22999837800B6DDA2 /* ProfileViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A12999837800B6DDA2 /* ProfileViewList.swift */; };
+		18F565A42999839E00B6DDA2 /* ProfileViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		18F287162850CEEE00C2D5AE /* ProdutionCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdutionCompany.swift; sourceTree = "<group>"; };
 		18F287172850CEEE00C2D5AE /* ProductionCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionCountry.swift; sourceTree = "<group>"; };
 		18F287182850CEEE00C2D5AE /* SpokenLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpokenLanguage.swift; sourceTree = "<group>"; };
+		18F565A12999837800B6DDA2 /* ProfileViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewList.swift; sourceTree = "<group>"; };
+		18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewHeader.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -457,6 +461,8 @@
 			isa = PBXGroup;
 			children = (
 				18EC9403283A78D500AB47AC /* ProfileView.swift */,
+				18F565A12999837800B6DDA2 /* ProfileViewList.swift */,
+				18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 				18F287152850CEE700C2D5AE /* MovieTopRated.swift in Sources */,
 				18666BE028538EBE008654E6 /* ContentBindigs.swift in Sources */,
 				18F287022850CE6E00C2D5AE /* TvSeriesDetailViewModel.swift in Sources */,
+				18F565A42999839E00B6DDA2 /* ProfileViewHeader.swift in Sources */,
 				18D13041282449560064C61C /* TvSeriesView.swift in Sources */,
 				18754E41283011A900D563D9 /* TvSeriesDetailView.swift in Sources */,
 				18C55F87285130F600BE6ABF /* TvDescriptionView.swift in Sources */,
@@ -684,6 +691,7 @@
 				18B3090C285FBB5200B89724 /* SearchContentModel.swift in Sources */,
 				18D1304928245CE70064C61C /* PagingView.swift in Sources */,
 				18F287092850CEDA00C2D5AE /* Genre.swift in Sources */,
+				18F565A22999837800B6DDA2 /* ProfileViewList.swift in Sources */,
 				182D4E0F282818000050DC69 /* TvSeriesCardView.swift in Sources */,
 				188AD321294F96A000669DA2 /* MovieViewModel.swift in Sources */,
 				18F287192850CEEE00C2D5AE /* ProdutionCompany.swift in Sources */,

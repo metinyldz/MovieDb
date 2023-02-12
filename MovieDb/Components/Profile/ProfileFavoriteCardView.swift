@@ -11,6 +11,7 @@ struct ProfileFavoriteCardView: View {
     
     var favoriteItem = FavoriteModel()
     @State var date: String = ""
+    @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
         ZStack {
@@ -46,18 +47,11 @@ struct ProfileFavoriteCardView: View {
                             .scaledToFit()
                             .frame(width: 24, height: 24)
                             .padding(.trailing, 10)
+                            .onTapGesture {
+                                removeContentToUserDefaults()
+                            }
                     }
                     .frame(maxWidth: .infinity)
-                    
-                    // TODO: - Düzelt burayı. -
-                    
-//                    Text("Daenerys Targaryen")
-//                        .font(Font.system(size: 15))
-//                        .fontWeight(.regular)
-//                        .foregroundColor(.black)
-//                        .padding(.vertical, 5)
-//                        .opacity(0.8)
-//                        .frame(height: 18)
                     
                     HStack {
                         Image("calendar")
@@ -84,6 +78,17 @@ struct ProfileFavoriteCardView: View {
         .frame(width: 327, height: 100)
         .cornerRadius(8)
         .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)
+    }
+
+    private func removeContentToUserDefaults() {
+        UserDefaults.standard.favoriteModel.removeAll { item in
+            return item.contentId == favoriteItem.contentId
+        }
+        contentBindigs.favoriteContents.removeAll { item in
+            return item.contentId == favoriteItem.contentId
+        }
+
+        print("User Defaults Removed!")
     }
 }
 

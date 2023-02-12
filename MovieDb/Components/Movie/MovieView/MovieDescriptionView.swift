@@ -27,6 +27,7 @@ struct MovieDescriptionView: View {
         .frame(maxWidth: .infinity,
                maxHeight: 111,
                alignment: .leading)
+        .padding(.horizontal, 24)
     }
     
     private func getGenres(genreIds: [Int]?) -> String {

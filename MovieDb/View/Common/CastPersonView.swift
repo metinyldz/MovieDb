@@ -23,7 +23,6 @@ struct CastPersonView: View {
                     CastPersonCenterView(castPeople: castPeople)
                     
                     //MARK: - FOOTER -
-                    
                     CastPersonFooterView(castPeople: castPeople)
                 } //: VStack
             }
@@ -39,19 +38,23 @@ struct CastPersonHeaderView: View {
     
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(castPeople?.profile_path ?? "")")) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: 400)
-                    .clipped()
-            } placeholder: {
-                Image("moviePlaceholder")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: 400)
-                    .clipped()
+            GeometryReader { proxy in
+                let global = proxy.frame(in: .global)
+                
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(castPeople?.profile_path ?? "")")) { image in
+                    image
+                        .resizable()
+                        .offset(y: global.minY > 0 ? -global.minY : 0)
+                        .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                } placeholder: {
+                    Image("moviePlaceholder")
+                        .resizable()
+                        .offset(y: global.minY > 0 ? -global.minY : 0)
+                        .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                }
             }
+            .frame(height: UIScreen.main.bounds.height/2.2)
+            .padding(.bottom, 10)
             
             VStack {
                 HStack {
