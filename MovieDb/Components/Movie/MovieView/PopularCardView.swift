@@ -44,13 +44,13 @@ struct PopularCardView: View {
                         
                         Spacer()
                         
-                        Image(isFavorite ? "heartSelected" : "heart")
+                        Image(getFavoriteItem(movieResult) ? "heartSelected" : "heart")
                             .resizable()
                             .frame(width: 25, height: 25)
                             .scaledToFit()
                             .onTapGesture {
-                                !isFavorite ? addContentToUserDefaults() : removeContentToUserDefaults()
-                                isFavorite = !isFavorite
+                                !getFavoriteItem(movieResult) ? addContentToUserDefaults() : removeContentToUserDefaults()
+                                //isFavorite = !isFavorite
                             }
                     }
                     
@@ -97,6 +97,16 @@ struct PopularCardView: View {
             date = Converter.convertDate(input: movieResult.release_date ?? "", dateType: .date)
         }
     }
+    
+    private func getFavoriteItem(_ movieResult: MovieResult) -> Bool {
+        var temp = false
+        
+        return UserDefaults.standard.favoriteModel.contains { item in
+            temp = (item.contentId == movieResult.id ?? -1)
+            return temp
+        }
+    }
+    
     private func getGenres(genreIds: [Int]?) {
         guard let genreIds = genreIds, let genreResult = genres else { return }
         

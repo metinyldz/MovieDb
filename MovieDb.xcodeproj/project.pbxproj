@@ -71,6 +71,7 @@
 		18F2871B2850CEEE00C2D5AE /* SpokenLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F287182850CEEE00C2D5AE /* SpokenLanguage.swift */; };
 		18F565A22999837800B6DDA2 /* ProfileViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A12999837800B6DDA2 /* ProfileViewList.swift */; };
 		18F565A42999839E00B6DDA2 /* ProfileViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */; };
+		18F565A62999892400B6DDA2 /* MovieViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A52999892400B6DDA2 /* MovieViewFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +142,7 @@
 		18F287182850CEEE00C2D5AE /* SpokenLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpokenLanguage.swift; sourceTree = "<group>"; };
 		18F565A12999837800B6DDA2 /* ProfileViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewList.swift; sourceTree = "<group>"; };
 		18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewHeader.swift; sourceTree = "<group>"; };
+		18F565A52999892400B6DDA2 /* MovieViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewFooter.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				18D1303E2824494D0064C61C /* MovieView.swift */,
+				18F565A52999892400B6DDA2 /* MovieViewFooter.swift */,
 				182D4E1128282FDC0050DC69 /* MovieDetailView.swift */,
 				188CD6F728428042007D85D0 /* MovieLocationView.swift */,
 			);
@@ -696,6 +699,7 @@
 				188AD321294F96A000669DA2 /* MovieViewModel.swift in Sources */,
 				18F287192850CEEE00C2D5AE /* ProdutionCompany.swift in Sources */,
 				1878765628341C4D00ACFEAB /* TvSeriesDetailFooterView.swift in Sources */,
+				18F565A62999892400B6DDA2 /* MovieViewFooter.swift in Sources */,
 				1832863F282AFE1A0039B396 /* MovieDetailCenterView.swift in Sources */,
 				188AD328294F970500669DA2 /* NetworkProvider.swift in Sources */,
 				18899D6A2824648A0051FA82 /* MovieDescriptionView.swift in Sources */,
