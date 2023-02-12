@@ -1,5 +1,5 @@
 //
-//  ProfielViewHeader.swift
+//  ProfileViewHeader.swift
 //  MovieDb
 //
 //  Created by Metin Yıldız on 12.02.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfielViewHeader: View {
+struct ProfileViewHeader: View {
     
     var body: some View {
         ZStack {
@@ -40,8 +40,8 @@ struct ProfielViewHeader: View {
     }
 }
 
-struct ProfielViewHeader_Previews: PreviewProvider {
+struct ProfileViewHeader_Previews: PreviewProvider {
     static var previews: some View {
-        ProfielViewHeader()
+        ProfileViewHeader()
     }
 }
