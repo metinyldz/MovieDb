@@ -42,7 +42,7 @@ struct TvSeriesSingleCardView: View {
                     .frame(height: 42)
                 
                 Spacer()
-                
+                // TODO: - Fix favorite action bug. -
                 Image(isFavorite ? "heartSelected" : "heart")
                     .resizable()
                     .frame(width: 25, height: 25)
@@ -92,5 +92,6 @@ struct TvSeriesSingleCardView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
             .preferredColorScheme(.dark)
+            .environmentObject(ContentBindigs())
     }
 }
