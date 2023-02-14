@@ -96,5 +96,6 @@ struct ProfileFavoriteCardView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileFavoriteCardView(favoriteItem: FavoriteModel())
             .previewLayout(.sizeThatFits)
+            .environmentObject(ContentBindigs())
     }
 }

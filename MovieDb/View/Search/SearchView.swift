@@ -98,7 +98,7 @@ struct SearchView: View {
                     
                     //MARK: - CENTER -
                     
-                    // TODO: - Arama yapıldığında Kartları koy buraya. -
+                    // TODO: - Put the cards when user is searching contents -
                     if !searchResults.isEmpty {
                         ForEach(searchResults, id: \.self) { result in
                             //NavigationLink(destination: MovieDetailView(), isActive: $isActive) {
