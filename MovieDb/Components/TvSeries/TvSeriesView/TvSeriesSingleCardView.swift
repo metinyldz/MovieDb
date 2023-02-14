@@ -92,5 +92,6 @@ struct TvSeriesSingleCardView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
             .preferredColorScheme(.dark)
+            .environmentObject(ContentBindigs())
     }
 }
