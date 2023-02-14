@@ -227,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				18D1303E2824494D0064C61C /* MovieView.swift */,
-				18F565A52999892400B6DDA2 /* MovieViewFooter.swift */,
 				182D4E1128282FDC0050DC69 /* MovieDetailView.swift */,
 				188CD6F728428042007D85D0 /* MovieLocationView.swift */,
 			);
@@ -310,6 +309,7 @@
 			children = (
 				18899D692824648A0051FA82 /* MovieDescriptionView.swift */,
 				18B0CFF52826C44E007C73A3 /* MovieHeaderView.swift */,
+				18F565A52999892400B6DDA2 /* MovieViewFooter.swift */,
 				182D4E0B2827F39E0050DC69 /* PopularCardView.swift */,
 			);
 			path = MovieView;
