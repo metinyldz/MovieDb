@@ -7,49 +7,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6D613511-44F3-4CB2-9C21-11EDD2029DA1"
+            uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MovieDb/Components/Movie/MovieDetailView/MovieDetailCenterView.swift"
+            filePath = "MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "removeContentToUserDefaults()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6 - 9be8fba8c88ea95f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieDb.ProfileFavoriteCardView.removeContentToUserDefaults() -&gt; ()"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6 - a1374dad7aba40a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MovieDb.FavoriteModel) -&gt; Swift.Bool in MovieDb.ProfileFavoriteCardView.removeContentToUserDefaults() -&gt; ()"
+                  moduleName = "MovieDb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4FC8BAD8-2891-4305-A1FA-1B19ACA7F640"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MovieDb/View/Login/TempLoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "LoginTextFieldView"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BAB2572E-E094-4165-81CD-8FCA20976861"
+            uuid = "D139CEC6-077A-42CE-8286-FCD4FB9DF2DE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MovieDb/Components/TvSeries/TvSeriesView/TvSeriesSingleCardView.swift"
+            filePath = "MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "removeContentToUserDefaults()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
