@@ -24,7 +24,6 @@ struct TvSeriesCardView: View {
             if let results = tvResults {
                 LazyVGrid(columns: columns, spacing: 30) {
                     ForEach(results, id: \.self) { result in
-                        // TODO: - Check this part of favorite item bug. -
                         NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: viewModel.tvSerieDetail, tvSerieCastModel: viewModel.tvSerieCast), isActive: $viewModel.isActive) {
                             TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
                                 .environmentObject(contentBindigs)
@@ -56,6 +55,7 @@ struct TvSeriesCardView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 375, height: 530))
             .padding()
             .background(Color.gray)
+            .environmentObject(ContentBindigs())
         
     }
 }

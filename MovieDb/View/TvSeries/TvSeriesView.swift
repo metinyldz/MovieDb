@@ -10,7 +10,7 @@ import SwiftUI
 struct TvSeriesView: View {
     
     @StateObject var viewModel = TvSeriesViewModel()
-    @StateObject var contentBindigs = ContentBindigs()
+    @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
         NavigationView {
