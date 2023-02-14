@@ -42,14 +42,13 @@ struct TvSeriesSingleCardView: View {
                     .frame(height: 42)
                 
                 Spacer()
-                // TODO: - Fix favorite action bug. -
-                Image(isFavorite ? "heartSelected" : "heart")
+                
+                Image(getFavoriteItem(tvResult) ? "heartSelected" : "heart")
                     .resizable()
                     .frame(width: 25, height: 25)
                     .scaledToFit()
                     .onTapGesture {
-                        !isFavorite ? addContentToUserDefaults() : removeContentToUserDefaults()
-                        isFavorite = !isFavorite
+                        !getFavoriteItem(tvResult) ? addContentToUserDefaults() : removeContentToUserDefaults()
                     }
             } //: HSTack
             .padding([.horizontal, .bottom],10)
@@ -61,6 +60,15 @@ struct TvSeriesSingleCardView: View {
         .background(Color.white)
         .cornerRadius(8)
         .frame(width: 153, height: 310, alignment: .top)
+    }
+    
+    private func getFavoriteItem(_ tvResult: TvSeriesResult) -> Bool {
+        var temp = false
+        
+        return UserDefaults.standard.favoriteModel.contains { item in
+            temp = (item.contentId == tvResult.id ?? -1)
+            return temp
+        }
     }
     
     private func addContentToUserDefaults() {
