@@ -15,9 +15,6 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("VibrantBlue")
-                    .edgesIgnoringSafeArea(.all)
-                
                 GeometryReader { geometry in
                     Image("group")
                         .resizable()
