@@ -52,7 +52,7 @@ struct LoginView: View {
 
 struct LoginTextFieldView: View {
     
-    @Binding var emailText: String+
+    @Binding var emailText: String
     @Binding var passwordText: String
     
     var body: some View {
