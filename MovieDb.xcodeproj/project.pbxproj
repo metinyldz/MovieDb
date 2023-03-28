@@ -55,6 +55,7 @@
 		18D1303F2824494D0064C61C /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1303E2824494D0064C61C /* MovieView.swift */; };
 		18D13041282449560064C61C /* TvSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D13040282449560064C61C /* TvSeriesView.swift */; };
 		18D1304928245CE70064C61C /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1304828245CE70064C61C /* PagingView.swift */; };
+		18E66A8329D370FE00451A0D /* LoginBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E66A8229D370FE00451A0D /* LoginBackground.swift */; };
 		18EC9402283A64E500AB47AC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC9401283A64E500AB47AC /* SearchBar.swift */; };
 		18EC9404283A78D500AB47AC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC9403283A78D500AB47AC /* ProfileView.swift */; };
 		18EC9407283A7BDB00AB47AC /* ProfileFavoriteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC9406283A7BDB00AB47AC /* ProfileFavoriteCardView.swift */; };
@@ -126,6 +127,7 @@
 		18D1303E2824494D0064C61C /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		18D13040282449560064C61C /* TvSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSeriesView.swift; sourceTree = "<group>"; };
 		18D1304828245CE70064C61C /* PagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
+		18E66A8229D370FE00451A0D /* LoginBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBackground.swift; sourceTree = "<group>"; };
 		18EC9401283A64E500AB47AC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		18EC9403283A78D500AB47AC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		18EC9406283A7BDB00AB47AC /* ProfileFavoriteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFavoriteCardView.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				18AA7B0A2986D408004690CE /* LoginView.swift */,
+				18E66A8229D370FE00451A0D /* LoginBackground.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				18B30907285FB15E00B89724 /* CastPeopleModel.swift in Sources */,
 				18D13030282448410064C61C /* MovieDbApp.swift in Sources */,
 				182D4E1228282FDC0050DC69 /* MovieDetailView.swift in Sources */,
+				18E66A8329D370FE00451A0D /* LoginBackground.swift in Sources */,
 				18F2870F2850CEE200C2D5AE /* TvTopRatedModel.swift in Sources */,
 				18EC9404283A78D500AB47AC /* ProfileView.swift in Sources */,
 				188CD6F828428042007D85D0 /* MovieLocationView.swift in Sources */,
@@ -859,9 +863,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -891,9 +895,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
