@@ -30,15 +30,15 @@ struct TvSeriesDetailView: View {
                                 image
                                     .resizable()
                                     .offset(y: global.minY > 0 ? -global.minY : 0)
-                                    .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                                    .frame(height: global.minY > 0 ? (400) + global.minY :  400)
                             } placeholder: {
                                 Image("moviePlaceholder")
                                     .resizable()
                                     .offset(y: global.minY > 0 ? -global.minY : 0)
-                                    .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                                    .frame(height: global.minY > 0 ? (400) + global.minY :  400)
                             }
                         }
-                        .frame(height: UIScreen.main.bounds.height/2.2)
+                        .frame(height: 400)
                         
                         VStack {
                             HStack {
@@ -61,7 +61,7 @@ struct TvSeriesDetailView: View {
                     //MARK: - CENTER -
                     
                     TvSeriesDetailCenterView(content: tvSerieDetail)
-                        .padding(.top, -24)
+                        .padding(.top, -12)
                     
                     //MARK: - FOOTER -
                     
