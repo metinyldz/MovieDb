@@ -15,16 +15,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("VibrantBlue")
-                    .edgesIgnoringSafeArea(.all)
-                
-                GeometryReader { geometry in
-                    Image("group")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                }
-                .edgesIgnoringSafeArea(.all)
+                LoginBackground()
                 
                 VStack {
                     Image("loginAppImage")
@@ -33,6 +24,7 @@ struct LoginView: View {
                         .frame(width: 106, height: 149)
                     
                     LoginTextFieldView(emailText: $emailText, passwordText: $passwordText)
+                        .ignoresSafeArea(.keyboard, edges: .bottom)
                     
                     HStack {
                         Spacer()
@@ -51,14 +43,16 @@ struct LoginView: View {
                     
                     LoginFooterView(emailText: $emailText, passwordText: $passwordText)
                 } //: VStack
+                
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }
 }
 
 struct LoginTextFieldView: View {
     
-    @Binding var emailText: String
+    @Binding var emailText: String+
     @Binding var passwordText: String
     
     var body: some View {
@@ -95,6 +89,7 @@ struct LoginTextFieldView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, -8)
         } //: VStack
+        
     }
 }
 
