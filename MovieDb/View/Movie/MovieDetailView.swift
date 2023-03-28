@@ -17,12 +17,11 @@ struct MovieDetailView: View {
                 VStack {
                     //MARK: - HEADER -
                     MovieDetailHeaderView(posterPath: content.poster_path ?? "")
-                    
-                    Spacer()
+                        .frame(height: 400)
                     
                     //MARK: - CENTER -
                     MovieDetailCenterView(content: content)
-                        .padding(.top, -24)
+                        .padding(.top, -20)
                     
                     //MARK: - FOOTER -
                     MovieDetailFooterView(content: content)
@@ -54,15 +53,14 @@ struct MovieDetailHeaderView: View {
                         image
                             .resizable()
                             .offset(y: global.minY > 0 ? -global.minY : 0)
-                            .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                            .frame(height: global.minY > 0 ? (400) + global.minY :  400)
                     } placeholder: {
                         Image("moviePlaceholder")
                             .resizable()
                             .offset(y: global.minY > 0 ? -global.minY : 0)
-                            .frame(height: global.minY > 0 ? (UIScreen.main.bounds.height/2.2) + global.minY :  UIScreen.main.bounds.height/2.2)
+                            .frame(height: global.minY > 0 ? (400) + global.minY :  400)
                     }
                 }
-                .frame(height: UIScreen.main.bounds.height/2.2)
             } //: VStack
             
             VStack {
@@ -73,7 +71,7 @@ struct MovieDetailHeaderView: View {
                         .onTapGesture {
                             self.presentationMode.wrappedValue.dismiss()
                         }
-                        .padding([.leading, .trailing], 24)
+                        .padding(.horizontal, 24)
                     
                     Spacer()
                 } //: HStack

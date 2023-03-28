@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
@@ -20,14 +20,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6 - 9be8fba8c88ea95f"
+                  uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6 - 8491b24254fb26dd"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MovieDb.ProfileFavoriteCardView.removeContentToUserDefaults() -&gt; ()"
                   moduleName = "MovieDb"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
+                  urlString = "file:///Users/metinyildiz/Developer/GitHub/MovieDb/MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
@@ -35,14 +35,14 @@
                   offsetFromSymbolStart = "220">
                </Location>
                <Location
-                  uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6 - a1374dad7aba40a4"
+                  uuid = "E9E5AD4B-0604-49BF-AFAC-9184020A9CE6 - be4e0447e6cfc822"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (MovieDb.FavoriteModel) -&gt; Swift.Bool in MovieDb.ProfileFavoriteCardView.removeContentToUserDefaults() -&gt; ()"
                   moduleName = "MovieDb"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/metinyildiz/Documents/GitHub/MovieDb/MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
+                  urlString = "file:///Users/metinyildiz/Developer/GitHub/MovieDb/MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -56,7 +56,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D139CEC6-077A-42CE-8286-FCD4FB9DF2DE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieDb/Components/Profile/ProfileFavoriteCardView.swift"
