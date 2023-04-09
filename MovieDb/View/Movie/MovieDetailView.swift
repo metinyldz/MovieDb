@@ -19,16 +19,24 @@ struct MovieDetailView: View {
                     VStack {
                         //MARK: - HEADER -
                         GeometryReader { imageGeometry in
+                            let global = imageGeometry.frame(in: .global)
+                            
                             AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: geometry.size.width, height: max(400, imageGeometry.frame(in: .global).minY + 400))
+                                    .frame(width: geometry.size.width,
+                                           height: global.minY > 0 ? max(400, global.minY + 400) : 400)
                                     .clipped()
-                                    .offset(y: -imageGeometry.frame(in: .global).minY)
+                                    .offset(y: global.minY > 0 ? -global.minY : 0)
                             } placeholder: {
                                 Image("moviePlaceholder")
                                     .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: geometry.size.width,
+                                           height: global.minY > 0 ? max(400, global.minY + 400) : 400)
+                                    .clipped()
+                                    .offset(y: global.minY > 0 ? -global.minY : 0)
                             }
                         }
                         .frame(height: 400)
