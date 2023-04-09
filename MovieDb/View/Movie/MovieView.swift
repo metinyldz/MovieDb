@@ -57,7 +57,7 @@ struct MovieView: View {
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
         MovieView()
-            .previewDisplayName("iPhone 12 Mini")
+            .environmentObject(ContentBindigs())
             .preferredColorScheme(.light)
     }
 }

@@ -64,7 +64,6 @@ struct MovieHeaderView: View {
 struct MovieHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         MovieHeaderView(movieTopRatedResult: MovieTopRatedResult.all())
-            .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }
 }

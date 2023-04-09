@@ -33,5 +33,6 @@ struct ProfileViewList: View {
 struct ProfileViewList_Previews: PreviewProvider {
     static var previews: some View {
         ProfileViewList()
+            .environmentObject(ContentBindigs())
     }
 }
