@@ -47,6 +47,7 @@ struct MainTabView: View {
                     }
                 }.tag(3)
         } //: TAB
+        .environmentObject(ContentBindigs())
     }
 }
 
