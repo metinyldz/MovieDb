@@ -71,7 +71,7 @@ struct TvSeriesView: View {
 struct TvSeriesView_Previews: PreviewProvider {
     static var previews: some View {
         TvSeriesView()
-            .previewDisplayName("iPhone 12 Mini")
+            .environmentObject(ContentBindigs())
             .preferredColorScheme(.light)
     }
 }
