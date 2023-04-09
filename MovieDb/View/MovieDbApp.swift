@@ -32,6 +32,7 @@ struct MovieDbApp: App {
         WindowGroup {
             SplashView()
                 .preferredColorScheme(.light)
+                .environmentObject(ContentBindigs())
         }
     }
 }

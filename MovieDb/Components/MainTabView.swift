@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     
     @State private var selection = 0
-    @StateObject var contentBindigs = ContentBindigs()
+    @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
         TabView(selection: $selection) {
@@ -47,14 +47,12 @@ struct MainTabView: View {
                     }
                 }.tag(3)
         } //: TAB
-        .environmentObject(contentBindigs)
     }
 }
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(contentBindigs: ContentBindigs())
+        MainTabView()
             .previewDevice("iPhone 12 Mini")
-            .environmentObject(ContentBindigs())
     }
 }

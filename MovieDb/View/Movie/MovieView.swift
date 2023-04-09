@@ -25,7 +25,6 @@ struct MovieView: View {
                         
                         //MARK: - HEADER -
                         MovieHeaderView(movieTopRatedResult: results)
-                            .environmentObject(contentBindigs)
                         
                         //MARK: - CENTER -
                         
@@ -60,6 +59,5 @@ struct MovieView_Previews: PreviewProvider {
         MovieView()
             .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
-            .environmentObject(ContentBindigs())
     }
 }
