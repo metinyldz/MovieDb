@@ -138,7 +138,6 @@ struct PopularCardView: View {
                                   contentDate: date)
         UserDefaults.standard.favoriteModel.append(model)
         contentBindigs.favoriteContents.append(model)
-        print("User Defaults Added!")
     }
     
     private func removeContentToUserDefaults() {
@@ -148,8 +147,6 @@ struct PopularCardView: View {
         contentBindigs.favoriteContents.removeAll { item in
             return item.contentId == movieResult.id
         }
-
-        print("User Defaults Removed!")
     }
 }
 

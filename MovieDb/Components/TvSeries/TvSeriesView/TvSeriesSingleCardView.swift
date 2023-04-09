@@ -79,7 +79,6 @@ struct TvSeriesSingleCardView: View {
                                   contentDate: date)
         UserDefaults.standard.favoriteModel.append(model)
         contentBindigs.favoriteContents.append(model)
-        print("User Defaults Added!")
     }
     
     private func removeContentToUserDefaults() {
@@ -89,8 +88,6 @@ struct TvSeriesSingleCardView: View {
         contentBindigs.favoriteContents.removeAll { item in
             return item.contentId == tvResult.id
         }
-
-        print("User Defaults Removed!")
     }
 }
 
