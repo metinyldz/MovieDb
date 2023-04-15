@@ -24,11 +24,10 @@ struct LoginTextFieldView: View {
                         .padding(.horizontal, 24)
                 }
             
-            
             Divider()
+                .background(.white)
                 .padding(.horizontal, 24)
                 .padding(.top, -8)
-            
             
             SecureField("", text: $passwordText)
                 .frame(height: 45)
@@ -42,16 +41,17 @@ struct LoginTextFieldView: View {
                 }
             
             Divider()
+                .background(.white)
                 .padding(.horizontal, 24)
                 .padding(.top, -8)
         } //: VStack
-        
     }
 }
 
 struct LoginTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         LoginTextFieldView(emailText: .constant(""), passwordText: .constant(""))
+            .preferredColorScheme(.dark)
     }
 }
 
