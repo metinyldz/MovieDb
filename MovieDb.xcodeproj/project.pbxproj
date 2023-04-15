@@ -75,6 +75,8 @@
 		18F565A62999892400B6DDA2 /* MovieViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A52999892400B6DDA2 /* MovieViewFooter.swift */; };
 		18FE2E9029EAD3D000611CA6 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E8F29EAD3D000611CA6 /* LoginFooterView.swift */; };
 		18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */; };
+		18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */; };
+		18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9729EADECF00611CA6 /* WarningView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +151,8 @@
 		18F565A52999892400B6DDA2 /* MovieViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewFooter.swift; sourceTree = "<group>"; };
 		18FE2E8F29EAD3D000611CA6 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
 		18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
+		18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		18FE2E9729EADECF00611CA6 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				18B30901285FADA000B89724 /* CastPersonView.swift */,
+				18FE2E9729EADECF00611CA6 /* WarningView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -489,9 +494,10 @@
 			isa = PBXGroup;
 			children = (
 				1829CD4A294FB35700B9F08B /* BaseViewModel.swift */,
+				18FE2E9429EADC4400611CA6 /* Login */,
 				18F286FA2850CE4700C2D5AE /* Movie */,
-				18F286FC2850CE5300C2D5AE /* Tv */,
 				18B3090A285FBA4900B89724 /* Search */,
+				18F286FC2850CE5300C2D5AE /* Tv */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -553,6 +559,14 @@
 				18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		18FE2E9429EADC4400611CA6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		A1297DAA9B49050DD12FA9DB /* Pods */ = {
@@ -679,7 +693,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1878765E28342A0300ACFEAB /* SearchView.swift in Sources */,
+				18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */,
 				18F2871A2850CEEE00C2D5AE /* ProductionCountry.swift in Sources */,
+				18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */,
 				1829CD4B294FB35700B9F08B /* BaseViewModel.swift in Sources */,
 				18F287142850CEE700C2D5AE /* MovieDetailModel.swift in Sources */,
 				1825E9242860E85900653042 /* SearchCardView.swift in Sources */,

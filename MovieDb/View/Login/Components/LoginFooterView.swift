@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginFooterView: View {
+    @StateObject var viewModel = LoginViewModel()
     @Binding var emailText: String
     @Binding var passwordText: String
     @AppStorage("isLogin") var isLogin: Bool = false
@@ -44,13 +45,14 @@ struct LoginFooterView: View {
                 
                 Button {
                     // TODO: - Action Code -
+                    viewModel.showAlert = false //.toggle()
                 } label: {
                     Text("Register Now")
                         .foregroundColor(Color.white)
                         .font(Font.system(size: 12))
                         .fontWeight(.medium)
                         .padding(.horizontal, -8)
-                }
+                }.customAlert(isPresented: $viewModel.showAlert)
             } //: HSTACK
         } //: VStack
     }
