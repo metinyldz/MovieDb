@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LoginFooterView: View {
     @StateObject var viewModel = LoginViewModel()
-    @Binding var emailText: String
-    @Binding var passwordText: String
+    @State var emailText: String
+    @State var passwordText: String
     @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some View {
@@ -24,7 +24,7 @@ struct LoginFooterView: View {
                     }
                 } label: {
                     Text("Login")
-                        .foregroundColor(Color("VibrantBlue"))
+                        .foregroundColor(Color("VibrantBlue")) 
                         .font(Font.system(size: 17))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
@@ -60,6 +60,6 @@ struct LoginFooterView: View {
 
 struct LoginFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFooterView(emailText: .constant(""), passwordText: .constant(""))
+        LoginFooterView(emailText: "", passwordText: "")
     }
 }
