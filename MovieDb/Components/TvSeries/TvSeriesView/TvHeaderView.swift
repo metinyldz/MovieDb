@@ -61,7 +61,6 @@ struct TvHeaderView: View {
 struct TvHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         TvHeaderView()
-            .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }
 }

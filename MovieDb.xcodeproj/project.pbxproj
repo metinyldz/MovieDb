@@ -73,6 +73,10 @@
 		18F565A22999837800B6DDA2 /* ProfileViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A12999837800B6DDA2 /* ProfileViewList.swift */; };
 		18F565A42999839E00B6DDA2 /* ProfileViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */; };
 		18F565A62999892400B6DDA2 /* MovieViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F565A52999892400B6DDA2 /* MovieViewFooter.swift */; };
+		18FE2E9029EAD3D000611CA6 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E8F29EAD3D000611CA6 /* LoginFooterView.swift */; };
+		18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */; };
+		18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */; };
+		18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9729EADECF00611CA6 /* WarningView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +149,10 @@
 		18F565A12999837800B6DDA2 /* ProfileViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewList.swift; sourceTree = "<group>"; };
 		18F565A32999839E00B6DDA2 /* ProfileViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewHeader.swift; sourceTree = "<group>"; };
 		18F565A52999892400B6DDA2 /* MovieViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewFooter.swift; sourceTree = "<group>"; };
+		18FE2E8F29EAD3D000611CA6 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
+		18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
+		18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		18FE2E9729EADECF00611CA6 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				18B30901285FADA000B89724 /* CastPersonView.swift */,
+				18FE2E9729EADECF00611CA6 /* WarningView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -476,7 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				18AA7B0A2986D408004690CE /* LoginView.swift */,
-				18E66A8229D370FE00451A0D /* LoginBackground.swift */,
+				18FE2E9329EAD50400611CA6 /* Components */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -485,9 +494,10 @@
 			isa = PBXGroup;
 			children = (
 				1829CD4A294FB35700B9F08B /* BaseViewModel.swift */,
+				18FE2E9429EADC4400611CA6 /* Login */,
 				18F286FA2850CE4700C2D5AE /* Movie */,
-				18F286FC2850CE5300C2D5AE /* Tv */,
 				18B3090A285FBA4900B89724 /* Search */,
+				18F286FC2850CE5300C2D5AE /* Tv */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -539,6 +549,24 @@
 				18F287182850CEEE00C2D5AE /* SpokenLanguage.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		18FE2E9329EAD50400611CA6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				18E66A8229D370FE00451A0D /* LoginBackground.swift */,
+				18FE2E8F29EAD3D000611CA6 /* LoginFooterView.swift */,
+				18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		18FE2E9429EADC4400611CA6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		A1297DAA9B49050DD12FA9DB /* Pods */ = {
@@ -665,11 +693,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1878765E28342A0300ACFEAB /* SearchView.swift in Sources */,
+				18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */,
 				18F2871A2850CEEE00C2D5AE /* ProductionCountry.swift in Sources */,
+				18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */,
 				1829CD4B294FB35700B9F08B /* BaseViewModel.swift in Sources */,
 				18F287142850CEE700C2D5AE /* MovieDetailModel.swift in Sources */,
 				1825E9242860E85900653042 /* SearchCardView.swift in Sources */,
 				18CEADAC285A5D6800D01D70 /* TvSeriesSingleCardView.swift in Sources */,
+				18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */,
 				1878765428341AF300ACFEAB /* TvSeriesDetailCenterView.swift in Sources */,
 				18328642282B00650039B396 /* MovieDetailFooterView.swift in Sources */,
 				18AA7B0B2986D408004690CE /* LoginView.swift in Sources */,
@@ -715,6 +746,7 @@
 				18B30902285FADA000B89724 /* CastPersonView.swift in Sources */,
 				18F2870E2850CEE200C2D5AE /* TvSeriesModel.swift in Sources */,
 				188CD6F228426FE4007D85D0 /* SplashView.swift in Sources */,
+				18FE2E9029EAD3D000611CA6 /* LoginFooterView.swift in Sources */,
 				18677A692859076A0015FF0E /* FavoriteModel.swift in Sources */,
 				18C55F852851301C00BE6ABF /* TvHeaderView.swift in Sources */,
 				18F2870D2850CEE200C2D5AE /* TvSerieDetailModel.swift in Sources */,

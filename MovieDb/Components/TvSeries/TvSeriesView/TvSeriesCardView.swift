@@ -26,7 +26,6 @@ struct TvSeriesCardView: View {
                     ForEach(results, id: \.self) { result in
                         NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: viewModel.tvSerieDetail, tvSerieCastModel: viewModel.tvSerieCast), isActive: $viewModel.isActive) {
                             TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
-                                .environmentObject(contentBindigs)
                                 .onTapGesture {
                                     viewModel.getTvSerieCredit(id: result.id ?? -1)
                                     viewModel.getTvSerieDetail(id: result.id ?? -1)
@@ -55,7 +54,6 @@ struct TvSeriesCardView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 375, height: 530))
             .padding()
             .background(Color.gray)
-            .environmentObject(ContentBindigs())
         
     }
 }

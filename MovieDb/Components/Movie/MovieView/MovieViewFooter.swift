@@ -10,6 +10,7 @@ import SwiftUI
 struct MovieViewFooter: View {
     @StateObject var movieViewModel = MovieViewModel()
     @EnvironmentObject var contentBindigs: ContentBindigs
+    
     var moviesResults: [MovieResult]
     var genres: [GenreResult]
     
@@ -27,7 +28,6 @@ struct MovieViewFooter: View {
             NavigationLink(destination: MovieDetailView(content: movieViewModel.movieDetail), isActive: $movieViewModel.isMovieDetailActive) {
                 PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie), genres: genres)
                     .padding(.vertical, 10)
-                    .environmentObject(contentBindigs)
                     .onTapGesture {
                         movieViewModel.getMovieDetail(id: movie.id ?? -1)
                     }
@@ -50,6 +50,5 @@ struct MovieViewFooter_Previews: PreviewProvider {
     static var previews: some View {
         MovieViewFooter(moviesResults: MovieResult.all(), genres: [GenreResult(id: 1, name: "asd")])
             .preferredColorScheme(.light)
-            .environmentObject(ContentBindigs())
     }
 }

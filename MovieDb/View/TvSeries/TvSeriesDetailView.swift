@@ -16,6 +16,8 @@ struct TvSeriesDetailView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            //let geoGlobal = geometry.frame(in: .global)
+            
             ScrollView {
                 if let tvSerieDetail = tvSerieDetailModel, let tvSerieCast = tvSerieCastModel {
                     //MARK: - HEADER -
@@ -42,6 +44,15 @@ struct TvSeriesDetailView: View {
                             }
                         }
                         .frame(height: 400)
+                        .overlay(
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(Color.white)
+                                .frame(width: 25, height: 25)
+                                .onTapGesture {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
+                                .padding(32)
+                        , alignment: .topLeading)
                         
                         //MARK: - CENTER -
                         
@@ -57,15 +68,6 @@ struct TvSeriesDetailView: View {
             } //: SCROLL
             .background(Color("BackgroundColor"))
             .navigationBarHidden(true)
-            .overlay(
-                Image(systemName: "arrow.left")
-                    .foregroundColor(Color.white)
-                    .frame(width: 25, height: 25)
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                    .padding(32)
-            , alignment: .topLeading)
         }
     }
 }

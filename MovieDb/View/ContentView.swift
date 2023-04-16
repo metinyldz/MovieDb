@@ -16,7 +16,7 @@ struct ContentView: View {
             MainTabView()
                 .navigationBarHidden(true)
         } else {
-            LoginView(emailText: .constant("asdasd@asd.com"), passwordText: .constant("asdasda"))
+            LoginView(emailText: .constant(""), passwordText: .constant(""))
                 .navigationBarHidden(true)
         }
     }
@@ -25,7 +25,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDisplayName("iPhone 12 Mini")
             .preferredColorScheme(.light)
     }
 }
