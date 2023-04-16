@@ -87,8 +87,6 @@ struct ProfileFavoriteCardView: View {
         contentBindigs.favoriteContents.removeAll { item in
             return item.contentId == favoriteItem.contentId
         }
-
-        print("User Defaults Removed!")
     }
 }
 
@@ -96,6 +94,5 @@ struct ProfileFavoriteCardView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileFavoriteCardView(favoriteItem: FavoriteModel())
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentBindigs())
     }
 }

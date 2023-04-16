@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some View {
         NavigationView {
@@ -24,6 +25,15 @@ struct ProfileView: View {
                 .navigationBarTitle("Profile", displayMode: .large)
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
             } //: ZSTACK
+            .toolbar {
+                Button {
+                    isLogin.toggle()
+                } label: {
+                    Text("Logout")
+                        .foregroundColor(.white)
+                        .font(.system(size: 16))
+                }
+            }
         } //: NAVIGATION
     }
 }
