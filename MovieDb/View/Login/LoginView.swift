@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject var viewModel = LoginViewModel()
     @Binding var emailText: String
     @Binding var passwordText: String
     
@@ -22,7 +23,7 @@ struct LoginView: View {
                         .scaledToFit()
                         .frame(width: 106, height: 149)
                     
-                    LoginTextFieldView(emailText: emailText, passwordText: passwordText)
+                    LoginTextFieldView(emailText: $viewModel.emailText, passwordText: $viewModel.passwordText)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                     
                     HStack {
@@ -40,7 +41,7 @@ struct LoginView: View {
                         } //: Button
                     } //: HStack
                     
-                    LoginFooterView(emailText: emailText, passwordText: passwordText)
+                    LoginFooterView(showAlert: $viewModel.showAlert, emailText: $viewModel.emailText, passwordText: $viewModel.passwordText)
                 } //: VStack
                 
             } //: ZStack

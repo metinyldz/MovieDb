@@ -8,23 +8,19 @@
 import SwiftUI
 
 struct LoginFooterView: View {
-    @StateObject var viewModel = LoginViewModel()
-    @State var emailText: String
-    @State var passwordText: String
+    @Binding var showAlert: Bool
+    @Binding var emailText: String
+    @Binding var passwordText: String
     @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some View {
         VStack {
             NavigationLink(destination: MainTabView(), isActive: $isLogin) {
                 Button {
-                    if !(emailText.isEmpty && passwordText.isEmpty) {
-                        isLogin = true
-                    } else {
-                        isLogin = false
-                    }
+                    isLogin = (isValidEmail(emailText) && isValidPassword(passwordText)) ? true : false
                 } label: {
                     Text("Login")
-                        .foregroundColor(Color("VibrantBlue")) 
+                        .foregroundColor(Color("VibrantBlue"))
                         .font(Font.system(size: 17))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
@@ -45,21 +41,36 @@ struct LoginFooterView: View {
                 
                 Button {
                     // TODO: - Action Code -
-                    viewModel.showAlert = false //.toggle()
+                    showAlert = false //.toggle()
                 } label: {
                     Text("Register Now")
                         .foregroundColor(Color.white)
                         .font(Font.system(size: 12))
                         .fontWeight(.medium)
                         .padding(.horizontal, -8)
-                }.customAlert(isPresented: $viewModel.showAlert)
+                }.customAlert(isPresented: $showAlert)
             } //: HSTACK
         } //: VStack
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailPattern)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    private func isValidPassword(_ password: String) -> Bool {
+        let passwordPattern = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+        return passwordPredicate.evaluate(with: password)
     }
 }
 
 struct LoginFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFooterView(emailText: "", passwordText: "")
+        LoginFooterView(showAlert: .constant(false), emailText: .constant(""), passwordText: .constant(""))
+            .preferredColorScheme(.dark)
     }
 }

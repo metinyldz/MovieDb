@@ -8,6 +8,8 @@
 import Foundation
 
 class LoginViewModel: BaseViewModel {
+    @Published var emailText: String = ""
+    @Published var passwordText: String = ""
     @Published var showAlert: Bool = false
     
 }
