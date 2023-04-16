@@ -16,7 +16,7 @@ struct ContentView: View {
             MainTabView()
                 .navigationBarHidden(true)
         } else {
-            LoginView(emailText: .constant("asdasd@asd.com"), passwordText: .constant("asdasda"))
+            LoginView(emailText: .constant(""), passwordText: .constant(""))
                 .navigationBarHidden(true)
         }
     }

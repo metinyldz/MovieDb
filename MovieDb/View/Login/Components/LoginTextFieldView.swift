@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginTextFieldView: View {
-    @Binding var emailText: String
-    @Binding var passwordText: String
+    @State var emailText: String
+    @State var passwordText: String
     
     var body: some View {
         VStack {
@@ -50,7 +50,7 @@ struct LoginTextFieldView: View {
 
 struct LoginTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginTextFieldView(emailText: .constant(""), passwordText: .constant(""))
+        LoginTextFieldView(emailText: "", passwordText: "")
             .preferredColorScheme(.dark)
     }
 }

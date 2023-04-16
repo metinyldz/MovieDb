@@ -24,7 +24,6 @@ struct ProfileView: View {
                 } //: SCROLL
                 .navigationBarTitle("Profile", displayMode: .large)
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-                //.navigationBarItem
             } //: ZSTACK
             .toolbar {
                 Button {
