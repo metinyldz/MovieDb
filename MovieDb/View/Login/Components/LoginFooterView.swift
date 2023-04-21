@@ -41,14 +41,14 @@ struct LoginFooterView: View {
                 
                 Button {
                     // TODO: - Action Code -
-                    showAlert = false //.toggle()
+                    //showAlert = false //.toggle()
                 } label: {
                     Text("Register Now")
                         .foregroundColor(Color.white)
                         .font(Font.system(size: 12))
                         .fontWeight(.medium)
                         .padding(.horizontal, -8)
-                }.customAlert(isPresented: $showAlert)
+                }//.customAlert(isPresented: $showAlert)
             } //: HSTACK
         } //: VStack
     }
