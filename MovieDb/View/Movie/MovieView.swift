@@ -46,10 +46,10 @@ struct MovieView: View {
             .navigationViewStyle(.stack)
             .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
         } //: NAVIGATION
-        .onAppear {
-            movieViewModel.getTopRatedMovies()
-            movieViewModel.getMovies()
-            movieViewModel.getMoviesGenres()
+        .task {
+            await movieViewModel.getTopRatedMovies()
+            await movieViewModel.getMovies()
+            await movieViewModel.getMoviesGenres()
         }
     }
 }
