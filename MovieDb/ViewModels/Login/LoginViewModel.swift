@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class LoginViewModel: BaseViewModel {
     @Published var emailText: String = ""
     @Published var passwordText: String = ""
