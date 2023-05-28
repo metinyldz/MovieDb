@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class TvSeriesViewModel: BaseViewModel {
     @Published var tvSeries: TvSeriesModel = TvSeriesModel()
     @Published var tvTopRated: TvTopRatedModel = TvTopRatedModel()
