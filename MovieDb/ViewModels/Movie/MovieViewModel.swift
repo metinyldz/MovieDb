@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class MovieViewModel: BaseViewModel {
     @Published var topRatedMovies: MovieTopRated = MovieTopRated()
     @Published var movies: Movie = Movie()
