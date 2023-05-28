@@ -29,7 +29,10 @@ struct MovieViewFooter: View {
                 PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie), genres: genres)
                     .padding(.vertical, 10)
                     .onTapGesture {
-                        movieViewModel.getMovieDetail(id: movie.id ?? -1)
+                        Task {
+                            await movieViewModel.getMovieDetail(id: movie.id ?? -1)
+                        }
+                        
                     }
             } //: LINK
         } //: LOOP

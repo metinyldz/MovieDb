@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class TvSeriesViewModel: BaseViewModel {
     @Published var tvSeries: TvSeriesModel = TvSeriesModel()
     @Published var tvTopRated: TvTopRatedModel = TvTopRatedModel()
@@ -18,28 +19,28 @@ class TvSeriesViewModel: BaseViewModel {
     
     var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
-    func getTvSeries() {
+    func getTvSeries() async {
         movieDbNetworkClient
             .getTvSeries()
             .replaceError(with: TvSeriesModel())
             .assign(to: &$tvSeries)
     }
     
-    func getTvTopRated() {
+    func getTvTopRated() async {
         movieDbNetworkClient
             .getTvTopRated()
             .replaceError(with: TvTopRatedModel())
             .assign(to: &$tvTopRated)
     }
     
-    func getTvGenres() {
+    func getTvGenres() async {
         movieDbNetworkClient
             .getTvGenres()
             .replaceError(with: GenreModel())
             .assign(to: &$tvGenres)
     }
     
-    func getTvSerieDetail(id: Int) {
+    func getTvSerieDetail(id: Int) async {
         movieDbNetworkClient
             .getTvSerieDetail(id: id)
             .replaceError(with: TvSerieDetailModel())
@@ -48,7 +49,7 @@ class TvSeriesViewModel: BaseViewModel {
         isActive = true
     }
     
-    func getTvSerieCredit(id: Int) {
+    func getTvSerieCredit(id: Int) async {
         movieDbNetworkClient
             .getTvSerieCredit(id: id)
             .replaceError(with: TvSerieCastModel())

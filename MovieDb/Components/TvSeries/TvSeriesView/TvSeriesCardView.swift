@@ -27,8 +27,10 @@ struct TvSeriesCardView: View {
                         NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: viewModel.tvSerieDetail, tvSerieCastModel: viewModel.tvSerieCast), isActive: $viewModel.isActive) {
                             TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
                                 .onTapGesture {
-                                    viewModel.getTvSerieCredit(id: result.id ?? -1)
-                                    viewModel.getTvSerieDetail(id: result.id ?? -1)
+                                    Task {
+                                        await viewModel.getTvSerieCredit(id: result.id ?? -1)
+                                        await viewModel.getTvSerieDetail(id: result.id ?? -1)
+                                    }
                                 }
                         }
                     } //: FOREACH

@@ -84,7 +84,9 @@ struct TvSeriesDetailFooterView: View {
                                 NavigationLink(destination: CastPersonView(castPeople: viewModel.castPeople), isActive: $viewModel.isActive) {
                                     CirclePhotoView(castDetail: item)
                                         .onTapGesture {
-                                            viewModel.getPerson(id: item.id ?? -1)
+                                            Task {
+                                                await viewModel.getPerson(id: item.id ?? -1)
+                                            }
                                         }
                                         .padding(.leading, 24)
                                 } //: LINK

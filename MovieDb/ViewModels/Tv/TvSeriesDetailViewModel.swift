@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class TvSeriesDetailViewModel: BaseViewModel {
     
     @Published var castPeople: CastPeopleModel = CastPeopleModel()
@@ -14,7 +15,7 @@ class TvSeriesDetailViewModel: BaseViewModel {
     
     var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
-    func getPerson(id: Int) {
+    func getPerson(id: Int) async {
         movieDbNetworkClient
             .getPerson(id: id)
             .replaceError(with: CastPeopleModel())

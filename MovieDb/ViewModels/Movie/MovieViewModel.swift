@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class MovieViewModel: BaseViewModel {
     @Published var topRatedMovies: MovieTopRated = MovieTopRated()
     @Published var movies: Movie = Movie()
@@ -16,21 +17,21 @@ class MovieViewModel: BaseViewModel {
     
     var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
     
-    func getTopRatedMovies() {
+    func getTopRatedMovies() async {
         movieDbNetworkClient
             .getTopRatedMovies()
             .replaceError(with: MovieTopRated())
             .assign(to: &$topRatedMovies)
     }
     
-    func getMovies() {
+    func getMovies() async {
         movieDbNetworkClient
             .getMovies()
             .replaceError(with: Movie())
             .assign(to: &$movies)
     }
     
-    func getMovieDetail(id: Int) {
+    func getMovieDetail(id: Int) async {
         movieDbNetworkClient
             .getMovieDetail(id: id)
             .replaceError(with: MovieDetailModel())
@@ -39,7 +40,7 @@ class MovieViewModel: BaseViewModel {
         isMovieDetailActive = true
     }
     
-    func getMoviesGenres() {
+    func getMoviesGenres() async {
         movieDbNetworkClient
             .getMoviesGenres()
             .replaceError(with: GenreModel())

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class SearchViewModel: BaseViewModel {
     let baseUrl = "https://api.themoviedb.org/3"
     
