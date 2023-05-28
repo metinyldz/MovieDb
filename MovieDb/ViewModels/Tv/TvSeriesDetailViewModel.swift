@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class TvSeriesDetailViewModel: BaseViewModel {
     
     @Published var castPeople: CastPeopleModel = CastPeopleModel()
