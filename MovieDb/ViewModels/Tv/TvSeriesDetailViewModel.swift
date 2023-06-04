@@ -13,13 +13,14 @@ class TvSeriesDetailViewModel: BaseViewModel {
     @Published var castPeople: CastPeopleModel = CastPeopleModel()
     @Published var isActive = false
     
-    var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    var networkManager = NetworkManager()
     
     func getPerson(id: Int) async {
-        movieDbNetworkClient
-            .getPerson(id: id)
-            .replaceError(with: CastPeopleModel())
-            .assign(to: &$castPeople)
-        isActive = true
+        do {
+            castPeople = try await networkManager.fetch(url: MovieDbRouter.getPerson(id: id).urlString, expecting: CastPeopleModel.self)
+            isActive = true
+        } catch {
+            print(error)
+        }
     }
 }

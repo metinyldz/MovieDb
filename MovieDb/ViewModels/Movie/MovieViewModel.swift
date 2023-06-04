@@ -15,35 +15,38 @@ class MovieViewModel: BaseViewModel {
     @Published var genres: GenreModel = GenreModel()
     @Published var isMovieDetailActive = false
     
-    var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    var networkManager = NetworkManager()
     
     func getTopRatedMovies() async {
-        movieDbNetworkClient
-            .getTopRatedMovies()
-            .replaceError(with: MovieTopRated())
-            .assign(to: &$topRatedMovies)
+        do {
+            topRatedMovies = try await networkManager.fetch(url: MovieDbRouter.getTopRatedMovies.urlString, expecting: MovieTopRated.self)
+        } catch {
+            print(error)
+        }
     }
     
     func getMovies() async {
-        movieDbNetworkClient
-            .getMovies()
-            .replaceError(with: Movie())
-            .assign(to: &$movies)
+        do {
+            movies = try await networkManager.fetch(url: MovieDbRouter.getMovies.urlString, expecting: Movie.self)
+        } catch {
+            print(error)
+        }
     }
     
     func getMovieDetail(id: Int) async {
-        movieDbNetworkClient
-            .getMovieDetail(id: id)
-            .replaceError(with: MovieDetailModel())
-            .assign(to: &$movieDetail)
-        
-        isMovieDetailActive = true
+        do {
+            movieDetail = try await networkManager.fetch(url: MovieDbRouter.getMovieDetail(id: id).urlString, expecting: MovieDetailModel.self)
+            isMovieDetailActive = true
+        } catch {
+            print(error)
+        }
     }
     
     func getMoviesGenres() async {
-        movieDbNetworkClient
-            .getMoviesGenres()
-            .replaceError(with: GenreModel())
-            .assign(to: &$genres)
+        do {
+            genres = try await networkManager.fetch(url: MovieDbRouter.getMoviesGenres.urlString, expecting: GenreModel.self)
+        } catch {
+            print(error)
+        }
     }
 }

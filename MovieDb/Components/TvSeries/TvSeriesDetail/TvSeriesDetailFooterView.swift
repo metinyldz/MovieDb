@@ -119,16 +119,6 @@ struct TvSeriesDetailFooterView: View {
             isCreatorsEmpty = false
         }
     }
-    
-    /*private func fetchPeopleCast(personId: Int) {
-        viewModel.fetchPerson(personId: personId) { result, success in
-            guard let result = result else { return }
-            if success {
-                castPeopleModel = result
-            }
-            isActive = success
-        }
-    }*/
 }
 
 struct TvSeriesDetailFooterView_Previews: PreviewProvider {
