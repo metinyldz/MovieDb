@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MovieDbRouter: RequestInfoConvertible {
+enum MovieDbRouter {
     
     //MARK: - Movies -
     case getTopRatedMovies
@@ -59,13 +59,5 @@ enum MovieDbRouter: RequestInfoConvertible {
         case .getPerson(let id):
             return "/person/\(id)?api_key=\(apiKey)&language=en-US"
         }
-    }
-    
-    func asRequestInfo() -> RequestInfo {
-        let requestInfo: RequestInfo = RequestInfo(url: urlString)
-                
-        // Set other property, like headers, parameters for requestInfo here
-        
-        return requestInfo
     }
 }
