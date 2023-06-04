@@ -17,42 +17,46 @@ class TvSeriesViewModel: BaseViewModel {
     @Published var tvSerieCast: TvSerieCastModel = TvSerieCastModel()
     @Published var isActive = false
     
-    var movieDbNetworkClient: MovieDbNetworkProvider = MovieDbNetworkClient()
+    var networkManager = NetworkManager()
     
     func getTvSeries() async {
-        movieDbNetworkClient
-            .getTvSeries()
-            .replaceError(with: TvSeriesModel())
-            .assign(to: &$tvSeries)
+        do {
+            tvSeries = try await networkManager.fetch(url: MovieDbRouter.getTvSeries.urlString, expecting: TvSeriesModel.self)
+        } catch {
+            print(error)
+        }
     }
     
     func getTvTopRated() async {
-        movieDbNetworkClient
-            .getTvTopRated()
-            .replaceError(with: TvTopRatedModel())
-            .assign(to: &$tvTopRated)
+        do {
+            tvTopRated = try await networkManager.fetch(url: MovieDbRouter.getTvTopRated.urlString, expecting: TvTopRatedModel.self)
+        } catch {
+            print(error)
+        }
     }
     
     func getTvGenres() async {
-        movieDbNetworkClient
-            .getTvGenres()
-            .replaceError(with: GenreModel())
-            .assign(to: &$tvGenres)
+        do {
+            tvGenres = try await networkManager.fetch(url: MovieDbRouter.getTvGenres.urlString, expecting: GenreModel.self)
+        } catch {
+            print(error)
+        }
     }
     
     func getTvSerieDetail(id: Int) async {
-        movieDbNetworkClient
-            .getTvSerieDetail(id: id)
-            .replaceError(with: TvSerieDetailModel())
-            .assign(to: &$tvSerieDetail)
-        
-        isActive = true
+        do {
+            tvSerieDetail = try await networkManager.fetch(url: MovieDbRouter.getTvSerieDetail(id: id).urlString, expecting: TvSerieDetailModel.self)
+            isActive = true
+        } catch {
+            print(error)
+        }
     }
     
     func getTvSerieCredit(id: Int) async {
-        movieDbNetworkClient
-            .getTvSerieCredit(id: id)
-            .replaceError(with: TvSerieCastModel())
-            .assign(to: &$tvSerieCast)
+        do {
+            tvSerieCast = try await networkManager.fetch(url: MovieDbRouter.getTvSerieCredit(id: id).urlString, expecting: TvSerieCastModel.self)
+        } catch {
+            print(error)
+        }
     }
 }
