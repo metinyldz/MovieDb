@@ -17,7 +17,8 @@ struct LoginFooterView: View {
         VStack {
             NavigationLink(destination: MainTabView(), isActive: $isLogin) {
                 Button {
-                    isLogin = (isValidEmail(emailText) && isValidPassword(passwordText)) ? true : false
+//                    isLogin = (isValidEmail(emailText) && isValidPassword(passwordText)) ? true : false
+                    isLogin = true
                 } label: {
                     Text("Login")
                         .foregroundColor(Color("VibrantBlue"))
