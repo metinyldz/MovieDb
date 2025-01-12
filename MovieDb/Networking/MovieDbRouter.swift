@@ -28,7 +28,7 @@ enum MovieDbRouter {
     }
     
     var apiKey: String {
-        "bda292e517965b20e63898a81d051a45"
+        Config.value(for: "MOVIE_DB_API_KEY")
     }
     
     var urlString: String {
@@ -59,5 +59,18 @@ enum MovieDbRouter {
         case .getPerson(let id):
             return "/person/\(id)?api_key=\(apiKey)&language=en-US"
         }
+    }
+}
+
+import Foundation
+
+class Config {
+    static func value(for key: String) -> String {
+        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let dictionary = NSDictionary(contentsOfFile: path) as? [String: Any],
+              let value = dictionary[key] as? String else {
+            fatalError("Missing \(key) in Config.plist")
+        }
+        return value
     }
 }
