@@ -32,7 +32,7 @@ enum MovieDbRouter {
     }
     
     var urlString: String {
-        "\(endpoint)/\(path)"
+        "\(endpoint)\(path)"
     }
     
     var path: String {
