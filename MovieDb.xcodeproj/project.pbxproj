@@ -57,7 +57,6 @@
 		18EC9402283A64E500AB47AC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC9401283A64E500AB47AC /* SearchBar.swift */; };
 		18EC9404283A78D500AB47AC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC9403283A78D500AB47AC /* ProfileView.swift */; };
 		18EC9407283A7BDB00AB47AC /* ProfileFavoriteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC9406283A7BDB00AB47AC /* ProfileFavoriteCardView.swift */; };
-		18F1CBB92D34097800417B13 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F1CBB82D34097800417B13 /* Config.plist */; };
 		18F287022850CE6E00C2D5AE /* TvSeriesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F287012850CE6E00C2D5AE /* TvSeriesDetailViewModel.swift */; };
 		18F287092850CEDA00C2D5AE /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F287082850CEDA00C2D5AE /* Genre.swift */; };
 		18F2870D2850CEE200C2D5AE /* TvSerieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2870A2850CEE100C2D5AE /* TvSerieDetailModel.swift */; };
@@ -76,6 +75,7 @@
 		18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */; };
 		18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */; };
 		18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9729EADECF00611CA6 /* WarningView.swift */; };
+		AB83A95F2DB299AA00446DBE /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB83A95E2DB299AA00446DBE /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,7 +132,6 @@
 		18EC9401283A64E500AB47AC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		18EC9403283A78D500AB47AC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		18EC9406283A7BDB00AB47AC /* ProfileFavoriteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFavoriteCardView.swift; sourceTree = "<group>"; };
-		18F1CBB82D34097800417B13 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		18F287012850CE6E00C2D5AE /* TvSeriesDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvSeriesDetailViewModel.swift; sourceTree = "<group>"; };
 		18F287082850CEDA00C2D5AE /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		18F2870A2850CEE100C2D5AE /* TvSerieDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvSerieDetailModel.swift; sourceTree = "<group>"; };
@@ -152,6 +151,7 @@
 		18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18FE2E9729EADECF00611CA6 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
+		AB83A95E2DB299AA00446DBE /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -376,7 +376,7 @@
 				18754E422830146600D563D9 /* SupportingFiles */,
 				18D1303D282448AA0064C61C /* View */,
 				18F286F92850CE3500C2D5AE /* ViewModels */,
-				18F1CBB82D34097800417B13 /* Config.plist */,
+				AB83A95E2DB299AA00446DBE /* Config.plist */,
 			);
 			path = MovieDb;
 			sourceTree = "<group>";
@@ -635,7 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D13037282448420064C61C /* Preview Assets.xcassets in Resources */,
-				18F1CBB92D34097800417B13 /* Config.plist in Resources */,
+				AB83A95F2DB299AA00446DBE /* Config.plist in Resources */,
 				18D13034282448420064C61C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
