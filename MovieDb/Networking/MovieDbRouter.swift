@@ -62,8 +62,6 @@ enum MovieDbRouter {
     }
 }
 
-import Foundation
-
 class Config {
     static func value(for key: String) -> String {
         guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
