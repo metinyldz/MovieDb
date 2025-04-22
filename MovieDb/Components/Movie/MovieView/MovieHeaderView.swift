@@ -64,6 +64,7 @@ struct MovieHeaderView: View {
 struct MovieHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         MovieHeaderView(movieTopRatedResult: MovieTopRatedResult.all())
+            .environmentObject(ContentBindigs())
             .preferredColorScheme(.light)
     }
 }
