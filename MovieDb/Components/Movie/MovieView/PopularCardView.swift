@@ -79,7 +79,7 @@ struct PopularCardView: View {
                         Divider()
                             .frame(height: 12)
                         
-                        RatingView(rating: "\(movieResult.vote_average ?? 0)")
+                        SmallRatingView(rating: "\(movieResult.vote_average ?? 0)")
                             .padding(.horizontal, 4)
                         
                         Spacer()

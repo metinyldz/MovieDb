@@ -16,7 +16,7 @@ struct TvDescriptionView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if let originalName = tv?.original_name, let genreIds = tv?.genre_ids  {
-                RatingView(rating: "\(rating ?? 0)")
+                SmallRatingView(rating: "\(rating ?? 0)")
                 
                 Text(originalName)
                     .font(Font.system(size: 28))
