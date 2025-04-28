@@ -15,7 +15,7 @@ struct MovieDescriptionView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RatingView(rating: "\(rating ?? 0)")
+            SmallRatingView(rating: "\(rating ?? 0)")
             
             Text(movie?.title ?? "")
                 .font(Font.system(size: 28))
