@@ -7,3 +7,4 @@ MovieDb.xcworkspace/xcuserdata/metinyildiz.xcuserdatad/UserInterfaceState.xcuser
 MovieDb/Config.plist
 *.xcuserstate
 *.xcbkptlist
+MovieDb/Config.swift
