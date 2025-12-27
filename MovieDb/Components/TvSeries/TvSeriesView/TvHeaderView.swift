@@ -28,30 +28,30 @@ struct TvHeaderView: View {
             } //: VStack
             
             if !tvTopRatedResult.isEmpty {
-                PagingView(config: .init(margin: 20, spacing: -40), page: $pageIndex) {
-                    Group {
-                        ForEach(tvTopRatedResult, id: \.self) { tv in
-                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tv.poster_path ?? "")")) { image in
-                                image
-                                    .resizable()
-                                    .frame(width: 260, height: 373)
-                            } placeholder: {
-                                Image("moviePlaceholder")
-                                    .resizable()
-                                    .frame(width: 260, height: 373)
-                            }
-                        } //: LOOP
-                    } //: GROUP
-                    .mask(RoundedRectangle(cornerRadius: 10))
-                    .aspectRatio(1.4, contentMode: .fit)
-                } //: PAGING
+                TabView(selection: $pageIndex) {
+                    ForEach(Array(tvTopRatedResult.enumerated()), id: \.element) { index, tv in
+                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tv.poster_path ?? "")")) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            Image("moviePlaceholder")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding(.horizontal, 40)
+                        .tag(index)
+                    } //: LOOP
+                } //: TabView
+                .tabViewStyle(.page(indexDisplayMode: .automatic))
                 .frame(height: 373)
                 .padding(.vertical, 20)
-                .onAppear(perform: {
+                .onAppear {
                     contentBindigs.tvPageIndex = pageIndex
-                })
+                }
                 .onChange(of: pageIndex) { newValue in
-                    contentBindigs.tvPageIndex = pageIndex
+                    contentBindigs.tvPageIndex = newValue
                 }
             }
         } //: ZStack

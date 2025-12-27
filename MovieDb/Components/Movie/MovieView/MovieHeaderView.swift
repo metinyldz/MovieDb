@@ -28,33 +28,34 @@ struct MovieHeaderView: View {
             } //: VStack
             
             if !movieTopRatedResult.isEmpty {
-                PagingView(config: .init(margin: 20, spacing: -40), page: $pageIndex) {
-                    Group {
-                        ForEach(movieTopRatedResult, id: \.self) { movie in
-                            NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
-                                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path ?? "")")) { image in
-                                    image
-                                        .resizable()
-                                        .frame(width: 260, height: 373)
-                                } placeholder: {
-                                    Image("moviePlaceholder")
-                                        .resizable()
-                                        .frame(width: 260, height: 373)
-                                }
-                            }.isDetailLink(false).buttonStyle(.plain)
-                        } //: LOOP
-                    } //: GROUP
-                    .mask(RoundedRectangle(cornerRadius: 10))
-                    .aspectRatio(1.4, contentMode: .fit)
-
-                } //: PAGING
+                TabView(selection: $pageIndex) {
+                    ForEach(Array(movieTopRatedResult.enumerated()), id: \.element) { index, movie in
+                        NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
+                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path ?? "")")) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            } placeholder: {
+                                Image("moviePlaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                        }
+                        .isDetailLink(false)
+                        .buttonStyle(.plain)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding(.horizontal, 40)
+                        .tag(index)
+                    } //: LOOP
+                } //: TabView
+                .tabViewStyle(.page(indexDisplayMode: .automatic))
                 .frame(height: 373)
                 .padding(.vertical, 20)
-                .onAppear(perform: {
+                .onAppear {
                     contentBindigs.moviePageIndex = pageIndex
-                })
+                }
                 .onChange(of: pageIndex) { newValue in
-                    contentBindigs.moviePageIndex = pageIndex
+                    contentBindigs.moviePageIndex = newValue
                 }
             }
         } //: ZStack
