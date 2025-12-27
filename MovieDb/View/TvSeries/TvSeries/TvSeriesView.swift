@@ -34,6 +34,18 @@ struct TvSeriesView: View {
         viewModel.tvGenres.genres != nil
     }
     
+    private var isLoading: Bool {
+        viewModel.loadingState.isLoading
+    }
+    
+    private var loadingError: Error? {
+        viewModel.loadingState.error
+    }
+    
+    private var isOfflineError: Bool {
+        viewModel.loadingState.isOfflineError
+    }
+    
     private var currentTvShow: TvTopRatedResult? {
         guard let results = viewModel.tvTopRated.results,
               contentBindigs.tvPageIndex < results.count else {
@@ -67,8 +79,18 @@ struct TvSeriesView: View {
     
     private var contentScrollView: some View {
         ScrollView(showsIndicators: false) {
-            if isDataLoaded {
+            if isLoading {
+                loadingView
+            } else if isOfflineError {
+                OfflineModeView(onRetry: {
+                    loadData()
+                })
+            } else if let error = loadingError {
+                errorView(error: error)
+            } else if isDataLoaded {
                 mainContent
+            } else {
+                emptyStateView
             }
         }
     }
@@ -91,6 +113,77 @@ struct TvSeriesView: View {
     }
     
     // MARK: - Section Views
+    
+    private var loadingView: some View {
+        VStack(spacing: 16) {
+            ProgressView()
+                .scaleEffect(1.5)
+                .tint(Color("VibrantBlue"))
+            
+            Text("Loading TV Series...")
+                .font(.headline)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, 100)
+    }
+    
+    private func errorView(error: Error) -> some View {
+        VStack(spacing: 20) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.system(size: 50))
+                .foregroundColor(.orange)
+            
+            Text("Oops! Something went wrong")
+                .font(.title2)
+                .fontWeight(.bold)
+            
+            Text(error.localizedDescription)
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, Constants.horizontalPadding)
+            
+            Button(action: {
+                AnalyticsManager.log(event: .userAction(
+                    "ErrorRetryButtonTapped",
+                    parameters: [
+                        "screen": "TVSeries",
+                        "errorType": String(describing: type(of: error)),
+                        "retryCount": viewModel.retryCount
+                    ]
+                ))
+                loadData()
+            }) {
+                HStack {
+                    Image(systemName: "arrow.clockwise")
+                    Text("Try Again")
+                }
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 12)
+                .background(Color("VibrantBlue"))
+                .cornerRadius(10)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, 100)
+    }
+    
+    private var emptyStateView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "tv.slash")
+                .font(.system(size: 50))
+                .foregroundColor(.secondary)
+            
+            Text("No TV Series Available")
+                .font(.headline)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, 100)
+    }
     
     private func headerSection(results: [TvTopRatedResult]) -> some View {
         TvHeaderView(tvTopRatedResult: results)
@@ -136,21 +229,15 @@ struct TvSeriesView: View {
     
     private func loadData() {
         Task {
-            await withTaskGroup(of: Void.self) { group in
-                group.addTask { await viewModel.getTvTopRated() }
-                group.addTask { await viewModel.getTvSeries() }
-                group.addTask { await viewModel.getTvGenres() }
-            }
+            await viewModel.loadAllData()
         }
     }
 }
 
 // MARK: - Preview
 
-struct TvSeriesView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesView()
-            .environmentObject(ContentBindigs())
-            .preferredColorScheme(.light)
-    }
+#Preview {
+    TvSeriesView()
+        .environmentObject(ContentBindigs())
+        .preferredColorScheme(.light)
 }
