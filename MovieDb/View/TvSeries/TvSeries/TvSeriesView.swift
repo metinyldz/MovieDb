@@ -60,10 +60,12 @@ struct TvSeriesView: View {
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
             } //: ZSTACK
         } //: NAVIGATION
-        .task {
-            await viewModel.getTvTopRated()
-            await viewModel.getTvSeries()
-            await viewModel.getTvGenres()
+        .onFirstAppear {
+            Task {
+                await viewModel.getTvTopRated()
+                await viewModel.getTvSeries()
+                await viewModel.getTvGenres()
+            }
         }
     }
 }

@@ -67,6 +67,8 @@
 		18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */; };
 		18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9729EADECF00611CA6 /* WarningView.swift */; };
 		AB991A052EF47B4D003355A2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB991A042EF47AED003355A2 /* Config.swift */; };
+		ABA5E3922F004511003E8BE6 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3912F00450D003E8BE6 /* View+Extension.swift */; };
+		ABA5E3952F00477A003E8BE6 /* FirstAppearModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		18FE2E9729EADECF00611CA6 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
 		AB991A042EF47AED003355A2 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		ABA5E3912F00450D003E8BE6 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppearModifier.swift; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +298,8 @@
 		18B0CFF32826C3B6007C73A3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				ABA5E3932F00476E003E8BE6 /* ViewModifier */,
+				ABA5E3912F00450D003E8BE6 /* View+Extension.swift */,
 				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
 				1894F7A0285129E40045E516 /* Converter.swift */,
 				18666BDF28538EBE008654E6 /* ContentBindigs.swift */,
@@ -523,6 +529,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		ABA5E3932F00476E003E8BE6 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -633,6 +647,7 @@
 				18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */,
 				1829CD4B294FB35700B9F08B /* BaseViewModel.swift in Sources */,
 				18F287142850CEE700C2D5AE /* MovieDetailModel.swift in Sources */,
+				ABA5E3952F00477A003E8BE6 /* FirstAppearModifier.swift in Sources */,
 				1825E9242860E85900653042 /* SearchCardView.swift in Sources */,
 				18CEADAC285A5D6800D01D70 /* TvSeriesSingleCardView.swift in Sources */,
 				18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */,
@@ -674,6 +689,7 @@
 				18B30902285FADA000B89724 /* CastPersonView.swift in Sources */,
 				18F2870E2850CEE200C2D5AE /* TvSeriesModel.swift in Sources */,
 				188CD6F228426FE4007D85D0 /* SplashView.swift in Sources */,
+				ABA5E3922F004511003E8BE6 /* View+Extension.swift in Sources */,
 				18FE2E9029EAD3D000611CA6 /* LoginFooterView.swift in Sources */,
 				18677A692859076A0015FF0E /* FavoriteModel.swift in Sources */,
 				18C55F852851301C00BE6ABF /* TvHeaderView.swift in Sources */,
