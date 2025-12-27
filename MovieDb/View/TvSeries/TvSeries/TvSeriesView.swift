@@ -19,16 +19,11 @@ struct TvSeriesView: View {
                     .ignoresSafeArea(.all, edges: .all)
                 
                 ScrollView(showsIndicators: false) {
-                    
                     if let results = viewModel.tvTopRated.results,
                        let tvSeriesResults = viewModel.tvSeries.results,
                        let genres = viewModel.tvGenres.genres {
                         
-                        //MARK: - HEADER -
-                        
                         TvHeaderView(tvTopRatedResult: results)
-                        
-                        //MARK: - CENTER -
                         
                         TvDescriptionView(rating: results[contentBindigs.tvPageIndex].vote_average,
                                           tv: results[contentBindigs.tvPageIndex],
@@ -39,13 +34,11 @@ struct TvSeriesView: View {
                             .padding(.horizontal, 24)
                             .padding(.vertical, 20)
                         
-                        //MARK: - FOOTER -
-                        
                         VStack {
                             Text("Top Rated")
                                 .font(Font.system(size: 22))
                                 .fontWeight(.bold)
-                        } //: VSTACK
+                        }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .padding(.horizontal, 24)
                         .padding(.bottom, 10)
@@ -55,11 +48,11 @@ struct TvSeriesView: View {
                             .padding(.bottom, 10)
                             .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)
                     }
-                } //: SCROLL
+                }
                 .navigationBarTitle("TV Series", displayMode: .large)
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-            } //: ZSTACK
-        } //: NAVIGATION
+            }
+        }
         .onFirstAppear {
             Task {
                 await viewModel.getTvTopRated()
