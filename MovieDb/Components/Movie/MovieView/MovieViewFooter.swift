@@ -25,6 +25,7 @@ struct MovieViewFooter: View {
         .padding(.bottom, 10)
         
         ForEach(moviesResults, id: \.self) { movie in
+            // TODO: (Metin) Use with a new navigation layer. -
             NavigationLink(destination: MovieDetailView(content: movieViewModel.movieDetail), isActive: $movieViewModel.isMovieDetailActive) {
                 PopularCardView(movieResult: movie, isFavorite: getFavoriteItem(movie), genres: genres)
                     .padding(.vertical, 10)

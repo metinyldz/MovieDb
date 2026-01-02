@@ -23,6 +23,7 @@ struct TvSeriesCardView: View {
         if let results = tvResults {
             LazyVGrid(columns: columns, spacing: 30) {
                 ForEach(results, id: \.self) { result in
+                    // TODO: (Metin) Use with a new navigation layer. -
                     NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: viewModel.tvSerieDetail, tvSerieCastModel: viewModel.tvSerieCast), isActive: $viewModel.isActive) {
                         TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
                             .onTapGesture {

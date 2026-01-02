@@ -15,8 +15,9 @@ struct LoginFooterView: View {
     
     var body: some View {
         VStack {
+            // TODO: (Metin) Use with a new navigation layer. -
             NavigationLink(destination: MainTabView(), isActive: $isLogin) {
-                Button {
+                Button { // TODO: Check the comment line. Remove or use it
 //                    isLogin = (isValidEmail(emailText) && isValidPassword(passwordText)) ? true : false
                     isLogin = true
                 } label: {

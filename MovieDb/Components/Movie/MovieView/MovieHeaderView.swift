@@ -30,6 +30,7 @@ struct MovieHeaderView: View {
             if !movieTopRatedResult.isEmpty {
                 TabView(selection: $pageIndex) {
                     ForEach(Array(movieTopRatedResult.enumerated()), id: \.element) { index, movie in
+                        // TODO: (Metin) Use with a new navigation layer. -
                         NavigationLink(destination: MovieLocationView(), isActive: $isActive) {
                             AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path ?? "")")) { image in
                                 image

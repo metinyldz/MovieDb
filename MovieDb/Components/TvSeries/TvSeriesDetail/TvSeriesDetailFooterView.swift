@@ -81,6 +81,7 @@ struct TvSeriesDetailFooterView: View {
                     HStack(spacing: 20) {
                         if let castData = cast.cast {
                             ForEach(castData, id: \.self) { item in
+                                // TODO: (Metin) Use with a new navigation layer. -
                                 NavigationLink(destination: CastPersonView(castPeople: viewModel.castPeople), isActive: $viewModel.isActive) {
                                     CirclePhotoView(castDetail: item)
                                         .onTapGesture {
