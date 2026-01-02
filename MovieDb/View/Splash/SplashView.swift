@@ -10,15 +10,18 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var isActive = false
+    @StateObject private var navigationManager = NavigationManager()
     
     var body: some View {
         VStack {
-            if isActive {
-                ContentView()
-            } else {
-                SplashFinalView()
+            NavigationStack(path: $navigationManager.path) {
+                if isActive {
+                    ContentView()
+                } else {
+                    SplashFinalView()
+                }
             }
-        } //: VSTACK
+        }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {

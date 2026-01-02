@@ -69,6 +69,7 @@
 		AB93B3262F005C33007E081D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93B3252F005C2F007E081D /* Config.swift */; };
 		ABA5E3922F004511003E8BE6 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3912F00450D003E8BE6 /* View+Extension.swift */; };
 		ABA5E3952F00477A003E8BE6 /* FirstAppearModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */; };
+		ABD5FDC42F0819AC00370100 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5FDC32F0819A400370100 /* NavigationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		AB93B3252F005C2F007E081D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		ABA5E3912F00450D003E8BE6 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppearModifier.swift; sourceTree = "<group>"; };
+		ABD5FDC32F0819A400370100 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		DB48551655D2084D209CE71B /* Pods-MovieDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.debug.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,11 +300,12 @@
 		18B0CFF32826C3B6007C73A3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				ABA5E3932F00476E003E8BE6 /* ViewModifier */,
-				ABA5E3912F00450D003E8BE6 /* View+Extension.swift */,
-				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
-				1894F7A0285129E40045E516 /* Converter.swift */,
 				18666BDF28538EBE008654E6 /* ContentBindigs.swift */,
+				1894F7A0285129E40045E516 /* Converter.swift */,
+				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
+				ABD5FDC32F0819A400370100 /* NavigationManager.swift */,
+				ABA5E3912F00450D003E8BE6 /* View+Extension.swift */,
+				ABA5E3932F00476E003E8BE6 /* ViewModifier */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				18B30909285FBA3900B89724 /* SearchViewModel.swift in Sources */,
 				188CD6F528427ED8007D85D0 /* SplashFinalView.swift in Sources */,
 				18EC9407283A7BDB00AB47AC /* ProfileFavoriteCardView.swift in Sources */,
+				ABD5FDC42F0819AC00370100 /* NavigationManager.swift in Sources */,
 				187876582834218400ACFEAB /* CirclePhotoView.swift in Sources */,
 				18EC9402283A64E500AB47AC /* SearchBar.swift in Sources */,
 				18B0CFF62826C44E007C73A3 /* MovieHeaderView.swift in Sources */,
