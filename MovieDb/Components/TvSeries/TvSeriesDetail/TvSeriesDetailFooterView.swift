@@ -80,7 +80,6 @@ struct TvSeriesDetailFooterView: View {
                     HStack(spacing: 20) {
                         if let castData = cast.cast {
                             ForEach(castData, id: \.self) { item in
-                                // TODO: (Metin) Use with a new navigation layer. -
                                 CirclePhotoView(castDetail: item)
                                     .onTapGesture {
                                         if let id = item.id {
