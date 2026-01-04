@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some View {
