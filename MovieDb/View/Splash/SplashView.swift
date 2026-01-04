@@ -10,16 +10,19 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var isActive = false
-    @StateObject private var navigationManager = NavigationManager()
     
     var body: some View {
         VStack {
-            NavigationStack(path: $navigationManager.path) {
-                if isActive {
-                    ContentView()
-                } else {
-                    SplashFinalView()
-                }
+            if isActive {
+                ContentView()
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .castPersonView(let id):
+                            CastPersonView(id: id)
+                        }
+                    }
+            } else {
+                SplashFinalView()
             }
         }
         .onAppear {

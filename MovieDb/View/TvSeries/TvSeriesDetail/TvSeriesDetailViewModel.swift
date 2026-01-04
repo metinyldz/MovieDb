@@ -15,10 +15,11 @@ class TvSeriesDetailViewModel: BaseViewModel {
     
     var networkManager = NetworkManager()
     
-    func getPerson(id: Int) async {
+    func getPerson(id: Int, completion: @escaping (CastPeopleModel?) -> Void) async {
         do {
             castPeople = try await networkManager.fetch(url: MovieDbRouter.getPerson(id: id).urlString, expecting: CastPeopleModel.self)
             isActive = true
+            completion(castPeople)
         } catch {
             print(error)
         }

@@ -23,8 +23,6 @@ class NavigationManager: ObservableObject {
     }
 }
 
-
 enum Route: Hashable {
-    case main
-    case login
+    case castPersonView(id: Int)
 }

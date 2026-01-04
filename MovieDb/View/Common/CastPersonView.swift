@@ -10,38 +10,45 @@ import SwiftUI
 struct CastPersonView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var castPeople: CastPeopleModel?
+    @StateObject var viewModel = TvSeriesDetailViewModel()
+    @State private var castPeople: CastPeopleModel?
+    
+    var id: Int
     
     var body: some View {
         ScrollView {
             if let castPeople = castPeople {
                 VStack {
-                    //MARK: - HEADER -
                     CastPersonHeaderView(presentationMode: _presentationMode, castPeople: castPeople)
                     
-                    //MARK: - CENTER -
                     CastPersonCenterView(castPeople: castPeople)
                     
-                    //MARK: - FOOTER -
                     CastPersonFooterView(castPeople: castPeople)
-                } //: VStack
+                }
             }
-        } //: SCROLL
+        }
         .background(Color("BackgroundColor"))
         .navigationBarHidden(true)
+        .onFirstAppear {
+            Task {
+                await viewModel.getPerson(id: id) { model in
+                    castPeople = model
+                }
+            }
+        }
     }
 }
 
 struct CastPersonHeaderView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var castPeople: CastPeopleModel?
+    var castPeople: CastPeopleModel
     
     var body: some View {
         ZStack {
             GeometryReader { proxy in
                 let global = proxy.frame(in: .global)
                 
-                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(castPeople?.profile_path ?? "")")) { image in
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(castPeople.profile_path ?? "")")) { image in
                     image
                         .resizable()
                         .offset(y: global.minY > 0 ? -global.minY : 0)
@@ -67,12 +74,12 @@ struct CastPersonHeaderView: View {
                         .padding([.leading, .trailing], 24)
                     
                     Spacer()
-                } //: HStack
+                }
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 
                 Spacer()
-            } //: VStack
-        } //: ZStack
+            }
+        }
     }
 }
 
@@ -119,8 +126,6 @@ struct CastPersonFooterView: View {
     }
 }
 
-struct CastPersonView_Previews: PreviewProvider {
-    static var previews: some View {
-        CastPersonView(castPeople: CastPeopleModel.all())
-    }
+#Preview {
+    CastPersonView(id: -1)
 }

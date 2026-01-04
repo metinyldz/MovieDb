@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct TvSeriesDetailFooterView: View {
-    
-    @StateObject var viewModel = TvSeriesDetailViewModel()
+    @EnvironmentObject var navigationManager: NavigationManager
     
     var content: TvSerieDetailModel
     var cast: TvSerieCastModel
@@ -82,17 +81,13 @@ struct TvSeriesDetailFooterView: View {
                         if let castData = cast.cast {
                             ForEach(castData, id: \.self) { item in
                                 // TODO: (Metin) Use with a new navigation layer. -
-                                NavigationLink(destination: CastPersonView(castPeople: viewModel.castPeople), isActive: $viewModel.isActive) {
-                                    CirclePhotoView(castDetail: item)
-                                        .onTapGesture {
-                                            Task {
-                                                await viewModel.getPerson(id: item.id ?? -1)
-                                            }
+                                CirclePhotoView(castDetail: item)
+                                    .onTapGesture {
+                                        if let id = item.id {
+                                            navigationManager.navigate(to: .castPersonView(id: id))
                                         }
-                                        .padding(.leading, 24)
-                                } //: LINK
-                                .isDetailLink(false)
-                                .buttonStyle(.plain)
+                                    }
+                                    .padding(.leading, 24)
                             } //: FOREACH
                         }
                     } //: HSTACK

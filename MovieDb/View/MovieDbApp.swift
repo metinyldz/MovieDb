@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct MovieDbApp: App {
+    @StateObject private var navigationManager = NavigationManager()
     
     init() {
         UITabBar.appearance().barTintColor = UIColor(Color.white)
@@ -30,9 +31,12 @@ struct MovieDbApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashView()
-                .preferredColorScheme(.light)
-                .environmentObject(ContentBindigs())
+            NavigationStack(path: $navigationManager.path) {
+                SplashView()
+                    .preferredColorScheme(.light)
+            }
+            .environmentObject(ContentBindigs())
+            .environmentObject(navigationManager)
         }
     }
 }

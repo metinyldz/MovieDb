@@ -30,7 +30,6 @@ struct CastPeopleModel: Codable {
                                id: 287,
                                name: "Brad Pitt",
                                also_known_as: [
-                                
                                 "Бред Питт",
                                 "Бред Пітт",
                                 "Buratto Pitto",
