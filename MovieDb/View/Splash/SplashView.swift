@@ -17,6 +17,8 @@ struct SplashView: View {
                 ContentView()
                     .navigationDestination(for: Route.self) { route in
                         switch route {
+                        case .tvSeriesDetail(let id):
+                            TvSeriesDetailView(id: id)
                         case .castPersonView(let id):
                             CastPersonView(id: id)
                         }

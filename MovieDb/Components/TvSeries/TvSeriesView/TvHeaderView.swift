@@ -25,7 +25,7 @@ struct TvHeaderView: View {
                     .foregroundColor(Color("VibrantBlue"))
                 
                 Spacer()
-            } //: VStack
+            }
             
             if !tvTopRatedResult.isEmpty {
                 TabView(selection: $pageIndex) {
@@ -42,8 +42,8 @@ struct TvHeaderView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal, 40)
                         .tag(index)
-                    } //: LOOP
-                } //: TabView
+                    }
+                }
                 .tabViewStyle(.page(indexDisplayMode: .automatic))
                 .frame(height: 373)
                 .padding(.vertical, 20)
@@ -54,7 +54,7 @@ struct TvHeaderView: View {
                     contentBindigs.tvPageIndex = newValue
                 }
             }
-        } //: ZStack
+        }
     }
 }
 

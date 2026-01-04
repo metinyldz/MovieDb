@@ -83,12 +83,12 @@ struct PopularCardView: View {
                             .padding(.horizontal, 4)
                         
                         Spacer()
-                    } //: HSTACK
-                } //: VSTACK
+                    }
+                }
                 .frame(maxWidth: .infinity)
                 .padding(.all, 10)
-            } //: HSTACK
-        } //: ZSTACK
+            }
+        }
         .frame(width: 327, height: 100)
         .cornerRadius(8)
         .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)

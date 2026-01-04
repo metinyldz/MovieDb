@@ -18,23 +18,20 @@ struct TvSeriesCardView: View {
     @StateObject var viewModel = TvSeriesViewModel()
     @State private var isActive = false
     @EnvironmentObject var contentBindigs: ContentBindigs
+    @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
         if let results = tvResults {
             LazyVGrid(columns: columns, spacing: 30) {
                 ForEach(results, id: \.self) { result in
-                    // TODO: (Metin) Use with a new navigation layer. -
-                    NavigationLink(destination: TvSeriesDetailView(tvSerieDetailModel: viewModel.tvSerieDetail, tvSerieCastModel: viewModel.tvSerieCast), isActive: $viewModel.isActive) {
-                        TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
-                            .onTapGesture {
-                                Task {
-                                    await viewModel.getTvSerieCredit(id: result.id ?? -1)
-                                    await viewModel.getTvSerieDetail(id: result.id ?? -1)
-                                }
+                    TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
+                        .onTapGesture {
+                            if let id = result.id {
+                                navigationManager.navigate(to: .tvSeriesDetail(id: id))
                             }
-                    }
-                } //: FOREACH
-            } //: LAZYVGRID
+                        }
+                }
+            }
             .padding(.bottom, 10)
         }
     }

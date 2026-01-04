@@ -44,7 +44,7 @@ struct LoginTextFieldView: View {
                 .background(.white)
                 .padding(.horizontal, 24)
                 .padding(.top, -8)
-        } //: VStack
+        }
     }
 }
 

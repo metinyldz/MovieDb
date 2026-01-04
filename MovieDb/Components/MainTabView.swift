@@ -46,7 +46,7 @@ struct MainTabView: View {
                         Image("iconsTabbarProfil")
                     }
                 }.tag(3)
-        } //: TAB
+        }
         .environmentObject(ContentBindigs())
     }
 }

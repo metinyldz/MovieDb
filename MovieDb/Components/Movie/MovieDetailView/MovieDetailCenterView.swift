@@ -55,12 +55,12 @@ struct MovieDetailCenterView: View {
                 Divider()
                     .padding(.horizontal, 10)
                     .frame(height: 12)
-            } //: HStack
+            }
             
             Divider()
                 .padding(.vertical, 20)
             
-        } //: VStack
+        }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 24)
         

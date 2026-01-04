@@ -23,7 +23,7 @@ struct MovieDescriptionView: View {
             Text(getGenres(genreIds: movie?.genre_ids ?? [0]))
                 .font(Font.system(size: 14))
                 .fontWeight(.medium)
-        } //: VStack
+        }
         .frame(maxWidth: .infinity,
                maxHeight: 111,
                alignment: .leading)

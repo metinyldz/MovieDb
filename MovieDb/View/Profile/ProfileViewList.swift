@@ -17,7 +17,7 @@ struct ProfileViewList: View {
             Text("Favorite")
                 .font(Font.system(size: 22))
                 .fontWeight(.bold)
-        } //: VSTACK
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding(.horizontal, 24)
         .padding(.bottom, 10)

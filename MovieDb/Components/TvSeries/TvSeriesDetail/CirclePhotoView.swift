@@ -27,14 +27,14 @@ struct CirclePhotoView: View {
                         .frame(width: 70, height: 70)
                         .cornerRadius(35)
                 }
-            } //: ZSTACK
+            }
             
             Text(castDetail.original_name ?? "-")
                 .fontWeight(.regular)
                 .font(.system(size: 15))
                 .frame(width: 100, height: 18)
             
-        } //: VSTACK
+        }
     }
 }
 

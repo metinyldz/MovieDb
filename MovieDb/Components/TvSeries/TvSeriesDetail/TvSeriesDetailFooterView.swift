@@ -37,9 +37,9 @@ struct TvSeriesDetailFooterView: View {
                         .font(Font.system(size: 12))
                         .fontWeight(.black)
                         .frame(maxWidth: .infinity, maxHeight: 14)
-                } //: ZSTACK
+                }
                 .frame(width: 81, height: 24)
-            } //: VSTACK
+            }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 24)
             
@@ -62,7 +62,7 @@ struct TvSeriesDetailFooterView: View {
                     }
 
                     Spacer()
-                } //: HSTACK
+                }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 20)
                 .padding(.horizontal, 24)
@@ -87,16 +87,16 @@ struct TvSeriesDetailFooterView: View {
                                         }
                                     }
                                     .padding(.leading, 24)
-                            } //: FOREACH
+                            }
                         }
-                    } //: HSTACK
-                } //: SCROLL
+                    }
+                }
                 .edgesIgnoringSafeArea(.horizontal)
                 .frame(maxWidth: .infinity, maxHeight: 100)
                 .padding(.bottom, 21)
-            } //: VSTACK
+            }
             .frame(maxWidth: .infinity, alignment: .leading)
-        } //: VSTACK
+        }
         .onAppear {
             checkCreators()
         }

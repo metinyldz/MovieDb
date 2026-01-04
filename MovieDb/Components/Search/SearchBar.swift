@@ -64,8 +64,8 @@ struct SearchBar: View {
                     .transition(.move(edge: .trailing))
                     //                .animation(.default)
                 }
-            } //: BUTTON
-        } //: HSTACK
+            }
+        }
         .frame(maxWidth: .infinity, maxHeight: 36)
         .background(Color.clear)
     }

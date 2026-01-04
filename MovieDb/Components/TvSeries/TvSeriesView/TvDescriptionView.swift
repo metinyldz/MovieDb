@@ -25,7 +25,7 @@ struct TvDescriptionView: View {
                     .font(Font.system(size: 14))
                     .fontWeight(.medium)
             }
-        } //: VStack
+        }
         .frame(maxWidth: .infinity,
                maxHeight: 111,
                alignment: .leading)

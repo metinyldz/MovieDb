@@ -45,18 +45,18 @@ struct MovieLocationView: View {
                         
                         
                         Spacer()
-                    } //: HSTACK
-                } //: ZSTACK
+                    }
+                }
                 .frame(height: 60)
 
                 Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
                     .ignoresSafeArea(edges: .vertical)
                     .padding(.top, -8)
                 
-            } //: VSTACK
+            }
             .navigationBarHidden(true)
             .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-        } //: ZSTACK
+        }
     }
 }
 

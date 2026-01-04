@@ -18,7 +18,7 @@ struct ProfileViewHeader: View {
                     .foregroundColor(Color("VibrantBlue"))
                 
                 Spacer()
-            } //: VStack
+            }
             
             VStack(alignment: .leading) {
                 Text("Hello \(Image("iconHandshake"))")

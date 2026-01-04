@@ -50,13 +50,13 @@ struct TvSeriesSingleCardView: View {
                     .onTapGesture {
                         !getFavoriteItem(tvResult) ? addContentToUserDefaults() : removeContentToUserDefaults()
                     }
-            } //: HSTack
+            }
             .padding([.horizontal, .bottom],10)
             
             SmallRatingView(rating: "\(tvResult.vote_average ?? 0)")
                 .padding([.horizontal, .bottom],10)
             
-        } //: VStack
+        }
         .background(Color.white)
         .cornerRadius(8)
         .frame(width: 153, height: 310, alignment: .top)

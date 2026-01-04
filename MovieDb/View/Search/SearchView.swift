@@ -32,7 +32,7 @@ struct SearchView: View {
                             .foregroundColor(Color("VibrantBlue"))
                             
                             Spacer()
-                        } //: VStack
+                        }
                         
                         HStack {
                             TextField("Movies or Series", text: $searchText)
@@ -83,8 +83,8 @@ struct SearchView: View {
                                 }
                                 .padding(.trailing, 10)
                                 .transition(.move(edge: .trailing))
-                            } //: BUTTON
-                        } //: HSTACK
+                            }
+                        }
                         .frame(maxWidth: .infinity, maxHeight: 36)
                         .background(Color.clear)
                         .padding(.top, -30)
@@ -92,7 +92,7 @@ struct SearchView: View {
                         
 //                        SearchBar(text: $searchText)
 
-                    } //: ZSTACK
+                    }
                     
                     //MARK: - CENTER -
                     
@@ -110,11 +110,11 @@ struct SearchView: View {
                         }
                     }
                     
-                } //: SCROLL
+                }
                 .navigationBarTitle("Search", displayMode: .large)
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-            } //: ZSTACK
-        } //: NAVIGATION
+            }
+        }
         .onChange(of: searchText) { text in
             if !text.isEmpty && text.count > 3 {
                 sendContentRequest()

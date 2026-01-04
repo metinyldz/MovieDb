@@ -25,7 +25,7 @@ struct LoginFooterView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
                     .padding(.horizontal, 24)
-            } //: BUTTON
+            }
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
             .padding(.horizontal, 24)
@@ -48,8 +48,8 @@ struct LoginFooterView: View {
                         .fontWeight(.medium)
                         .padding(.horizontal, -8)
                 }//.customAlert(isPresented: $showAlert)
-            } //: HSTACK
-        } //: VStack
+            }
+        }
     }
     
     private func isValidEmail(_ email: String) -> Bool {

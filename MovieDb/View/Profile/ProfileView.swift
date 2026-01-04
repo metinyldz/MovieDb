@@ -21,10 +21,10 @@ struct ProfileView: View {
                     ProfileViewHeader()
                     
                     ProfileViewList()
-                } //: SCROLL
+                }
                 .navigationBarTitle("Profile", displayMode: .large)
                 .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-            } //: ZSTACK
+            }
             .toolbar {
                 Button {
                     isLogin.toggle()
@@ -34,7 +34,7 @@ struct ProfileView: View {
                         .font(.system(size: 16))
                 }
             }
-        } //: NAVIGATION
+        }
     }
 }
 

@@ -44,11 +44,11 @@ struct SplashFinalView: View {
                         .font(Font.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundColor(Color.white)
-                } //: HSTACK
+                }
                 .frame(maxHeight: 20)
                 .padding(.bottom, 90)
-            } //: VSTACK
-        } //: ZSTACK
+            }
+        }
     }
 }
 

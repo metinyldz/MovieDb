@@ -10,17 +10,23 @@ import SwiftUI
 struct TvSeriesDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    var id: Int
+    
     //MARK: - PROPERTIES -
-    var tvSerieDetailModel: TvSerieDetailModel?
-    var tvSerieCastModel: TvSerieCastModel?
+    @State var tvSerieDetailModel: TvSerieDetailModel?
+    @State var tvSerieCastModel: TvSerieCastModel?
+    @State private var isLoading = true
+    
+    @StateObject var viewModel = TvSeriesViewModel()
     
     var body: some View {
         GeometryReader { geometry in
-            //let geoGlobal = geometry.frame(in: .global)
-            
             ScrollView {
-                if let tvSerieDetail = tvSerieDetailModel, let tvSerieCast = tvSerieCastModel {
-                    //MARK: - HEADER -
+                if isLoading {
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else if let tvSerieDetail = tvSerieDetailModel,
+                          let tvSerieCast = tvSerieCastModel {
                     VStack {
                         GeometryReader { imageGeometry in
                             let global = imageGeometry.frame(in: .global)
@@ -52,28 +58,34 @@ struct TvSeriesDetailView: View {
                                     self.presentationMode.wrappedValue.dismiss()
                                 }
                                 .padding(32)
-                        , alignment: .topLeading)
-                        
-                        //MARK: - CENTER -
+                            ,
+                            alignment: .topLeading
+                        )
                         
                         TvSeriesDetailCenterView(content: tvSerieDetail)
                             .padding(.top, -12)
                         
-                        //MARK: - FOOTER -
-                        
                         TvSeriesDetailFooterView(content: tvSerieDetail, cast: tvSerieCast)
-                        
-                    } //: VStack
+                    }
                 }
-            } //: SCROLL
+            }
             .background(Color("BackgroundColor"))
             .navigationBarHidden(true)
+            .onFirstAppear {
+                Task {
+                    await viewModel.getTvSerieCredit(id: id) { model in
+                        tvSerieCastModel = model
+                    }
+                    await viewModel.getTvSerieDetail(id: id) { model in
+                        tvSerieDetailModel = model
+                    }
+                    isLoading = false
+                }
+            }
         }
     }
 }
 
-struct TvSeriesDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesDetailView(tvSerieDetailModel: TvSerieDetailModel.all(), tvSerieCastModel: TvSerieCastModel.all().first)
-    }
+#Preview {
+    TvSeriesDetailView(id: -1)
 }

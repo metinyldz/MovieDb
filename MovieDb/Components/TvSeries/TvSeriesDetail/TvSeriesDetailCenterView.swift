@@ -55,12 +55,12 @@ struct TvSeriesDetailCenterView: View {
                         .minimumScaleFactor(0.6)
                         .opacity(0.6)
                     
-                } //: HStack
+                }
                 
                 Divider()
                     .padding(.vertical, 20)
             }
-        } //: VStack
+        }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 24)
     }

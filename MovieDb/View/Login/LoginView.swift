@@ -38,13 +38,13 @@ struct LoginView: View {
                                 .fontWeight(.regular)
                                 .frame(height: 14, alignment: .trailing)
                                 .padding(.horizontal, 24)
-                        } //: Button
-                    } //: HStack
+                        }
+                    }
                     
                     LoginFooterView(showAlert: $viewModel.showAlert, emailText: $viewModel.emailText, passwordText: $viewModel.passwordText)
-                } //: VStack
+                }
                 
-            } //: ZStack
+            }
             .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }

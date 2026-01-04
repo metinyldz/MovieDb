@@ -59,9 +59,9 @@ struct MovieDetailView: View {
                         //MARK: - FOOTER -
                         MovieDetailFooterView(content: content)
                             .padding(.horizontal, 24)
-                    } //: VStack
+                    }
                 }
-            } //: Scroll
+            }
             .background(Color("BackgroundColor"))
             .navigationBarHidden(true)
         }
@@ -95,8 +95,8 @@ struct MovieDetailHeaderView: View {
                             .frame(height: global.minY > 0 ? (400) + global.minY :  400)
                     }
                 }
-            } //: VStack
-        } //: ZStack
+            }
+        }
     }
 }
 
