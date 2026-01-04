@@ -25,5 +25,6 @@ class NavigationManager: ObservableObject {
 
 
 enum Route: Hashable {
-    case home
+    case main
+    case login
 }

@@ -15,25 +15,22 @@ struct LoginFooterView: View {
     
     var body: some View {
         VStack {
-            // TODO: (Metin) Use with a new navigation layer. -
-            NavigationLink(destination: MainTabView(), isActive: $isLogin) {
-                Button { // TODO: Check the comment line. Remove or use it
+            Button { // TODO: Check the comment line. Remove or use it
 //                    isLogin = (isValidEmail(emailText) && isValidPassword(passwordText)) ? true : false
-                    isLogin = true
-                } label: {
-                    Text("Login")
-                        .foregroundColor(Color("VibrantBlue"))
-                        .font(Font.system(size: 17))
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
-                        .padding(.horizontal, 24)
-                } //: BUTTON
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-                .padding(.horizontal, 24)
-                .padding(.top, 48)
-                .padding(.bottom, 24)
-            } //: LINK
+                isLogin = true
+            } label: {
+                Text("Login")
+                    .foregroundColor(Color("VibrantBlue"))
+                    .font(Font.system(size: 17))
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
+                    .padding(.horizontal, 24)
+            } //: BUTTON
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+            .padding(.horizontal, 24)
+            .padding(.top, 48)
+            .padding(.bottom, 24)
             
             HStack {
                 Text("Don’t have an account? ")
