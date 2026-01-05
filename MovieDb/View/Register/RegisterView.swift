@@ -49,13 +49,13 @@ struct RegisterView: View {
                     }
                 }
                 .padding()
-                .onAppear { // ADD THESE AFTER YOUR FORM VIEW
+                .onAppear {
                     UITableView.appearance().backgroundColor = .clear
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         focusedField = .firstName
                     }
                 }
-                .onDisappear { // CHANGE BACK TO SYSTEM's DEFAULT
+                .onDisappear {
                     UITableView.appearance().backgroundColor = .systemGroupedBackground
                 }
                 
@@ -82,16 +82,3 @@ struct RegisterView_Previews: PreviewProvider {
         RegisterView()
     }
 }
-
-/*
- TextField("", text: $emailText)
-     .frame(height: 45)
-     .padding(.horizontal, 24)
-     .background(Color.clear)
-     .font(Font.system(size: 17))
-     .foregroundColor(Color.white)
-     .placeholder(when: emailText.isEmpty) {
-         Text("Email").foregroundColor(.white)
-             .padding(.horizontal, 24)
-     }
- */

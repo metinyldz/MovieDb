@@ -14,7 +14,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            MovieView() // TODO: Undo the code
+            MovieView()
                 .tabItem {
                     if selection == 0 {
                         Image("iconsTabbarMovieSelected")

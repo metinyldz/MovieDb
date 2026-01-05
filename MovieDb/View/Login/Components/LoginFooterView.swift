@@ -47,7 +47,7 @@ struct LoginFooterView: View {
                         .font(Font.system(size: 12))
                         .fontWeight(.medium)
                         .padding(.horizontal, -8)
-                }//.customAlert(isPresented: $showAlert)
+                }
             }
         }
     }

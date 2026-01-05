@@ -22,8 +22,6 @@ struct SearchView: View {
                     .ignoresSafeArea(.all, edges: .all)
                 
                 ScrollView(showsIndicators: false) {
-                    //MARK: - HEADER -
-                    
                     ZStack {
                         VStack {
                             Rectangle()
@@ -89,12 +87,7 @@ struct SearchView: View {
                         .background(Color.clear)
                         .padding(.top, -30)
                         .padding(.horizontal, 24)
-                        
-//                        SearchBar(text: $searchText)
-
                     }
-                    
-                    //MARK: - CENTER -
                     
                     // TODO: - Put the cards when user is searching contents -
                     if !searchResults.isEmpty {
