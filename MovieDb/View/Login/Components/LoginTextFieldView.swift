@@ -48,11 +48,9 @@ struct LoginTextFieldView: View {
     }
 }
 
-struct LoginTextFieldView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginTextFieldView(emailText: .constant(""), passwordText: .constant(""))
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    LoginTextFieldView(emailText: .constant(""), passwordText: .constant(""))
+        .preferredColorScheme(.dark)
 }
 
 extension View {

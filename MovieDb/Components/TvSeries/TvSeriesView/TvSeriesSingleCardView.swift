@@ -91,11 +91,8 @@ struct TvSeriesSingleCardView: View {
     }
 }
 
-struct TvSeriesSingleCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesSingleCardView(tvResult: TvSeriesResult.all().first!)
-            .previewLayout(.sizeThatFits)
-            .padding()
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    TvSeriesSingleCardView(tvResult: TvSeriesResult.all().first!)
+        .padding()
+        .preferredColorScheme(.dark)
 }

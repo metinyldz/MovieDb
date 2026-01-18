@@ -20,8 +20,6 @@ struct LoginBackground: View {
     }
 }
 
-struct LoginBackground_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginBackground()
-    }
+#Preview {
+    LoginBackground()
 }

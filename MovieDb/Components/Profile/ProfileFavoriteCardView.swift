@@ -90,9 +90,6 @@ struct ProfileFavoriteCardView: View {
     }
 }
 
-struct ProfileFavoriteCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileFavoriteCardView(favoriteItem: FavoriteModel())
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    ProfileFavoriteCardView(favoriteItem: FavoriteModel())
 }

@@ -116,9 +116,6 @@ struct TvSeriesDetailFooterView: View {
     }
 }
 
-struct TvSeriesDetailFooterView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesDetailFooterView(content: TvSerieDetailModel.all(), cast: TvSerieCastModel.all().first!)
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    TvSeriesDetailFooterView(content: TvSerieDetailModel.all(), cast: TvSerieCastModel.all().first!)
 }

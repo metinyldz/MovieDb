@@ -60,10 +60,6 @@ struct MovieLocationView: View {
     }
 }
 
-struct MovieLocationView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieLocationView()
-            .previewDevice("iPhone 12 Mini")
-            .preferredColorScheme(.light)
-    }
+#Preview {
+    MovieLocationView()
 }

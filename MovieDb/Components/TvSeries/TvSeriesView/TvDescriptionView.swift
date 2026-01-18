@@ -56,9 +56,6 @@ struct TvDescriptionView: View {
     }
 }
 
-struct TvDescriptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvDescriptionView()
-            .previewLayout(.fixed(width: 375, height: 111))
-    }
+#Preview {
+    TvDescriptionView()
 }

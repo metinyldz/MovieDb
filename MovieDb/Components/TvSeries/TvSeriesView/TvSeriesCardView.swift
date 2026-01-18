@@ -46,12 +46,7 @@ struct TvSeriesCardView: View {
     }
 }
 
-struct TvSeriesCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesCardView()
-            .previewLayout(.fixed(width: 375, height: 530))
-            .padding()
-            .background(Color.gray)
-        
-    }
+#Preview {
+    TvSeriesCardView()
+        .background(Color.gray)
 }

@@ -100,9 +100,6 @@ struct MovieDetailHeaderView: View {
     }
 }
 
-struct MovieDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDetailView(content: MovieDetailModel.all())
-            .previewDevice("iPhone 12 Mini")
-    }
+#Preview {
+    MovieDetailView(content: MovieDetailModel.all())
 }

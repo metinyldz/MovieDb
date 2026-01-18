@@ -50,8 +50,6 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(emailText: .constant(""), passwordText: .constant(""))
-    }
+#Preview {
+    LoginView(emailText: .constant(""), passwordText: .constant(""))
 }
