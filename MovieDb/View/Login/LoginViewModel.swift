@@ -12,5 +12,18 @@ class LoginViewModel: BaseViewModel {
     @Published var emailText: String = ""
     @Published var passwordText: String = ""
     @Published var showAlert: Bool = false
+    @Published var loginState: ViewState = .idle
+
+    override init() {
+        super.init()
+        Task { @MainActor in
+            loginState = .loaded
+        }
+    }
     
+    enum ViewState {
+        case idle
+        case loading
+        case loaded
+    }
 }

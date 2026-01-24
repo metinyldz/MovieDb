@@ -64,6 +64,9 @@
 		18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */; };
 		18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */; };
 		18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9729EADECF00611CA6 /* WarningView.swift */; };
+		AB35338A2F24FDED00039197 /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */; };
+		AB35338C2F24FE9100039197 /* LoginLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35338B2F24FE8D00039197 /* LoginLogoView.swift */; };
+		AB35338E2F24FEDD00039197 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35338D2F24FED900039197 /* LoginContentView.swift */; };
 		AB93B3262F005C33007E081D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93B3252F005C2F007E081D /* Config.swift */; };
 		ABA5E3922F004511003E8BE6 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3912F00450D003E8BE6 /* View+Extension.swift */; };
 		ABA5E3952F00477A003E8BE6 /* FirstAppearModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */; };
@@ -132,6 +135,9 @@
 		18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18FE2E9729EADECF00611CA6 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
+		AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
+		AB35338B2F24FE8D00039197 /* LoginLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLogoView.swift; sourceTree = "<group>"; };
+		AB35338D2F24FED900039197 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		AB93B3252F005C2F007E081D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		ABA5E3912F00450D003E8BE6 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppearModifier.swift; sourceTree = "<group>"; };
@@ -510,6 +516,9 @@
 		18FE2E9329EAD50400611CA6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AB35338D2F24FED900039197 /* LoginContentView.swift */,
+				AB35338B2F24FE8D00039197 /* LoginLogoView.swift */,
+				AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */,
 				18E66A8229D370FE00451A0D /* LoginBackground.swift */,
 				18FE2E8F29EAD3D000611CA6 /* LoginFooterView.swift */,
 				18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */,
@@ -644,6 +653,7 @@
 				18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */,
 				1829CD4B294FB35700B9F08B /* BaseViewModel.swift in Sources */,
 				18F287142850CEE700C2D5AE /* MovieDetailModel.swift in Sources */,
+				AB35338C2F24FE9100039197 /* LoginLogoView.swift in Sources */,
 				ABA5E3952F00477A003E8BE6 /* FirstAppearModifier.swift in Sources */,
 				1825E9242860E85900653042 /* SearchCardView.swift in Sources */,
 				18CEADAC285A5D6800D01D70 /* TvSeriesSingleCardView.swift in Sources */,
@@ -663,6 +673,7 @@
 				18F565A42999839E00B6DDA2 /* ProfileViewHeader.swift in Sources */,
 				186E6B4E29F30424008B195A /* RegisterView.swift in Sources */,
 				18C55F87285130F600BE6ABF /* TvDescriptionView.swift in Sources */,
+				AB35338E2F24FEDD00039197 /* LoginContentView.swift in Sources */,
 				18B30909285FBA3900B89724 /* SearchViewModel.swift in Sources */,
 				188CD6F528427ED8007D85D0 /* SplashFinalView.swift in Sources */,
 				18EC9407283A7BDB00AB47AC /* ProfileFavoriteCardView.swift in Sources */,
@@ -694,6 +705,7 @@
 				18B30907285FB15E00B89724 /* CastPeopleModel.swift in Sources */,
 				18D13030282448410064C61C /* MovieDbApp.swift in Sources */,
 				18E66A8329D370FE00451A0D /* LoginBackground.swift in Sources */,
+				AB35338A2F24FDED00039197 /* ForgotPasswordButton.swift in Sources */,
 				18F2870F2850CEE200C2D5AE /* TvTopRatedModel.swift in Sources */,
 				18EC9404283A78D500AB47AC /* ProfileView.swift in Sources */,
 			);
