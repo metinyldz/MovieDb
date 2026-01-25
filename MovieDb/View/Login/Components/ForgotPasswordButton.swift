@@ -26,7 +26,10 @@ struct ForgotPasswordButton: View {
     }
 }
 
-#Preview {
-    ForgotPasswordButton()
-        .preferredColorScheme(.dark)
+struct ForgotPasswordButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ForgotPasswordButton()
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.dark)
+    }
 }

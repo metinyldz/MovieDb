@@ -67,7 +67,14 @@ struct LoginFooterView: View {
     }
 }
 
-#Preview {
-    LoginFooterView(showAlert: .constant(false), emailText: .constant(""), passwordText: .constant(""))
+struct LoginFooterView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginFooterView(
+            showAlert: .constant(false),
+            emailText: .constant(""),
+            passwordText: .constant("")
+        )
+        .previewLayout(.sizeThatFits)
         .preferredColorScheme(.dark)
+    }
 }

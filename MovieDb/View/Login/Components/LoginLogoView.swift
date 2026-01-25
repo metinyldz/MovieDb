@@ -16,7 +16,10 @@ struct LoginLogoView: View {
     }
 }
 
-#Preview {
-    LoginLogoView()
-        .preferredColorScheme(.dark)
+struct LoginLogoView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginLogoView()
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.dark)
+    }
 }

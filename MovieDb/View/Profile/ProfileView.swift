@@ -11,28 +11,23 @@ struct ProfileView: View {
     @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color("BackgroundColor")
-                    .ignoresSafeArea(.all, edges: .all)
+        MainBackgroundContainer {
+            ScrollView(showsIndicators: false) {
+                //MARK: - HEADER -
+                ProfileViewHeader()
                 
-                ScrollView(showsIndicators: false) {
-                    //MARK: - HEADER -
-                    ProfileViewHeader()
-                    
-                    ProfileViewList()
-                }
-                .navigationBarTitle("Profile", displayMode: .large)
-                .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
+                ProfileViewList()
             }
-            .toolbar {
-                Button {
-                    isLogin.toggle()
-                } label: {
-                    Text("Logout")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16))
-                }
+            .navigationBarTitle("Profile", displayMode: .large)
+            .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
+        }
+        .toolbar { // TODO: Fix the invisible toolbar problem.
+            Button {
+                isLogin.toggle()
+            } label: {
+                Text("Logout")
+                    .foregroundColor(.white)
+                    .font(.system(size: 16))
             }
         }
     }
