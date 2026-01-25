@@ -67,6 +67,7 @@
 		AB35338A2F24FDED00039197 /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */; };
 		AB35338C2F24FE9100039197 /* LoginLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35338B2F24FE8D00039197 /* LoginLogoView.swift */; };
 		AB35338E2F24FEDD00039197 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35338D2F24FED900039197 /* LoginContentView.swift */; };
+		AB556B8C2F265EFD0021E184 /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB556B8B2F265EFC0021E184 /* LoginContainer.swift */; };
 		AB93B3262F005C33007E081D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93B3252F005C2F007E081D /* Config.swift */; };
 		ABA5E3922F004511003E8BE6 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3912F00450D003E8BE6 /* View+Extension.swift */; };
 		ABA5E3952F00477A003E8BE6 /* FirstAppearModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */; };
@@ -138,6 +139,7 @@
 		AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
 		AB35338B2F24FE8D00039197 /* LoginLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLogoView.swift; sourceTree = "<group>"; };
 		AB35338D2F24FED900039197 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
+		AB556B8B2F265EFC0021E184 /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		AB93B3252F005C2F007E081D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		ABA5E3912F00450D003E8BE6 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppearModifier.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 		18FE2E9329EAD50400611CA6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AB556B8B2F265EFC0021E184 /* LoginContainer.swift */,
 				AB35338D2F24FED900039197 /* LoginContentView.swift */,
 				AB35338B2F24FE8D00039197 /* LoginLogoView.swift */,
 				AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */,
@@ -681,6 +684,7 @@
 				187876582834218400ACFEAB /* CirclePhotoView.swift in Sources */,
 				18EC9402283A64E500AB47AC /* SearchBar.swift in Sources */,
 				18B3090C285FBB5200B89724 /* SearchContentModel.swift in Sources */,
+				AB556B8C2F265EFD0021E184 /* LoginContainer.swift in Sources */,
 				18D1304928245CE70064C61C /* PagingView.swift in Sources */,
 				18F287092850CEDA00C2D5AE /* Genre.swift in Sources */,
 				18F565A22999837800B6DDA2 /* ProfileViewList.swift in Sources */,

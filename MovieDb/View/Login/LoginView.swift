@@ -13,22 +13,36 @@ struct LoginView: View {
     @Binding var passwordText: String
     
     var body: some View {
-        ZStack {
-            LoginBackground()
-            
-            switch viewModel.loginState {
-            case .idle:
-                EmptyView()
-            case .loading:
-                ProgressView().tint(Color.white)
-            case .loaded:
-                LoginContentView(viewModel: viewModel)
-            }
+        switch viewModel.loginState {
+        case .idle:
+            emptyView
+        case .loading:
+            loadingView
+        case .loaded:
+            loadedView
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
+    }
+    
+    var emptyView: some View {
+        LoginContainer { }
+    }
+    
+    var loadingView: some View {
+        LoginContainer {
+            ProgressView().tint(Color.white)
+        }
+    }
+    
+    var loadedView: some View {
+        LoginContainer {
+            LoginContentView(viewModel: viewModel)
+        }
     }
 }
 
 #Preview {
-    LoginView(emailText: .constant(""), passwordText: .constant(""))
+    LoginView(
+        emailText: .constant(""),
+        passwordText: .constant("")
+    )
 }
