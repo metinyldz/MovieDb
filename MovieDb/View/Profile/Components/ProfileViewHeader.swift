@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProfileViewHeader: View {
-    
     var body: some View {
         ZStack {
             VStack {
