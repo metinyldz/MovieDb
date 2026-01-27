@@ -16,7 +16,7 @@ class TvSeriesViewModel: BaseViewModel {
     enum LoadingState {
         case idle
         case loading
-        case success
+        case loaded
         case failure(Error)
         
         var isLoading: Bool {
@@ -42,11 +42,13 @@ class TvSeriesViewModel: BaseViewModel {
     @Published var tvSeries: TvSeriesModel = TvSeriesModel()
     @Published var tvTopRated: TvTopRatedModel = TvTopRatedModel()
     @Published var tvGenres: GenreModel = GenreModel()
-    @Published var tvSerieDetail: TvSerieDetailModel = TvSerieDetailModel()
-    @Published var tvSerieCast: TvSerieCastModel = TvSerieCastModel()
     @Published var isActive = false
     @Published var loadingState: LoadingState = .idle
     @Published var retryCount = 0
+    
+    // MARK: Content Detail Properties
+    var tvSerieDetail: TvSerieDetailModel = TvSerieDetailModel()
+    var tvSerieCast: TvSerieCastModel = TvSerieCastModel()
     
     var networkManager = NetworkManager()
     
@@ -88,7 +90,7 @@ class TvSeriesViewModel: BaseViewModel {
                 duration: duration
             ))
             
-            loadingState = .success
+            loadingState = .loaded
             retryCount = 0
             
         } catch {
@@ -131,6 +133,8 @@ class TvSeriesViewModel: BaseViewModel {
             await loadAllData()
         }
     }
+    
+    // MARK: API Services
     
     func getTvSeries() async throws {
         tvSeries = try await networkManager.fetch(url: MovieDbRouter.getTvSeries.urlString, expecting: TvSeriesModel.self)

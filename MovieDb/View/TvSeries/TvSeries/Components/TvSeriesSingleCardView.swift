@@ -9,11 +9,8 @@ import SwiftUI
 
 struct TvSeriesSingleCardView: View {
     
-    var tvResult: TvSeriesResult
-//    var tvCast: TvSerieCastModel
-    @State var isFavorite: Bool = false
-    
     @EnvironmentObject var contentBindigs: ContentBindigs
+    var tvResult: TvSeriesResult
     
     var body: some View {
         VStack(alignment: .leading) {
