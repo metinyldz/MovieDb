@@ -14,7 +14,7 @@ class MovieViewModel: BaseViewModel {
     @Published var movieDetail: MovieDetailModel = MovieDetailModel()
     @Published var genres: GenreModel = GenreModel()
     @Published var isMovieDetailActive = false
-    
+    @Published var movieState: ViewState = .idle
     var networkManager = NetworkManager()
     
     func getTopRatedMovies() async {
@@ -48,5 +48,12 @@ class MovieViewModel: BaseViewModel {
         } catch {
             print(error)
         }
+    }
+    
+    enum ViewState {
+        case idle
+        case loading
+        case loaded
+        case failed
     }
 }

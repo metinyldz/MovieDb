@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProfileViewHeader: View {
-    
     var body: some View {
         ZStack {
             VStack {
@@ -40,8 +39,6 @@ struct ProfileViewHeader: View {
     }
 }
 
-struct ProfileViewHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileViewHeader()
-    }
+#Preview {
+    ProfileViewHeader()
 }

@@ -15,13 +15,12 @@ struct LoginBackground: View {
                 .scaledToFill()
                 .frame(width: geometry.size.width, height: geometry.size.height * 1.4, alignment: .center)
                 .offset(y: -20)
-        }.edgesIgnoringSafeArea(.all)
+        }
+        .edgesIgnoringSafeArea(.all)
         
     }
 }
 
-struct LoginBackground_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginBackground()
-    }
+#Preview {
+    LoginBackground()
 }

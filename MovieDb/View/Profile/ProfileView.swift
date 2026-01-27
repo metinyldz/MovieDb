@@ -8,39 +8,31 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @AppStorage("isLogin") var isLogin: Bool = false
+    @StateObject var viewModel = ProfileViewModel()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color("BackgroundColor")
-                    .ignoresSafeArea(.all, edges: .all)
-                
-                ScrollView(showsIndicators: false) {
-                    //MARK: - HEADER -
-                    ProfileViewHeader()
-                    
-                    ProfileViewList()
-                }
-                .navigationBarTitle("Profile", displayMode: .large)
-                .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-            }
-            .toolbar {
-                Button {
-                    isLogin.toggle()
-                } label: {
-                    Text("Logout")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16))
-                }
-            }
+        MainBackgroundContainer {
+            ProfileContentView(viewModel: viewModel)
+        }
+        .navigationBarTitle("Profile", displayMode: .large)
+        .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
+        .toolbar { // TODO: Fix the invisible toolbar problem.
+            logoutButton
+        }
+    }
+    
+    var logoutButton: some View {
+        Button {
+            viewModel.isLogin.toggle()
+        } label: {
+            Text("Logout")
+                .foregroundColor(.white)
+                .font(.system(size: 16))
         }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-            .environmentObject(ContentBindigs())
-    }
+#Preview {
+    ProfileView()
+        .environmentObject(ContentBindigs())
 }

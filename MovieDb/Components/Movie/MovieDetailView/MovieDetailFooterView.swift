@@ -22,9 +22,7 @@ struct MovieDetailFooterView: View {
     }
 }
 
-struct MovieDetailFooterView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDetailFooterView(content: MovieDetailModel.all())
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    MovieDetailFooterView(content: MovieDetailModel.all())
+        .previewLayout(.sizeThatFits)
 }

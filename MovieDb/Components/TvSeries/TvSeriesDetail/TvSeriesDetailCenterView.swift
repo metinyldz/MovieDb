@@ -66,9 +66,6 @@ struct TvSeriesDetailCenterView: View {
     }
 }
 
-struct TvSeriesDetailCenterView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesDetailCenterView(content: TvSerieDetailModel.all())
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    TvSeriesDetailCenterView(content: TvSerieDetailModel.all())
 }

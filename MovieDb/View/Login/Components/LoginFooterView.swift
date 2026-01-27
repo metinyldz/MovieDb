@@ -69,7 +69,12 @@ struct LoginFooterView: View {
 
 struct LoginFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFooterView(showAlert: .constant(false), emailText: .constant(""), passwordText: .constant(""))
-            .preferredColorScheme(.dark)
+        LoginFooterView(
+            showAlert: .constant(false),
+            emailText: .constant(""),
+            passwordText: .constant("")
+        )
+        .previewLayout(.sizeThatFits)
+        .preferredColorScheme(.dark)
     }
 }

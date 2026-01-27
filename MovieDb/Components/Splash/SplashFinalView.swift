@@ -52,8 +52,6 @@ struct SplashFinalView: View {
     }
 }
 
-struct SplashFinalView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashFinalView()
-    }
+#Preview {
+    SplashFinalView()
 }

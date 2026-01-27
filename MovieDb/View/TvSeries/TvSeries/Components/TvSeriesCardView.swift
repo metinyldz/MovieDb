@@ -24,7 +24,7 @@ struct TvSeriesCardView: View {
         if let results = tvResults {
             LazyVGrid(columns: columns, spacing: 30) {
                 ForEach(results, id: \.self) { result in
-                    TvSeriesSingleCardView(tvResult: result, isFavorite: getFavoriteItem(result))
+                    TvSeriesSingleCardView(tvResult: result)
                         .onTapGesture {
                             if let id = result.id {
                                 navigationManager.navigate(to: .tvSeriesDetail(id: id))
@@ -46,12 +46,7 @@ struct TvSeriesCardView: View {
     }
 }
 
-struct TvSeriesCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesCardView()
-            .previewLayout(.fixed(width: 375, height: 530))
-            .padding()
-            .background(Color.gray)
-        
-    }
+#Preview {
+    TvSeriesCardView()
+        .background(Color.gray)
 }

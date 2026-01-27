@@ -93,10 +93,6 @@ struct SearchCardView: View {
     }
 }
 
-struct SearchCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchCardView(searchResult: SearchMultiContentResult.all())
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    SearchCardView(searchResult: SearchMultiContentResult.all())
 }

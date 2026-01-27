@@ -71,9 +71,6 @@ struct SearchBar: View {
     }
 }
 
-struct SearchBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBar(text: .constant(""))
-            .previewLayout(.fixed(width: 375, height: 36))
-    }
+#Preview {
+    SearchBar(text: .constant(""))
 }

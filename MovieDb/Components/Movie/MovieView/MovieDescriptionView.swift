@@ -54,9 +54,6 @@ struct MovieDescriptionView: View {
     }
 }
 
-struct MovieDescriptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDescriptionView()
-            .previewLayout(.fixed(width: 375, height: 111))
-    }
+#Preview {
+    MovieDescriptionView()
 }

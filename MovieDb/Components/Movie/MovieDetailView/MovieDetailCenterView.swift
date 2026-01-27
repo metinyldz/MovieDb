@@ -66,10 +66,7 @@ struct MovieDetailCenterView: View {
         
     }
 }
-
-struct MovieDetailCenterView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDetailCenterView(content: MovieDetailModel.all())
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    MovieDetailCenterView(content: MovieDetailModel.all())
+        .previewLayout(.sizeThatFits)
 }

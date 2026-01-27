@@ -9,11 +9,8 @@ import SwiftUI
 
 struct TvSeriesSingleCardView: View {
     
-    var tvResult: TvSeriesResult
-//    var tvCast: TvSerieCastModel
-    @State var isFavorite: Bool = false
-    
     @EnvironmentObject var contentBindigs: ContentBindigs
+    var tvResult: TvSeriesResult
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -91,11 +88,8 @@ struct TvSeriesSingleCardView: View {
     }
 }
 
-struct TvSeriesSingleCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvSeriesSingleCardView(tvResult: TvSeriesResult.all().first!)
-            .previewLayout(.sizeThatFits)
-            .padding()
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    TvSeriesSingleCardView(tvResult: TvSeriesResult.all().first!)
+        .padding()
+        .preferredColorScheme(.dark)
 }

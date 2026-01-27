@@ -38,9 +38,6 @@ struct CirclePhotoView: View {
     }
 }
 
-struct CircleFotoView_Previews: PreviewProvider {
-    static var previews: some View {
-        CirclePhotoView(castDetail: (TvSerieCastModel.all().first!.cast?.first!)!)
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    CirclePhotoView(castDetail: (TvSerieCastModel.all().first!.cast?.first!)!)
 }

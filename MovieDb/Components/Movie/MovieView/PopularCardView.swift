@@ -150,11 +150,8 @@ struct PopularCardView: View {
     }
 }
 
-struct PopularCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PopularCardView(movieResult: MovieResult.all().first!)
-            .previewLayout(.fixed(width: 345, height: 130))
-    }
+#Preview {
+    PopularCardView(movieResult: MovieResult.all().first!)
 }
 
 extension UserDefaults {

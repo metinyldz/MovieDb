@@ -58,9 +58,6 @@ struct TvHeaderView: View {
     }
 }
 
-struct TvHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        TvHeaderView()
-            .preferredColorScheme(.light)
-    }
+#Preview {
+    TvHeaderView()
 }

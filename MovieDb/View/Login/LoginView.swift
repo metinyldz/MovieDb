@@ -13,45 +13,36 @@ struct LoginView: View {
     @Binding var passwordText: String
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                LoginBackground()
-                
-                VStack {
-                    Image("loginAppImage")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 106, height: 149)
-                    
-                    LoginTextFieldView(emailText: $viewModel.emailText, passwordText: $viewModel.passwordText)
-                        .ignoresSafeArea(.keyboard, edges: .bottom)
-                    
-                    HStack {
-                        Spacer()
-                        
-                        Button {
-                            // TODO: - Action Code -
-                        } label: {
-                            Text("Forgot Password?")
-                                .foregroundColor(.white)
-                                .font(Font.system(size: 12))
-                                .fontWeight(.regular)
-                                .frame(height: 14, alignment: .trailing)
-                                .padding(.horizontal, 24)
-                        }
-                    }
-                    
-                    LoginFooterView(showAlert: $viewModel.showAlert, emailText: $viewModel.emailText, passwordText: $viewModel.passwordText)
-                }
-                
-            }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
+        switch viewModel.loginState {
+        case .idle:
+            emptyView
+        case .loading:
+            loadingView
+        case .loaded:
+            loadedView
+        }
+    }
+    
+    var emptyView: some View {
+        LoginContainer { }
+    }
+    
+    var loadingView: some View {
+        LoginContainer {
+            ProgressView().tint(Color.white)
+        }
+    }
+    
+    var loadedView: some View {
+        LoginContainer {
+            LoginContentView(viewModel: viewModel)
         }
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(emailText: .constant(""), passwordText: .constant(""))
-    }
+#Preview {
+    LoginView(
+        emailText: .constant(""),
+        passwordText: .constant("")
+    )
 }
