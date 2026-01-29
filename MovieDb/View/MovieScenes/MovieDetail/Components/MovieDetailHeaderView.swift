@@ -39,28 +39,6 @@ struct MovieDetailHeaderView: View {
     }
 }
 
-GeometryReader { imageGeometry in
-    let imageGlobal = imageGeometry.frame(in: .global)
-    
-    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(content.poster_path ?? "")")) { image in
-        image
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: geometry.size.width,
-                   height: imageGlobal.minY > 0 ? max(400, imageGlobal.minY + 400) : 400)
-            .clipped()
-            .offset(y: imageGlobal.minY > 0 ? -imageGlobal.minY : 0)
-    } placeholder: {
-        Image("moviePlaceholder")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: geometry.size.width,
-                   height: imageGlobal.minY > 0 ? max(400, imageGlobal.minY + 400) : 400)
-            .clipped()
-            .offset(y: imageGlobal.minY > 0 ? -imageGlobal.minY : 0)
-    }
-}
-
 #Preview {
     MovieDetailHeaderView(posterPath: "")
 }
