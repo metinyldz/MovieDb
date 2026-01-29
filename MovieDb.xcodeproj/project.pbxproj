@@ -139,6 +139,7 @@
 		AB1102F82DB6DDEB001AD7A0 /* Movie */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Movie; sourceTree = "<group>"; };
 		AB1102F92DB6DDF4001AD7A0 /* MovieDetail */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MovieDetail; sourceTree = "<group>"; };
 		AB1102FA2DB6DDFC001AD7A0 /* MovieLocation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MovieLocation; sourceTree = "<group>"; };
+		AB12EFE92F2B888000C9B0E3 /* ImageCache */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ImageCache; sourceTree = "<group>"; };
 		AB80A1E02F28E13F000039A7 /* TvSeries */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TvSeries; sourceTree = "<group>"; };
 		ABCE88A42F28FC5A00E301D1 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
 		ABCE88AB2F2903DD00E301D1 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 		18B0CFF32826C3B6007C73A3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				AB12EFE92F2B888000C9B0E3 /* ImageCache */,
 				18666BDF28538EBE008654E6 /* ContentBindigs.swift */,
 				1894F7A0285129E40045E516 /* Converter.swift */,
 				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
@@ -535,6 +537,7 @@
 				AB1102F82DB6DDEB001AD7A0 /* Movie */,
 				AB1102F92DB6DDF4001AD7A0 /* MovieDetail */,
 				AB1102FA2DB6DDFC001AD7A0 /* MovieLocation */,
+				AB12EFE92F2B888000C9B0E3 /* ImageCache */,
 				AB80A1E02F28E13F000039A7 /* TvSeries */,
 				ABCE88A42F28FC5A00E301D1 /* Components */,
 				ABCE88AB2F2903DD00E301D1 /* Components */,

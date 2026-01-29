@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct MovieDetailHeaderView: View {
-    var posterPath: String?
-    var onDismiss: () -> Void
+    
+    private var posterPath: String = ""
+    private var onDismiss: () -> Void
+    
+    init(posterPath: String?, onDismiss: @escaping () -> Void) {
+        self.posterPath = posterPath ?? ""
+        self.onDismiss = onDismiss
+    }
     
     var body: some View {
-        GeometryReader { geometry in
-            let imageGlobal = geometry.frame(in: .global)
-            
-            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width,
-                           height: imageGlobal.minY > 0 ? max(400, imageGlobal.minY + 400) : 400)
+        ZStack {
+            VStack {
+                GeometryReader { proxy in
+                    let global = proxy.frame(in: .global)
+                    // Header
+                    CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(posterPath)") {
+                        Image("moviePlaceholder")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    .offset(y: global.minY > 0 ? -global.minY : 0)
+                    .frame(height: global.minY > 0 ? (400) + global.minY :  400)
                     .clipped()
-                    .offset(y: imageGlobal.minY > 0 ? -imageGlobal.minY : 0)
-            } placeholder: {
-                Image("moviePlaceholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width,
-                           height: imageGlobal.minY > 0 ? max(400, imageGlobal.minY + 400) : 400)
-                    .clipped()
-                    .offset(y: imageGlobal.minY > 0 ? -imageGlobal.minY : 0)
+                }
             }
         }
-        .frame(height: 400)
         .overlay(
             Image(systemName: "arrow.left")
                 .foregroundColor(Color.white)
@@ -47,5 +47,5 @@ struct MovieDetailHeaderView: View {
 }
 
 #Preview {
-    MovieDetailHeaderView(posterPath: "/w46Vw536HwNnEzOa7J24YH9DPRS.jpg", onDismiss: {})
+    MovieDetailHeaderView(posterPath: "", onDismiss: {})
 }

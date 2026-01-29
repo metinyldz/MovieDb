@@ -7,20 +7,24 @@
 
 import SwiftUI
 
-struct MovieDetailCenterView: View {
+struct MovieDetailCenterView: View, Equatable {
     
-    var content: MovieDetailModel
+    let viewModel: MovieDetailCenterViewModel
+    
+    init(content: MovieDetailModel) {
+        self.viewModel = MovieDetailCenterViewModel(content: content)
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            SmallRatingView(rating: String(format: "%.1f", content.vote_average ?? 0.0))
+            SmallRatingView(rating: viewModel.rating)
             
-            Text(content.title ?? "-")
+            Text(viewModel.title)
                 .font(Font.system(size: 28))
                 .fontWeight(.bold)
                 .foregroundColor(.black)
             
-            Text(Converter.genreText(genres: content.genres!))
+            Text(viewModel.genreText)
                 .font(Font.system(size: 15))
                 .fontWeight(.medium)
                 .foregroundColor(.black)
@@ -31,7 +35,7 @@ struct MovieDetailCenterView: View {
                     .scaledToFit()
                     .frame(width: 15, height: 15)
                 
-                Text("\(content.runtime ?? 0) min")
+                Text(viewModel.runtimeText)
                     .font(Font.system(size: 15))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
@@ -46,7 +50,7 @@ struct MovieDetailCenterView: View {
                     .scaledToFit()
                     .frame(width: 15, height: 15)
                 
-                Text(Converter.convertDate(input: content.release_date ?? "-", dateType: .date))
+                Text(viewModel.releaseDateText)
                     .font(Font.system(size: 15))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
@@ -64,6 +68,10 @@ struct MovieDetailCenterView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 24)
         
+    }
+    
+    static func == (lhs: MovieDetailCenterView, rhs: MovieDetailCenterView) -> Bool {
+        return lhs.viewModel.movieId == rhs.viewModel.movieId
     }
 }
 #Preview {

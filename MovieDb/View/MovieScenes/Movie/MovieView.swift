@@ -1,5 +1,5 @@
 //
-//  TempMovieView.swift
+//  MovieView.swift
 //  MovieDb
 //
 //  Created by Metin Yıldız on 21.04.2025.
