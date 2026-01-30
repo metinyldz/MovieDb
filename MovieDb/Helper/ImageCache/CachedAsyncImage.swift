@@ -11,10 +11,16 @@ import SwiftUI
 struct CachedAsyncImage<Placeholder: View>: View {
     @StateObject private var loader = ImageLoader()
     private let url: String?
+    private let contentMode: ContentMode
     private let placeholder: Placeholder
     
-    init(url: String?, @ViewBuilder placeholder: () -> Placeholder) {
+    init(
+        url: String?,
+        contentMode: ContentMode = .fit,
+        @ViewBuilder placeholder: () -> Placeholder
+    ) {
         self.url = url
+        self.contentMode = contentMode
         self.placeholder = placeholder()
     }
     
@@ -23,7 +29,7 @@ struct CachedAsyncImage<Placeholder: View>: View {
             if let uiImage = loader.image {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: contentMode)
             } else {
                 placeholder
             }

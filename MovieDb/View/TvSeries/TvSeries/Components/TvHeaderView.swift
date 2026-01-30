@@ -30,15 +30,13 @@ struct TvHeaderView: View {
             if !tvTopRatedResult.isEmpty {
                 TabView(selection: $pageIndex) {
                     ForEach(Array(tvTopRatedResult.enumerated()), id: \.element) { index, tv in
-                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tv.poster_path ?? "")")) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
+                        CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(tv.poster_path ?? "")") {
                             Image("moviePlaceholder")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         }
+                        .frame(width: 260, height: 373)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal, 40)
                         .tag(index)

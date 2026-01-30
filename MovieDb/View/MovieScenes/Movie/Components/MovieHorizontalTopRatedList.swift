@@ -23,17 +23,14 @@ struct MovieHorizontalTopRatedList: View {
     
     func getImageInformationView() -> some View {
         VStack(spacing: 5) {
-            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg")) { image in
-                image
-                    .resizable()
-                    .frame(width: 260, height: 373)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-            } placeholder: {
+            CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg") {
                 Image("moviePlaceholder")
                     .resizable()
                     .frame(width: 260, height: 373)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
+            .frame(width: 260, height: 373)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             
             SmallRatingView(rating: "8.78")
             

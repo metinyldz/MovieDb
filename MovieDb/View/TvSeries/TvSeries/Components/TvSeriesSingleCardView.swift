@@ -14,19 +14,18 @@ struct TvSeriesSingleCardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tvResult.poster_path ?? "")")) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 153, height: 219)
-                    .clipShape(Rectangle())
-            } placeholder: {
+            CachedAsyncImage(
+                url: "https://image.tmdb.org/t/p/w500\(tvResult.poster_path ?? "")",
+                contentMode: .fill
+            ) {
                 Image("moviePlaceholder")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 153, height: 219)
                     .clipShape(Rectangle())
             }
+            .frame(width: 153, height: 219)
+            .clipShape(Rectangle())
             
             HStack {
                 Text(tvResult.original_name ?? "-")

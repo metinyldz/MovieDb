@@ -31,15 +31,10 @@ struct TvSeriesDetailView: View {
                         GeometryReader { imageGeometry in
                             let global = imageGeometry.frame(in: .global)
                             
-                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(tvSerieDetail.poster_path ?? "")")) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: geometry.size.width,
-                                           height: global.minY > 0 ? max(400, global.minY + 400) : 400)
-                                    .clipped()
-                                    .offset(y: global.minY > 0 ? -global.minY : 0)
-                            } placeholder: {
+                            CachedAsyncImage(
+                                url: "https://image.tmdb.org/t/p/w500\(tvSerieDetail.poster_path ?? "")",
+                                contentMode: .fill
+                            ) {
                                 Image("moviePlaceholder")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -48,6 +43,10 @@ struct TvSeriesDetailView: View {
                                     .clipped()
                                     .offset(y: global.minY > 0 ? -global.minY : 0)
                             }
+                            .frame(width: geometry.size.width,
+                                   height: global.minY > 0 ? max(400, global.minY + 400) : 400)
+                            .clipped()
+                            .offset(y: global.minY > 0 ? -global.minY : 0)
                         }
                         .frame(height: 400)
                         .overlay(
