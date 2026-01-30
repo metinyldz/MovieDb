@@ -20,17 +20,13 @@ struct ProfileFavoriteCardView: View {
             
             HStack {
                 
-                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(favoriteItem.contentUrl ?? "")")) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 70, height: 100)
-                } placeholder: {
+                CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(favoriteItem.contentUrl ?? "")") {
                     Image("moviePlaceholder")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 100)
                 }
+                .frame(width: 70, height: 100)
                 
                 VStack(alignment: .leading) {
                     HStack {
@@ -79,7 +75,7 @@ struct ProfileFavoriteCardView: View {
         .cornerRadius(8)
         .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 2, y: 2)
     }
-
+    
     private func removeContentToUserDefaults() {
         UserDefaults.standard.favoriteModel.removeAll { item in
             return item.contentId == favoriteItem.contentId

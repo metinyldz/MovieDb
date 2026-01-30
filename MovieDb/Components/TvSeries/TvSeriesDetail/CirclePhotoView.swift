@@ -14,6 +14,17 @@ struct CirclePhotoView: View {
     var body: some View {
         VStack {
             ZStack {
+                CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(castDetail.profile_path ?? "")") {
+                    Image("moviePlaceholder")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 70, height: 70)
+                        .cornerRadius(35)
+                }
+                .frame(width: 70, height: 70)
+                .cornerRadius(35)
+                // TODO: Add .scaleToFill
+                
                 AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(castDetail.profile_path ?? "")")) { image in
                     image
                         .resizable()

@@ -9,25 +9,45 @@
 import SwiftUI
 
 struct CachedAsyncImage<Placeholder: View>: View {
-    @StateObject private var loader: ImageLoader
+    @StateObject private var loader = ImageLoader()
+    private let url: String?
     private let placeholder: Placeholder
-    private let imageContentMode: ContentMode
-
-    init(url: String?, imageContentMode: ContentMode = .fill, @ViewBuilder placeholder: () -> Placeholder) {
-        _loader = StateObject(wrappedValue: ImageLoader(urlString: url))
+    
+    init(url: String?, @ViewBuilder placeholder: () -> Placeholder) {
+        self.url = url
         self.placeholder = placeholder()
-        self.imageContentMode = imageContentMode
     }
-
+    
     var body: some View {
         Group {
             if let uiImage = loader.image {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .aspectRatio(contentMode: imageContentMode)
+                    .scaledToFit()
             } else {
                 placeholder
             }
         }
+        .onAppear {
+            if let urlString = url, let validUrl = URL(string: urlString) {
+                loader.load(url: validUrl)
+            }
+        }
+        .onChange(of: url) { newUrl in
+            if let urlString = newUrl, let validUrl = URL(string: urlString) {
+                loader.load(url: validUrl)
+            }
+        }
+        .onDisappear {
+            loader.cancel()
+        }
+    }
+}
+
+#Preview {
+    CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg") {
+        Image("moviePlaceholder")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
     }
 }

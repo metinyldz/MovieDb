@@ -17,16 +17,13 @@ struct SearchCardView: View {
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
-                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(searchResult.poster_path ?? "")")) { image in
-                    image
-                        .resizable()
-                        .frame(width: 70, height: 100)
-                } placeholder: {
+                CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(searchResult.poster_path ?? "")") {
                     Image("moviePlaceholder")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 100)
                 }
+                .frame(width: 70, height: 100)
                 
                 VStack(alignment: .leading) {
                     Text(getSearchContentTitle())

@@ -7,43 +7,68 @@
 
 import SwiftUI
 import Combine
-import UIKit
 
-final class ImageCache {
+// Basit bir Cache sarmalayıcı (Singleton)
+class ImageCache {
     static let shared = NSCache<NSString, UIImage>()
+    
+    private init() {
+        // RAM güvenliği için limitler (Örn: 100 resim veya yaklaşık 50MB)
+        ImageCache.shared.countLimit = 100
+        ImageCache.shared.totalCostLimit = 1024 * 1024 * 50
+    }
 }
 
 final class ImageLoader: ObservableObject {
     @Published var image: UIImage?
-    private var urlString: String?
     private var task: URLSessionDataTask?
-
-    init(urlString: String?) {
-        self.urlString = urlString
-        loadImage()
-    }
-
-    deinit {
-        task?.cancel()
-    }
-
-    private func loadImage() {
-        guard let urlString = urlString, let url = URL(string: urlString) else { return }
-        let cacheKey = NSString(string: urlString)
+    
+    func load(url: URL) {
+        // 1. Önce Cache kontrolü
+        let cacheKey = NSString(string: url.absoluteString)
         if let cached = ImageCache.shared.object(forKey: cacheKey) {
             self.image = cached
             return
         }
-
-        // Fetch in background
-        task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, let uiImage = UIImage(data: data) else { return }
-            // Optional: could downsample here for large images
-            ImageCache.shared.setObject(uiImage, forKey: cacheKey)
-            DispatchQueue.main.async {
-                self.image = uiImage
+        
+        // Önceki task varsa iptal et (Hızlı scroll sırasında gereksiz yüklemeyi önler)
+        task?.cancel()
+        
+        task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self, let data = data, error == nil else { return }
+            
+            // 2. AĞIR İŞLEM: Decoding ve Resize işlemini Background Thread'de yap
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Resmi decode edilmiş ve (gerekirse) küçültülmüş olarak hazırla
+                guard let decodedImage = self.decodeImage(from: data) else { return }
+                
+                // Cache'e at
+                ImageCache.shared.setObject(decodedImage, forKey: cacheKey)
+                
+                // UI Güncellemesini Main Thread'e gönder
+                DispatchQueue.main.async {
+                    self.image = decodedImage
+                }
             }
         }
         task?.resume()
+    }
+    
+    func cancel() {
+        task?.cancel()
+    }
+    
+    // Resmi zorla decode eden yardımcı fonksiyon
+    private func decodeImage(from data: Data) -> UIImage? {
+        guard let image = UIImage(data: data) else { return nil }
+        
+        // Eğer resim zaten hazırsa veya çok küçükse direkt dön
+        // Ancak performansı garantiye almak için redraw yapmak en iyisidir:
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        image.draw(at: .zero)
+        let decodedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return decodedImage
     }
 }
