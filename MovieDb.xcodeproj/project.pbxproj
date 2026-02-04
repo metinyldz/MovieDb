@@ -27,7 +27,6 @@
 		18AA7B0B2986D408004690CE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA7B0A2986D408004690CE /* LoginView.swift */; };
 		18B0CFF22826C3AE007C73A3 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */; };
 		18B30900285FA27B00B89724 /* TvSerieCastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B308FF285FA27B00B89724 /* TvSerieCastModel.swift */; };
-		18B30902285FADA000B89724 /* CastPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B30901285FADA000B89724 /* CastPersonView.swift */; };
 		18B30907285FB15E00B89724 /* CastPeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B30906285FB15E00B89724 /* CastPeopleModel.swift */; };
 		18B30909285FBA3900B89724 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B30908285FBA3900B89724 /* SearchViewModel.swift */; };
 		18B3090C285FBB5200B89724 /* SearchContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3090B285FBB5200B89724 /* SearchContentModel.swift */; };
@@ -90,7 +89,6 @@
 		18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		18B0CFF72826C651007C73A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B308FF285FA27B00B89724 /* TvSerieCastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSerieCastModel.swift; sourceTree = "<group>"; };
-		18B30901285FADA000B89724 /* CastPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPersonView.swift; sourceTree = "<group>"; };
 		18B30906285FB15E00B89724 /* CastPeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPeopleModel.swift; sourceTree = "<group>"; };
 		18B30908285FBA3900B89724 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		18B3090B285FBB5200B89724 /* SearchContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentModel.swift; sourceTree = "<group>"; };
@@ -143,6 +141,7 @@
 		AB80A1E02F28E13F000039A7 /* TvSeries */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TvSeries; sourceTree = "<group>"; };
 		ABCE88A42F28FC5A00E301D1 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
 		ABCE88AB2F2903DD00E301D1 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
+		ABE5E9CA2F3369D8009CBE2B /* Castperson */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Castperson; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,8 +295,8 @@
 		18B30903285FADA500B89724 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ABE5E9CA2F3369D8009CBE2B /* Castperson */,
 				ABE81D5C2F26941C0060CDCB /* MainBackgroundContainer.swift */,
-				18B30901285FADA000B89724 /* CastPersonView.swift */,
 				18FE2E9729EADECF00611CA6 /* WarningView.swift */,
 			);
 			path = Common;
@@ -541,6 +540,7 @@
 				AB80A1E02F28E13F000039A7 /* TvSeries */,
 				ABCE88A42F28FC5A00E301D1 /* Components */,
 				ABCE88AB2F2903DD00E301D1 /* Components */,
+				ABE5E9CA2F3369D8009CBE2B /* Castperson */,
 			);
 			name = MovieDb;
 			productName = MovieDb;
@@ -662,7 +662,6 @@
 				AB80A1E32F28E13F000039A7 /* AnalyticsManager.swift in Sources */,
 				18F2871B2850CEEE00C2D5AE /* SpokenLanguage.swift in Sources */,
 				1868CC23283EA5A500D8D94B /* MainTabView.swift in Sources */,
-				18B30902285FADA000B89724 /* CastPersonView.swift in Sources */,
 				18F2870E2850CEE200C2D5AE /* TvSeriesModel.swift in Sources */,
 				188CD6F228426FE4007D85D0 /* SplashView.swift in Sources */,
 				ABCE88AD2F2903F400E301D1 /* ProfileViewModel.swift in Sources */,
