@@ -138,7 +138,6 @@
 		AB1102F62DB6DDCC001AD7A0 /* TvSeriesDetail */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TvSeriesDetail; sourceTree = "<group>"; };
 		AB1102F82DB6DDEB001AD7A0 /* Movie */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Movie; sourceTree = "<group>"; };
 		AB1102F92DB6DDF4001AD7A0 /* MovieDetail */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MovieDetail; sourceTree = "<group>"; };
-		AB1102FA2DB6DDFC001AD7A0 /* MovieLocation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MovieLocation; sourceTree = "<group>"; };
 		AB12EFE92F2B888000C9B0E3 /* ImageCache */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ImageCache; sourceTree = "<group>"; };
 		AB80A1E02F28E13F000039A7 /* TvSeries */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TvSeries; sourceTree = "<group>"; };
 		ABCE88A42F28FC5A00E301D1 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
@@ -222,7 +221,6 @@
 			children = (
 				AB1102F82DB6DDEB001AD7A0 /* Movie */,
 				AB1102F92DB6DDF4001AD7A0 /* MovieDetail */,
-				AB1102FA2DB6DDFC001AD7A0 /* MovieLocation */,
 			);
 			path = MovieScenes;
 			sourceTree = "<group>";
@@ -538,7 +536,6 @@
 				AB1102F62DB6DDCC001AD7A0 /* TvSeriesDetail */,
 				AB1102F82DB6DDEB001AD7A0 /* Movie */,
 				AB1102F92DB6DDF4001AD7A0 /* MovieDetail */,
-				AB1102FA2DB6DDFC001AD7A0 /* MovieLocation */,
 				AB12EFE92F2B888000C9B0E3 /* ImageCache */,
 				AB80A1E02F28E13F000039A7 /* TvSeries */,
 				ABCE88A42F28FC5A00E301D1 /* Components */,
