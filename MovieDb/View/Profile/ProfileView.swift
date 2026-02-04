@@ -11,19 +11,24 @@ struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     
     var body: some View {
-        MainBackgroundContainer {
-            ProfileContentView(viewModel: viewModel)
-        }
-        .navigationBarTitle("Profile", displayMode: .large)
-        .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
-        .toolbar { // TODO: Fix the invisible toolbar problem.
-            logoutButton
+        NavigationView {
+            MainBackgroundContainer {
+                ProfileContentView(viewModel: viewModel)
+            }
+            .navigationBarTitle("Profile", displayMode: .large)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
+            .toolbar { // TODO: Fix the invisible toolbar problem.
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    logoutButton
+                }
+            }
         }
     }
     
     var logoutButton: some View {
         Button {
-            viewModel.isLogin.toggle()
+            viewModel.isLogin = false
         } label: {
             Text("Logout")
                 .foregroundColor(.white)
