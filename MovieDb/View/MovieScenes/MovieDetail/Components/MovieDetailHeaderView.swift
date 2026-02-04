@@ -34,15 +34,7 @@ struct MovieDetailHeaderView: View {
                 }
             }
         }
-        .overlay(
-            Image(systemName: "arrow.left")
-                .foregroundColor(Color.white)
-                .frame(width: 25, height: 25)
-                .onTapGesture {
-                    onDismiss()
-                }
-                .padding(32)
-        , alignment: .topLeading)
+        .backButton()
     }
 }
 

@@ -47,19 +47,9 @@ struct TvSeriesDetailView: View {
                                    height: global.minY > 0 ? max(400, global.minY + 400) : 400)
                             .clipped()
                             .offset(y: global.minY > 0 ? -global.minY : 0)
+                            .backButton()
                         }
                         .frame(height: 400)
-                        .overlay(
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(Color.white)
-                                .frame(width: 25, height: 25)
-                                .onTapGesture {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }
-                                .padding(32)
-                            ,
-                            alignment: .topLeading
-                        )
                         
                         TvSeriesDetailCenterView(content: tvSerieDetail)
                             .padding(.top, -12)

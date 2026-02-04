@@ -31,16 +31,8 @@ struct CastPersonHeaderView: View {
                 }
                 .padding(.bottom, 10)
             }
+            .backButton()
             
-            .overlay(alignment: .topLeading, content: {
-                Image(systemName: "arrow.left")
-                    .foregroundColor(Color.white)
-                    .frame(width: 25, height: 25)
-                    .onTapGesture {
-                        onDismss()
-                    }
-                    .padding([.leading, .trailing], 24)
-            })
         }
     }
 }
