@@ -32,7 +32,7 @@ struct TvSeriesDetailView: View {
                             let global = imageGeometry.frame(in: .global)
                             
                             CachedAsyncImage(
-                                url: "https://image.tmdb.org/t/p/w500\(tvSerieDetail.poster_path ?? "")",
+                                posterPath: "https://image.tmdb.org/t/p/w500\(tvSerieDetail.poster_path ?? "")",
                                 contentMode: .fill
                             ) {
                                 Image("moviePlaceholder")

@@ -23,7 +23,7 @@ struct MovieHorizontalTopRatedList: View {
     
     func getImageInformationView() -> some View {
         VStack(spacing: 5) {
-            CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg") {
+            CachedAsyncImage(posterPath: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg") {
                 Image("moviePlaceholder")
                     .resizable()
                     .frame(width: 260, height: 373)

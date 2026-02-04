@@ -19,8 +19,7 @@ struct ProfileFavoriteCardView: View {
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
-                
-                CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(favoriteItem.contentUrl ?? "")") {
+                CachedAsyncImage(posterPath: favoriteItem.contentUrl) {
                     Image("moviePlaceholder")
                         .resizable()
                         .scaledToFit()

@@ -17,7 +17,7 @@ struct CastPersonHeaderView: View {
                     let global = proxy.frame(in: .global)
                     
                     CachedAsyncImage(
-                        url: "https://image.tmdb.org/t/p/w500\(castPeople.profile_path ?? "")",
+                        posterPath: "https://image.tmdb.org/t/p/w500\(castPeople.profile_path ?? "")",
                         contentMode: .fill
                     ) {
                         Image("moviePlaceholder")

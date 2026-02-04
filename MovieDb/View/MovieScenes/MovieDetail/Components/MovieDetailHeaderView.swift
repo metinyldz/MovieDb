@@ -21,7 +21,7 @@ struct MovieDetailHeaderView: View {
                 GeometryReader { proxy in
                     let global = proxy.frame(in: .global)
                     // Header
-                    CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(posterPath)") {
+                    CachedAsyncImage(posterPath: "https://image.tmdb.org/t/p/w500\(posterPath)") {
                         Image("moviePlaceholder")
                             .resizable()
                             .aspectRatio(contentMode: .fill)

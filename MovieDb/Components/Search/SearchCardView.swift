@@ -17,7 +17,7 @@ struct SearchCardView: View {
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
-                CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500\(searchResult.poster_path ?? "")") {
+                CachedAsyncImage(posterPath: "https://image.tmdb.org/t/p/w500\(searchResult.poster_path ?? "")") {
                     Image("moviePlaceholder")
                         .resizable()
                         .scaledToFit()

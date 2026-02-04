@@ -15,7 +15,7 @@ struct TvSeriesSingleCardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             CachedAsyncImage(
-                url: "https://image.tmdb.org/t/p/w500\(tvResult.poster_path ?? "")",
+                posterPath: "https://image.tmdb.org/t/p/w500\(tvResult.poster_path ?? "")",
                 contentMode: .fill
             ) {
                 Image("moviePlaceholder")

@@ -10,16 +10,16 @@ import SwiftUI
 
 struct CachedAsyncImage<Placeholder: View>: View {
     @StateObject private var loader = ImageLoader()
-    private let url: String?
+    private let posterPath: String?
     private let contentMode: ContentMode
     private let placeholder: Placeholder
-    
+    private let baseURL: String = "https://image.tmdb.org/t/p/w500"
     init(
-        url: String?,
+        posterPath: String?,
         contentMode: ContentMode = .fit,
         @ViewBuilder placeholder: () -> Placeholder
     ) {
-        self.url = url
+        self.posterPath = baseURL + (posterPath ?? "")
         self.contentMode = contentMode
         self.placeholder = placeholder()
     }
@@ -35,11 +35,11 @@ struct CachedAsyncImage<Placeholder: View>: View {
             }
         }
         .onAppear {
-            if let urlString = url, let validUrl = URL(string: urlString) {
+            if let urlString = posterPath, let validUrl = URL(string: urlString) {
                 loader.load(url: validUrl)
             }
         }
-        .onChange(of: url) { newUrl in
+        .onChange(of: posterPath) { newUrl in
             if let urlString = newUrl, let validUrl = URL(string: urlString) {
                 loader.load(url: validUrl)
             }
@@ -51,7 +51,7 @@ struct CachedAsyncImage<Placeholder: View>: View {
 }
 
 #Preview {
-    CachedAsyncImage(url: "https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg") {
+    CachedAsyncImage(posterPath: "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg") {
         Image("moviePlaceholder")
             .resizable()
             .aspectRatio(contentMode: .fill)
