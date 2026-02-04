@@ -283,7 +283,6 @@
 				AB12EFE92F2B888000C9B0E3 /* ImageCache */,
 				18666BDF28538EBE008654E6 /* ContentBindigs.swift */,
 				1894F7A0285129E40045E516 /* Converter.swift */,
-				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
 				ABD5FDC32F0819A400370100 /* NavigationManager.swift */,
 				ABA5E3912F00450D003E8BE6 /* View+Extension.swift */,
 				ABA5E3932F00476E003E8BE6 /* ViewModifier */,
@@ -509,6 +508,7 @@
 		ABA5E3932F00476E003E8BE6 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				18B0CFF12826C3AE007C73A3 /* NavigationBarModifier.swift */,
 				ABE5E9D52F336D1A009CBE2B /* BackButtonModifier.swift */,
 				ABA5E3942F004779003E8BE6 /* FirstAppearModifier.swift */,
 			);

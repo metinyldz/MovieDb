@@ -10,11 +10,9 @@ import SwiftUI
 struct MovieDetailHeaderView: View {
     
     private var posterPath: String = ""
-    private var onDismiss: () -> Void
     
-    init(posterPath: String?, onDismiss: @escaping () -> Void) {
+    init(posterPath: String?) {
         self.posterPath = posterPath ?? ""
-        self.onDismiss = onDismiss
     }
     
     var body: some View {
@@ -39,5 +37,5 @@ struct MovieDetailHeaderView: View {
 }
 
 #Preview {
-    MovieDetailHeaderView(posterPath: "", onDismiss: {})
+    MovieDetailHeaderView(posterPath: "")
 }

@@ -19,9 +19,7 @@ struct CastPersonView: View {
         ScrollView {
             if let castPeople = castPeople {
                 VStack {
-                    CastPersonHeaderView(castPeople: castPeople) {
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                    CastPersonHeaderView(castPeople: castPeople)
                     
                     CastPersonCenterView(castPeople: castPeople)
                     

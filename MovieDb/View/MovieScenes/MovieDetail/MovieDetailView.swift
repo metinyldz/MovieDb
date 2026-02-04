@@ -17,9 +17,7 @@ struct MovieDetailView: View {
             LazyVStack {
                 if let _ = content.genres {
                     // MARK: - HEADER -
-                    MovieDetailHeaderView(posterPath: content.poster_path) {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
+                    MovieDetailHeaderView(posterPath: content.poster_path)
                     .frame(height: 400)
                     .frame(maxWidth: .infinity)
                     

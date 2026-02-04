@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CastPersonHeaderView: View {
     var castPeople: CastPeopleModel
-    var onDismss: () -> Void
     
     var body: some View {
         ZStack {
@@ -38,5 +37,5 @@ struct CastPersonHeaderView: View {
 }
 
 #Preview {
-    CastPersonHeaderView(castPeople: CastPeopleModel.all()) {}
+    CastPersonHeaderView(castPeople: CastPeopleModel.all())
 }
