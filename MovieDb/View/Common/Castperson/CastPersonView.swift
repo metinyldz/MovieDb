@@ -11,30 +11,19 @@ struct CastPersonView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel = TvSeriesDetailViewModel()
-    @State private var castPeople: CastPeopleModel?
     
     var id: Int
     
     var body: some View {
-        ScrollView {
-            if let castPeople = castPeople {
-                VStack {
-                    CastPersonHeaderView(castPeople: castPeople)
-                    
-                    CastPersonCenterView(castPeople: castPeople)
-                    
-                    CastPersonFooterView(castPeople: castPeople)
-                }
-            }
-        }
-        .background(Color("BackgroundColor"))
-        .navigationBarHidden(true)
-        .onFirstAppear {
-            Task {
-                await viewModel.getPerson(id: id) { model in
-                    castPeople = model
-                }
-            }
+        VStack {
+            CastPersonHeaderView(castPeople: viewModel.castPeople)
+                .background(Color.red)
+            CastPersonCenterView(castPeople: viewModel.castPeople)
+                .background(Color.green)
+            CastPersonFooterView(castPeople: viewModel.castPeople)
+                .background(Color.blue)
+            
+            Spacer()
         }
     }
 }

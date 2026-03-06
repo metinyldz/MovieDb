@@ -17,7 +17,6 @@ struct TvSeriesCardView: View {
     
     @StateObject var viewModel = TvSeriesViewModel()
     @State private var isActive = false
-    @EnvironmentObject var contentBindigs: ContentBindigs
     @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MovieView: View {
     @StateObject var movieViewModel = MovieViewModel()
-    @EnvironmentObject var contentBindigs: ContentBindigs
     
     var body: some View {
         MainBackgroundContainer {
