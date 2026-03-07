@@ -148,22 +148,5 @@ class TvSeriesViewModel: BaseViewModel {
         tvGenres = try await networkManager.fetch(url: MovieDbRouter.getTvGenres.urlString, expecting: GenreModel.self)
     }
     
-    func getTvSerieDetail(id: Int, completion: @escaping (TvSerieDetailModel) -> Void) async {
-        do {
-            tvSerieDetail = try await networkManager.fetch(url: MovieDbRouter.getTvSerieDetail(id: id).urlString, expecting: TvSerieDetailModel.self)
-            isActive = true
-            completion(tvSerieDetail)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func getTvSerieCredit(id: Int, completion: @escaping (TvSerieCastModel) -> Void) async {
-        do {
-            tvSerieCast = try await networkManager.fetch(url: MovieDbRouter.getTvSerieCredit(id: id).urlString, expecting: TvSerieCastModel.self)
-            completion(tvSerieCast)
-        } catch {
-            print(error)
-        }
-    }
+
 }

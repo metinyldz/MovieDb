@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CastPersonHeaderView: View {
-    var castPeople: CastPeopleModel
+    var posterPath: String
     
     var body: some View {
         ZStack {
@@ -17,7 +17,7 @@ struct CastPersonHeaderView: View {
                     let global = proxy.frame(in: .global)
                     
                     CachedAsyncImage(
-                        posterPath: "https://image.tmdb.org/t/p/w500\(castPeople.profile_path ?? "")",
+                        posterPath: "https://image.tmdb.org/t/p/w500\(posterPath)",
                         contentMode: .fill
                     ) {
                         Image("moviePlaceholder")
@@ -37,5 +37,5 @@ struct CastPersonHeaderView: View {
 }
 
 #Preview {
-    CastPersonHeaderView(castPeople: CastPeopleModel.all())
+    CastPersonHeaderView(posterPath: "/kU3B75TyRiCgE270EyZnHjfivoq.jpg")
 }

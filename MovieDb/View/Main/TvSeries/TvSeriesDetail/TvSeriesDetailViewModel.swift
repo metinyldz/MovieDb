@@ -9,17 +9,25 @@ import Foundation
 
 @MainActor
 class TvSeriesDetailViewModel: BaseViewModel {
-    
-    @Published var castPeople: CastPeopleModel = CastPeopleModel()
-    @Published var isActive = false
+    // MARK: Content Detail Properties
+    var tvSerieDetail: TvSerieDetailModel? = TvSerieDetailModel()
+    var tvSerieCast: TvSerieCastModel? = TvSerieCastModel()
     
     var networkManager = NetworkManager()
     
-    func getPerson(id: Int, completion: @escaping (CastPeopleModel?) -> Void) async {
+    func getTvSerieDetail(id: Int, completion: @escaping (TvSerieDetailModel?) -> Void) async {
         do {
-            castPeople = try await networkManager.fetch(url: MovieDbRouter.getPerson(id: id).urlString, expecting: CastPeopleModel.self)
-            isActive = true
-            completion(castPeople)
+            tvSerieDetail = try await networkManager.fetch(url: MovieDbRouter.getTvSerieDetail(id: id).urlString, expecting: TvSerieDetailModel.self)
+            completion(tvSerieDetail)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getTvSerieCredit(id: Int, completion: @escaping (TvSerieCastModel?) -> Void) async {
+        do {
+            tvSerieCast = try await networkManager.fetch(url: MovieDbRouter.getTvSerieCredit(id: id).urlString, expecting: TvSerieCastModel.self)
+            completion(tvSerieCast)
         } catch {
             print(error)
         }

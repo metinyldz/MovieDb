@@ -11,11 +11,8 @@ struct TvSeriesDetailView: View {
     var id: Int
     
     //MARK: - PROPERTIES -
-    @State var tvSerieDetailModel: TvSerieDetailModel?
-    @State var tvSerieCastModel: TvSerieCastModel?
     @State private var isLoading = true
-    
-    @StateObject var viewModel = TvSeriesViewModel()
+    @StateObject private var viewModel = TvSeriesDetailViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -23,8 +20,8 @@ struct TvSeriesDetailView: View {
                 if isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if let tvSerieDetail = tvSerieDetailModel,
-                          let tvSerieCast = tvSerieCastModel {
+                } else if let tvSerieDetail = viewModel.tvSerieDetail,
+                          let tvSerieCast = viewModel.tvSerieCast {
                     VStack {
                         GeometryReader { imageGeometry in
                             let global = imageGeometry.frame(in: .global)
@@ -61,10 +58,10 @@ struct TvSeriesDetailView: View {
             .onFirstAppear {
                 Task {
                     await viewModel.getTvSerieCredit(id: id) { model in
-                        tvSerieCastModel = model
+                        viewModel.tvSerieCast = model
                     }
                     await viewModel.getTvSerieDetail(id: id) { model in
-                        tvSerieDetailModel = model
+                        viewModel.tvSerieDetail = model
                     }
                     isLoading = false
                 }

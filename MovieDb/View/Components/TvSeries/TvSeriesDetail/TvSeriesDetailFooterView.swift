@@ -16,7 +16,6 @@ struct TvSeriesDetailFooterView: View {
     
     @State var isCreatorsEmpty: Bool = false
     @State private var isActive = false
-    @State var castPeopleModel = CastPeopleModel()
                
     var body: some View {
         VStack {

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CastPersonCenterView: View {
-    var castPeople: CastPeopleModel?
+    var name: String
+    var biography: String
     
     var body: some View {
-        Text(castPeople?.name ?? "")
+        Text(name)
             .fontWeight(.bold)
             .font(.system(size: 28))
             .frame(height: 34)
@@ -19,7 +20,7 @@ struct CastPersonCenterView: View {
             .padding(.horizontal, 24)
             .padding(.top, 20)
         
-        Text(castPeople?.biography ?? "-")
+        Text(biography)
             .fontWeight(.regular)
             .font(.system(size: 17))
             .opacity(0.8)
@@ -29,5 +30,8 @@ struct CastPersonCenterView: View {
 }
 
 #Preview {
-    CastPersonCenterView(castPeople: CastPeopleModel.all())
+    CastPersonCenterView(
+        name: "",
+        biography: ""
+    )
 }

@@ -8,20 +8,33 @@
 import SwiftUI
 
 struct CastPersonView: View {
-    @StateObject var viewModel = TvSeriesDetailViewModel()
+    @StateObject private var viewModel = CastPersonViewModel()
     
     var id: Int
     
     var body: some View {
         VStack {
-            CastPersonHeaderView(castPeople: viewModel.castPeople)
-                .background(Color.red)
-            CastPersonCenterView(castPeople: viewModel.castPeople)
-                .background(Color.green)
-            CastPersonFooterView(castPeople: viewModel.castPeople)
-                .background(Color.blue)
+            if let posterPath = viewModel.castPeople.profile_path {
+                CastPersonHeaderView(posterPath: posterPath)
+            }
+            if let name = viewModel.castPeople.name,
+               let biography = viewModel.castPeople.biography {
+                CastPersonCenterView(
+                    name: name,
+                    biography: biography
+                )
+            }
+            if let placeOfBirth = viewModel.castPeople.place_of_birth {
+                CastPersonFooterView(placeOfBirth: placeOfBirth)
+            }
             
             Spacer()
+        }
+        .backButton()
+        .onFirstAppear {
+            Task {
+                await viewModel.getPerson(id: id)
+            }
         }
     }
 }

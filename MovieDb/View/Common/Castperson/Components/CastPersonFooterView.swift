@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CastPersonFooterView: View {
-    var castPeople: CastPeopleModel?
+    var placeOfBirth: String
     
     var body: some View {
         HStack {
@@ -18,7 +18,7 @@ struct CastPersonFooterView: View {
                 .opacity(0.8)
                 .foregroundColor(.black)
             
-            Text(castPeople?.place_of_birth ?? "-")
+            Text(placeOfBirth)
                 .fontWeight(.regular)
                 .font(.system(size: 17))
                 .opacity(0.8)
@@ -30,5 +30,5 @@ struct CastPersonFooterView: View {
 }
 
 #Preview {
-    CastPersonFooterView(castPeople: CastPeopleModel.all())
+    CastPersonFooterView(placeOfBirth: "")
 }

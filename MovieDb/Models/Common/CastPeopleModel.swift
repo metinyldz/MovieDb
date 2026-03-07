@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CastPeopleModel: Codable {
+struct CastPeopleModel: Codable, Equatable, Hashable {
     var birthday: String?
     var known_for_department: String?
     var deathday: String?
