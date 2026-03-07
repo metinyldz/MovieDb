@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TvSeriesDetailView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     var id: Int
     
     //MARK: - PROPERTIES -

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     var content: MovieDetailModel
     
     var body: some View {

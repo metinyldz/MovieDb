@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CastPersonView: View {
-    
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel = TvSeriesDetailViewModel()
     
     var id: Int

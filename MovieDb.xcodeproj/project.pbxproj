@@ -174,13 +174,6 @@
 			path = CommonView;
 			sourceTree = "<group>";
 		};
-		18328640282B00420039B396 /* MovieDetailView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MovieDetailView;
-			sourceTree = "<group>";
-		};
 		18677A67285907570015FF0E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,7 +368,6 @@
 			children = (
 				1868CC22283EA5A500D8D94B /* MainTabView.swift */,
 				182D4E0D282817ED0050DC69 /* CommonView */,
-				18EC93FE283A64C100AB47AC /* Movie */,
 				18EC9405283A7BBA00AB47AC /* Profile */,
 				18EC9400283A64CF00AB47AC /* Search */,
 				188CD6F62842801D007D85D0 /* Splash */,
@@ -395,14 +387,6 @@
 				18B3090D285FBB7800B89724 /* Search */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		18EC93FE283A64C100AB47AC /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				18328640282B00420039B396 /* MovieDetailView */,
-			);
-			path = Movie;
 			sourceTree = "<group>";
 		};
 		18EC93FF283A64C700AB47AC /* TvSeries */ = {
