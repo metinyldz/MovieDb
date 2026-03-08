@@ -9,6 +9,8 @@ import Foundation
 
 @MainActor
 class TvSeriesDetailViewModel: BaseViewModel {
+    @Published var viewState: ViewState = .idle
+    
     // MARK: Content Detail Properties
     var tvSerieDetail: TvSerieDetailModel? = TvSerieDetailModel()
     var tvSerieCast: TvSerieCastModel? = TvSerieCastModel()
@@ -31,5 +33,12 @@ class TvSeriesDetailViewModel: BaseViewModel {
         } catch {
             print(error)
         }
+    }
+    
+    enum ViewState {
+        case idle
+        case loading
+        case loaded
+        case error
     }
 }
