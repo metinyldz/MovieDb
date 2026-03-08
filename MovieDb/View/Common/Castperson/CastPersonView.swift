@@ -30,6 +30,7 @@ struct CastPersonView: View {
             
             Spacer()
         }
+        .navigationBarHidden(true)
         .backButton()
         .onFirstAppear {
             Task {
