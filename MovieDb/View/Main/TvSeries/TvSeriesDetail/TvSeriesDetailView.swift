@@ -11,47 +11,56 @@ struct TvSeriesDetailView: View {
     var id: Int
     
     //MARK: - PROPERTIES -
-    @State private var isLoading = true
     @StateObject private var viewModel = TvSeriesDetailViewModel()
     
     var body: some View {
-        
-        switch viewModel.viewState {
-        case .idle:
-            EmptyView()
-        case .loading:
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        case .loaded:
-            GeometryReader { geometry in
-                ScrollView {
-                    if let tvSerieDetail = viewModel.tvSerieDetail,
-                       let tvSerieCast = viewModel.tvSerieCast {
-                        contentView(
-                            tvSerieDetail: tvSerieDetail,
-                            tvSerieCast: tvSerieCast,
-                            geometry: geometry
-                        )
+        VStack {
+            switch viewModel.viewState {
+            case .idle:
+                EmptyView()
+            case .loading:
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .loaded:
+                GeometryReader { geometry in
+                    ScrollView {
+                        if let tvSerieDetail = viewModel.tvSerieDetail,
+                           let tvSerieCast = viewModel.tvSerieCast {
+                            contentView(
+                                tvSerieDetail: tvSerieDetail,
+                                tvSerieCast: tvSerieCast,
+                                geometry: geometry
+                            )
+                        }
                     }
+                    .background(Color("BackgroundColor"))
+                    .navigationBarHidden(true)
                 }
-                .background(Color("BackgroundColor"))
-                .navigationBarHidden(true)
-                .onFirstAppear {
-                    Task {
-                        await viewModel.getTvSerieCredit(id: id) { model in
-                            viewModel.tvSerieCast = model
-                        }
-                        await viewModel.getTvSerieDetail(id: id) { model in
-                            viewModel.tvSerieDetail = model
-                        }
-                        isLoading = false
-                    }
+            case .error:
+                EmptyView()
+            }
+        }
+        .navigationBarHidden(true)
+        .backButton()
+        .onFirstAppear {
+            Task {
+                viewModel.viewState = .loading
+                do {
+                    async let credit = viewModel.getTvSerieCredit(id: id)
+                    async let detail = viewModel.getTvSerieDetail(id: id)
+                    
+                    let (creditModel, detailModel) = try await (credit, detail)
+                    
+                    viewModel.tvSerieCast = creditModel
+                    viewModel.tvSerieDetail = detailModel
+                    viewModel.viewState = .loaded
+                } catch {
+                    viewModel.viewState = .error(error)
                 }
             }
-        case .error:
-            EmptyView() // TODO: Fix error
         }
     }
+    
     func contentView(
         tvSerieDetail: TvSerieDetailModel,
         tvSerieCast: TvSerieCastModel,
@@ -77,7 +86,6 @@ struct TvSeriesDetailView: View {
                        height: global.minY > 0 ? max(400, global.minY + 400) : 400)
                 .clipped()
                 .offset(y: global.minY > 0 ? -global.minY : 0)
-                .backButton()
             }
             .frame(height: 400)
             

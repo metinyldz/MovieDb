@@ -11,27 +11,30 @@ import Foundation
 class TvSeriesDetailViewModel: BaseViewModel {
     @Published var viewState: ViewState = .idle
     
-    // MARK: Content Detail Properties
     var tvSerieDetail: TvSerieDetailModel? = TvSerieDetailModel()
     var tvSerieCast: TvSerieCastModel? = TvSerieCastModel()
     
     var networkManager = NetworkManager()
     
-    func getTvSerieDetail(id: Int, completion: @escaping (TvSerieDetailModel?) -> Void) async {
+    func getTvSerieDetail(id: Int) async throws -> TvSerieDetailModel {
         do {
-            tvSerieDetail = try await networkManager.fetch(url: MovieDbRouter.getTvSerieDetail(id: id).urlString, expecting: TvSerieDetailModel.self)
-            completion(tvSerieDetail)
+            let result = try await networkManager.fetch(url: MovieDbRouter.getTvSerieDetail(id: id).urlString, expecting: TvSerieDetailModel.self)
+            tvSerieDetail = result
+            return result
         } catch {
             print(error)
+            throw error
         }
     }
     
-    func getTvSerieCredit(id: Int, completion: @escaping (TvSerieCastModel?) -> Void) async {
+    func getTvSerieCredit(id: Int) async throws -> TvSerieCastModel {
         do {
-            tvSerieCast = try await networkManager.fetch(url: MovieDbRouter.getTvSerieCredit(id: id).urlString, expecting: TvSerieCastModel.self)
-            completion(tvSerieCast)
+            let result = try await networkManager.fetch(url: MovieDbRouter.getTvSerieCredit(id: id).urlString, expecting: TvSerieCastModel.self)
+            tvSerieCast = result
+            return result
         } catch {
             print(error)
+            throw error
         }
     }
     
@@ -39,6 +42,6 @@ class TvSeriesDetailViewModel: BaseViewModel {
         case idle
         case loading
         case loaded
-        case error
+        case error(Error)
     }
 }
