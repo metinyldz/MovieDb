@@ -41,7 +41,6 @@ struct TvSeriesDetailView: View {
             }
         }
         .navigationBarHidden(true)
-        .backButton()
         .onFirstAppear {
             Task {
                 viewModel.viewState = .loading
@@ -86,6 +85,7 @@ struct TvSeriesDetailView: View {
                        height: global.minY > 0 ? max(400, global.minY + 400) : 400)
                 .clipped()
                 .offset(y: global.minY > 0 ? -global.minY : 0)
+                .backButton()
             }
             .frame(height: 400)
             
