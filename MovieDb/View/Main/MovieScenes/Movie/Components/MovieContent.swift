@@ -19,26 +19,56 @@ struct MovieContent: View {
                 .tint(Color("VibrantBlue"))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         case .loaded:
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: .zero) {
-                    Color("VibrantBlue")
-                        .frame(height: 300)
-                    
-                    MovieHorizontalTopRatedList()
-                        .padding(.top, -130)
-                    
-                    Divider()
-                        .padding()
-                        .padding(.top, 20)
-                    
-                    MoviePopularList()
-                        .padding(.horizontal, 24)
+            let topRatedMovies = viewModel.topRatedMovies.results ?? []
+            let popularMovies = viewModel.movies.results ?? []
+            let genres = viewModel.genres.genres ?? []
+
+            if topRatedMovies.isEmpty && popularMovies.isEmpty {
+                emptyStateView
+            } else {
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: .zero) {
+                        Color("VibrantBlue")
+                            .frame(height: 300)
+                        
+                        MovieHorizontalTopRatedList(
+                            movies: topRatedMovies,
+                            genres: genres
+                        )
+                            .padding(.top, -130)
+                        
+                        Divider()
+                            .padding()
+                            .padding(.top, 20)
+                        
+                        MoviePopularList(
+                            movies: popularMovies,
+                            genres: genres
+                        )
+                            .padding(.horizontal, 24)
+                    }
                 }
+                .ignoresSafeArea(.all)
+                .navigationTitle("Movies")
             }
-            .ignoresSafeArea(.all)
-            .navigationTitle("Movies")
         case .error:
             EmptyView()
         }
+    }
+
+    private var emptyStateView: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "film")
+                .font(.system(size: 40, weight: .semibold))
+                .foregroundStyle(Color("VibrantBlue"))
+            Text("No movies found")
+                .font(.title3)
+                .fontWeight(.semibold)
+            Text("Try again later.")
+                .font(.callout)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationTitle("Movies")
     }
 }

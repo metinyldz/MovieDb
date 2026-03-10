@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MoviePopularList: View {
+    let movies: [MovieResult]
+    let genres: [GenreResult]
+
     var body: some View {
         VStack(spacing: 30) {
             Text("Popular")
@@ -16,28 +19,27 @@ struct MoviePopularList: View {
                 .fontWeight(.semibold)
                 .lineLimit(1)
             
-            VStack(spacing: 30) { // TODO: Add api and real response
-                getSmallItemCardView()
-                getSmallItemCardView()
-                getSmallItemCardView()
-                getSmallItemCardView()
-                getSmallItemCardView()
+            VStack(spacing: 30) {
+                ForEach(movies, id: \.self) { movie in
+                    smallItemCardView(for: movie)
+                }
             }
             .padding(.horizontal)
         }
     }
     
-    func getSmallItemCardView() -> some View {
+    private func smallItemCardView(for movie: MovieResult) -> some View {
         HStack(spacing: 10) {
-            Image("moviePlaceholder")
-                .resizable()
-                .frame(maxHeight: .infinity)
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 70)
+            CachedAsyncImage(posterPath: movie.poster_path, contentMode: .fill) {
+                Image("moviePlaceholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+            .frame(width: 70)
             
             VStack(spacing: 5) {
                 HStack(spacing: .zero) {
-                    Text("A Working Man")
+                    Text(movie.title ?? "-")
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
@@ -46,7 +48,7 @@ struct MoviePopularList: View {
                         .frame(alignment: .trailing)
                 }
                 
-                Text("Action, Crime, Thriller")
+                Text(genresText(for: movie.genre_ids))
                     .font(.callout)
                     .fontWeight(.light)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -57,12 +59,12 @@ struct MoviePopularList: View {
                     
                     Spacer()
                     
-                    Text("26.03.2025")
+                    Text(releaseDateText(from: movie.release_date))
                         .font(.caption)
                         .fontWeight(.light)
                         .padding(.horizontal)
                     
-                    Text("6.27")
+                    Text(movie.vote_average?.format(f: ".2") ?? "-")
                         .font(.caption)
                         .fontWeight(.light)
                         .padding(.horizontal)
@@ -80,11 +82,31 @@ struct MoviePopularList: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 4)
     }
+
+    private func releaseDateText(from releaseDate: String?) -> String {
+        guard let releaseDate else { return "-" }
+        return Converter.convertDate(input: releaseDate, dateType: .date)
+    }
+
+    private func genresText(for genreIds: [Int]?) -> String {
+        guard let genreIds else { return "" }
+        let names = genreIds.compactMap { genreId in
+            genres.first(where: { $0.id == genreId })?.name
+        }
+        return names.joined(separator: ", ")
+    }
 }
 
 struct MoviePopularList_Previews: PreviewProvider {
     static var previews: some View {
-        MoviePopularList()
+        MoviePopularList(
+            movies: MovieResult.all(),
+            genres: [
+                GenreResult(id: 28, name: "Action"),
+                GenreResult(id: 12, name: "Adventure"),
+                GenreResult(id: 878, name: "Science Fiction")
+            ]
+        )
             .previewLayout(.sizeThatFits)
     }
 }
