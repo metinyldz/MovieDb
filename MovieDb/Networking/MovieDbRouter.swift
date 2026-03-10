@@ -15,6 +15,9 @@ enum MovieDbRouter {
     case getMovieDetail(id: Int)
     case getMoviesGenres
     
+    //MARK: - Search -
+    case searchMulti(query: String)
+    
     //MARK: - Tv Series -
     case getTvSeries
     case getTvTopRated
@@ -37,6 +40,8 @@ enum MovieDbRouter {
     
     var path: String {
         switch self {
+        case .searchMulti(let query):
+            return "/search/multi?api_key=\(apiKey)&language=en-US&page=1&query=\(query)"
         case .getTopRatedMovies:
             return "/movie/top_rated?api_key=\(apiKey)&language=en-US&page=1"
         case .getMovies:

@@ -12,7 +12,26 @@ struct MovieView: View {
     
     var body: some View {
         MainBackgroundContainer {
-            MovieContent()
+            MovieContent(viewModel: movieViewModel)
+        }
+        .onFirstAppear {
+            Task {
+                movieViewModel.viewState = .loading
+                do {
+                    async let topRated = movieViewModel.getTopRatedMovies()
+                    async let movies = movieViewModel.getMovies()
+                    async let genres = movieViewModel.getMoviesGenres()
+                    
+                    let (topRatedResult, moviesResult, genresResult) = try await (topRated, movies, genres)
+                    
+                    movieViewModel.topRatedMovies = topRatedResult
+                    movieViewModel.movies = moviesResult
+                    movieViewModel.genres = genresResult
+                    movieViewModel.viewState = .loaded
+                } catch {
+                    movieViewModel.viewState = .error(error)
+                }
+            }
         }
     }
 }

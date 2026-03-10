@@ -13,7 +13,7 @@ struct SearchContentView: View {
     @Binding var isEditing: Bool
     
     var body: some View {
-        switch viewModel.searchState {
+        switch viewModel.viewState {
         case .idle:
             EmptyView()
         case .loading:
@@ -31,7 +31,7 @@ struct SearchContentView: View {
                     isEditing: $isEditing
                 )
             }
-        case .failure(let _):
+        case .error:
             EmptyView()
         }
     }

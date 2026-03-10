@@ -11,49 +11,26 @@ import Foundation
 class MovieViewModel: BaseViewModel {
     @Published var topRatedMovies: MovieTopRated = MovieTopRated()
     @Published var movies: Movie = Movie()
-    @Published var movieDetail: MovieDetailModel = MovieDetailModel()
     @Published var genres: GenreModel = GenreModel()
-    @Published var isMovieDetailActive = false
-    @Published var movieState: ViewState = .idle
+    @Published var viewState: ViewState = .idle
     var networkManager = NetworkManager()
     
-    func getTopRatedMovies() async {
-        do {
-            topRatedMovies = try await networkManager.fetch(url: MovieDbRouter.getTopRatedMovies.urlString, expecting: MovieTopRated.self)
-        } catch {
-            print(error)
-        }
+    func getTopRatedMovies() async throws -> MovieTopRated {
+        return try await networkManager.fetch(url: MovieDbRouter.getTopRatedMovies.urlString, expecting: MovieTopRated.self)
     }
     
-    func getMovies() async {
-        do {
-            movies = try await networkManager.fetch(url: MovieDbRouter.getMovies.urlString, expecting: Movie.self)
-        } catch {
-            print(error)
-        }
+    func getMovies() async throws -> Movie {
+        return try await networkManager.fetch(url: MovieDbRouter.getMovies.urlString, expecting: Movie.self)
     }
     
-    func getMovieDetail(id: Int) async {
-        do {
-            movieDetail = try await networkManager.fetch(url: MovieDbRouter.getMovieDetail(id: id).urlString, expecting: MovieDetailModel.self)
-            isMovieDetailActive = true
-        } catch {
-            print(error)
-        }
-    }
-    
-    func getMoviesGenres() async {
-        do {
-            genres = try await networkManager.fetch(url: MovieDbRouter.getMoviesGenres.urlString, expecting: GenreModel.self)
-        } catch {
-            print(error)
-        }
+    func getMoviesGenres() async throws -> GenreModel {
+        return try await networkManager.fetch(url: MovieDbRouter.getMoviesGenres.urlString, expecting: GenreModel.self)
     }
     
     enum ViewState {
         case idle
         case loading
         case loaded
-        case failed
+        case error(Error)
     }
 }

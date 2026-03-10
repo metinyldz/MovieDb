@@ -33,11 +33,15 @@ struct SearchView: View {
     }
     
     private func sendContentRequest() {
-        if searchText != "" {
-            viewModel.fetchSearchContent(queryString: searchText) { result, success in
-                guard let result = result else { return }
+        Task {
+            viewModel.viewState = .loading
+            do {
+                let result = try await viewModel.fetchSearchContent(queryString: searchText)
+                viewModel.viewState = .loaded(result)
                 isEditing = !result.results.isEmpty
                 searchResults = result.results
+            } catch {
+                viewModel.viewState = .error(error)
             }
         }
     }
