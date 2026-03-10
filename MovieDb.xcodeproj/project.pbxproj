@@ -53,6 +53,7 @@
 		18FE2E9229EAD4EC00611CA6 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9129EAD4EC00611CA6 /* LoginTextFieldView.swift */; };
 		18FE2E9629EADC5500611CA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */; };
 		18FE2E9829EADECF00611CA6 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE2E9729EADECF00611CA6 /* WarningView.swift */; };
+		AB0060B52F609E2400ED387B /* ParallaxHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0060B42F609E2400ED387B /* ParallaxHeaderView.swift */; };
 		AB35338A2F24FDED00039197 /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */; };
 		AB35338C2F24FE9100039197 /* LoginLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35338B2F24FE8D00039197 /* LoginLogoView.swift */; };
 		AB35338E2F24FEDD00039197 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35338D2F24FED900039197 /* LoginContentView.swift */; };
@@ -118,6 +119,7 @@
 		18FE2E9529EADC5500611CA6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18FE2E9729EADECF00611CA6 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		4CF292E88E0CE0C7D7F21B36 /* Pods-MovieDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDb.release.xcconfig"; path = "Target Support Files/Pods-MovieDb/Pods-MovieDb.release.xcconfig"; sourceTree = "<group>"; };
+		AB0060B42F609E2400ED387B /* ParallaxHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxHeaderView.swift; sourceTree = "<group>"; };
 		AB3533892F24FDE700039197 /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
 		AB35338B2F24FE8D00039197 /* LoginLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLogoView.swift; sourceTree = "<group>"; };
 		AB35338D2F24FED900039197 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		182D4E0D282817ED0050DC69 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				AB0060B42F609E2400ED387B /* ParallaxHeaderView.swift */,
 				18BBD75C2DBFB614008A94CF /* SmallRatingView.swift */,
 				18D1304828245CE70064C61C /* PagingView.swift */,
 			);
@@ -661,6 +664,7 @@
 				1878765628341C4D00ACFEAB /* TvSeriesDetailFooterView.swift in Sources */,
 				185A8D472A2CFBCB0044582F /* NetworkManager.swift in Sources */,
 				AB80A1E32F28E13F000039A7 /* AnalyticsManager.swift in Sources */,
+				AB0060B52F609E2400ED387B /* ParallaxHeaderView.swift in Sources */,
 				18F2871B2850CEEE00C2D5AE /* SpokenLanguage.swift in Sources */,
 				1868CC23283EA5A500D8D94B /* MainTabView.swift in Sources */,
 				18F2870E2850CEE200C2D5AE /* TvSeriesModel.swift in Sources */,
