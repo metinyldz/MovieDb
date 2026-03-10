@@ -13,25 +13,37 @@ struct CastPersonView: View {
     var id: Int
     
     var body: some View {
-        VStack {
-            if let posterPath = viewModel.castPeople.profile_path {
-                CastPersonHeaderView(posterPath: posterPath)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 0) {
+                    // MARK: - HEADER
+                    if let posterPath = viewModel.castPeople.profile_path {
+                        ParallaxHeaderView(
+                            posterPath: posterPath,
+                            width: geometry.size.width,
+                            height: geometry.size.height / 2.2
+                        )
+                        .padding(.bottom, 10)
+                    }
+                    
+                    // MARK: - CENTER
+                    if let name = viewModel.castPeople.name,
+                       let biography = viewModel.castPeople.biography {
+                        CastPersonCenterView(
+                            name: name,
+                            biography: biography
+                        )
+                    }
+                    
+                    // MARK: - FOOTER
+                    if let placeOfBirth = viewModel.castPeople.place_of_birth {
+                        CastPersonFooterView(placeOfBirth: placeOfBirth)
+                    }
+                }
             }
-            if let name = viewModel.castPeople.name,
-               let biography = viewModel.castPeople.biography {
-                CastPersonCenterView(
-                    name: name,
-                    biography: biography
-                )
-            }
-            if let placeOfBirth = viewModel.castPeople.place_of_birth {
-                CastPersonFooterView(placeOfBirth: placeOfBirth)
-            }
-            
-            Spacer()
+            .background(Color("BackgroundColor"))
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
-        .backButton()
         .onFirstAppear {
             Task {
                 await viewModel.getPerson(id: id)

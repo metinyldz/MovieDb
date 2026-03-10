@@ -11,26 +11,29 @@ struct MovieDetailView: View {
     var content: MovieDetailModel
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                if let _ = content.genres {
-                    // MARK: - HEADER -
-                    MovieDetailHeaderView(posterPath: content.poster_path)
-                    .frame(height: 400)
-                    .frame(maxWidth: .infinity)
-                    
-                    // MARK: - CENTER -
-                    MovieDetailCenterView(content: content)
-                        .padding(.top, -20)
-                    
-                    // MARK: - FOOTER -
-                    MovieDetailFooterView(content: content)
-                        .padding(.horizontal, 24)
+        GeometryReader { geometry in
+            ScrollView {
+                LazyVStack {
+                    if let _ = content.genres {
+                        // MARK: - HEADER -
+                        ParallaxHeaderView(
+                            posterPath: content.poster_path,
+                            width: geometry.size.width
+                        )
+                        
+                        // MARK: - CENTER -
+                        MovieDetailCenterView(content: content)
+                            .padding(.top, -20)
+                        
+                        // MARK: - FOOTER -
+                        MovieDetailFooterView(content: content)
+                            .padding(.horizontal, 24)
+                    }
                 }
             }
+            .background(Color("BackgroundColor"))
+            .navigationBarHidden(true)
         }
-        .background(Color("BackgroundColor"))
-        .navigationBarHidden(true)
     }
 }
 
