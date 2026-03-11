@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RootView.swift
 //  MovieDb
 //
 //  Created by Metin Yıldız on 5.05.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RootView: View {
     @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some View {
@@ -22,6 +22,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    RootView()
         .preferredColorScheme(.light)
 }

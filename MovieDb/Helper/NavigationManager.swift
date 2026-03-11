@@ -26,4 +26,5 @@ class NavigationManager: ObservableObject {
 enum Route: Hashable {
     case castPersonView(id: Int)
     case tvSeriesDetail(id: Int)
+    case movieDetail(id: Int)
 }

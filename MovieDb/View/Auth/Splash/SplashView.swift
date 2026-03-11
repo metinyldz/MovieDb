@@ -14,13 +14,15 @@ struct SplashView: View {
     var body: some View {
         VStack {
             if isActive {
-                ContentView()
+                RootView()
                     .navigationDestination(for: Route.self) { route in
                         switch route {
                         case .tvSeriesDetail(let id):
                             TvSeriesDetailView(id: id)
                         case .castPersonView(let id):
                             CastPersonView(id: id)
+                        case .movieDetail(let id):
+                            MovieDetailView(id: id)
                         }
                     }
             } else {

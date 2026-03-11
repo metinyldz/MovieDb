@@ -24,5 +24,4 @@ struct MovieDetailFooterView: View {
 
 #Preview {
     MovieDetailFooterView(content: MovieDetailModel.all())
-        .previewLayout(.sizeThatFits)
 }

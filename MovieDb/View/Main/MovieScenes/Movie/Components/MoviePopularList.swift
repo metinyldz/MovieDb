@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MoviePopularList: View {
+    @EnvironmentObject var navigationManager: NavigationManager
+    
     let movies: [MovieResult]
     let genres: [GenreResult]
 
@@ -22,6 +24,11 @@ struct MoviePopularList: View {
             VStack(spacing: 30) {
                 ForEach(movies, id: \.self) { movie in
                     smallItemCardView(for: movie)
+                        .onTapGesture {
+                            if let id = movie.id {
+                                navigationManager.navigate(to: .movieDetail(id: id))
+                            }
+                        }
                 }
             }
             .padding(.horizontal)
