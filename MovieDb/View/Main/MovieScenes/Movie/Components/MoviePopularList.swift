@@ -63,20 +63,20 @@ struct MoviePopularList: View {
                 HStack(spacing: .zero) {
                     Image(systemName: "calendar")
                         .foregroundStyle(Color("VibrantBlue"))
-                    
-                    Spacer()
-                    
+                                        
                     Text(releaseDateText(from: movie.release_date))
                         .font(.caption)
                         .fontWeight(.light)
                         .padding(.horizontal)
                     
+                    Spacer()
+                    
                     Text(movie.vote_average?.format(f: ".2") ?? "-")
                         .font(.caption)
-                        .fontWeight(.light)
-                        .padding(.horizontal)
-                    
-                    Spacer()
+                        .foregroundStyle(Color.white)
+                        .padding(.horizontal, 8)
+                        .background(Color("VibrantBlue"))
+                        .clipShape(.capsule)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
