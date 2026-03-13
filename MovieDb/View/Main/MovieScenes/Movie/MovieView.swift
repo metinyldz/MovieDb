@@ -14,6 +14,8 @@ struct MovieView: View {
         MainBackgroundContainer {
             MovieContent(viewModel: movieViewModel)
         }
+        .navigationBarTitle("Movies", displayMode: .large)
+        .navigationBarColor(backgroundColor: Color("VibrantBlue"), titleColor: .white)
         .onFirstAppear {
             Task {
                 movieViewModel.viewState = .loading
