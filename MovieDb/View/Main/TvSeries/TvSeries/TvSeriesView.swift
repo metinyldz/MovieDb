@@ -13,18 +13,6 @@ struct TvSeriesView: View {
     
     @StateObject private var viewModel = TvSeriesViewModel()
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let horizontalPadding: CGFloat = 24
-        static let dividerVerticalPadding: CGFloat = 20
-        static let cardBottomPadding: CGFloat = 10
-        static let sectionTitleFontSize: CGFloat = 22
-        static let shadowRadius: CGFloat = 8
-        static let shadowOffset: CGFloat = 2
-        static let shadowOpacity: CGFloat = 0.15
-    }
-    
     // MARK: - Body
     
     var body: some View {
