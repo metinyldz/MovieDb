@@ -37,7 +37,6 @@ struct TvHeaderView: View {
                         }
                         .frame(width: 260, height: 373)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal, 40)
                         .tag(index)
                     }

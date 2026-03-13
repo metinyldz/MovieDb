@@ -76,5 +76,4 @@ struct MovieDetailCenterView: View, Equatable {
 }
 #Preview {
     MovieDetailCenterView(content: MovieDetailModel.all())
-        .previewLayout(.sizeThatFits)
 }
